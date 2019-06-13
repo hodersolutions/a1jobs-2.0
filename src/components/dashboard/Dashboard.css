@@ -1,0 +1,22 @@
+.wrapper {
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.col-centered{
+    display:inline-block;
+    float:none;
+    margin: 20px 10px 20px 10px;    
+}
+
+.font-header {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 15px !important;
+}

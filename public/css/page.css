@@ -1,0 +1,23 @@
+.page-logo {    
+	max-width: 50px;
+	max-height: 50px;
+	vertical-align: bottom;
+	margin-right: 5px
+}
+
+/* About Us page */
+
+.row-about-height {
+    margin-top: 15px;
+}
+  
+.row-about {
+	text-align: left !important;
+}
+  
+.content-about {
+    padding-top: 50px;
+    padding-bottom:150px;
+    padding-left: 50px;
+    padding-right: 20px;
+}

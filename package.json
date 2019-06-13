@@ -1,0 +1,41 @@
+{
+  "name": "a1jobs-2.0",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.6.2",
+    "@material-ui/icons": "^3.0.1",
+    "create-react-app": "^2.1.5",
+    "ol": "^4.6.0",
+    "ol-geocoder": "^3.2.0",
+    "react": "^16.6.3",
+    "react-bootstrap-typeahead": "^3.3.6",
+    "react-dom": "^16.6.3",
+    "react-jsonschema-form": "^1.2.1",
+    "react-loading": "^2.0.3",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.5",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.2",
+    "typeface-roboto": "0.0.54"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
