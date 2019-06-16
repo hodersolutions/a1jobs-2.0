@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Random from '../common/Helper';
+import HomeCards from '../common/home_cards/HomeCards';
 
 class Home extends Component {
   render() {
@@ -14,7 +15,7 @@ class Home extends Component {
 				<div className="container">
 					<div className="row align-items-center justify-content-center">
 					<div className="col-md-12">
-						<div className="mb-5 text-center">
+						<div className="mb-5 text-center">						
 						<h1 className="text-white font-weight-bold">A Powerful Website for Careers @ School</h1>
 						<p>Find your dream jobs in our portal.</p>
 						</div>

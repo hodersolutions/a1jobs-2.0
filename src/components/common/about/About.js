@@ -5,7 +5,7 @@ class About extends Component {
   render() {
     return (
       <div>
-          <Banner banner="About Us"/>
+          <Banner banner="About Us" />
           <div className="container">
             <div className="col-md mx-auto content-about">            
             <div className="row-about row-about-height">
