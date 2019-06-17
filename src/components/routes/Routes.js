@@ -5,6 +5,7 @@ import Home from "../home/Home";
 import About from '../common/about/About';
 import NotFound from '../common/notfound/NotFound';
 import Contact from '../common/contact/Contact';
+import SignIn from '../signin/SignIn';
 
 const Routes = () => (
 	<div className='style'>
@@ -12,8 +13,8 @@ const Routes = () => (
 			<Route exact path='/' component={Home} />
 			<Route exact path='/about' component={About} />
 			<Route exact path='/contact' component={Contact} />
-			{/* <Route exact path='/signin' component={SignIn} />
-			<Route exact path='/signup' component={SignUp} />
+			<Route exact path='/signin' component={SignIn} />
+			{/* <Route exact path='/signup' component={SignUp} />
 			<Route exact path='/forgot' component={ForgotPassword} />
 			<Route exact path='/loading' component={Loading} />
 

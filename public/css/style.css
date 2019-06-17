@@ -848,8 +848,8 @@ h1, h2, h3, h4 {
 .section-hero.inner-page, .section-hero.inner-page > .container > .row {
   height: auto;
   min-height: auto;
-  padding-top: 5em; /* 6em; */
-  padding-bottom: 2em; /* 3em; */}
+  padding-top: 4em; /* 6em; */
+  padding-bottom: 1em; /* 3em; */}
 
 .section-hero.overlay, .section-hero.overlay-2 {
   position: relative; }

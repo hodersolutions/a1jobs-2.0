@@ -41,7 +41,7 @@ const Header = (props) => {
 						<div className="ml-auto">
 							<Link to="/" className="btn btn-success border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-person_add"></span>Join Us</Link>
 							<span>&nbsp;&nbsp;</span>
-							<Link to="/" className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-sign-in"></span>Sign In</Link>
+							<Link to="/signin" className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-sign-in"></span>Sign In</Link>
 						</div>
 						<Link to="/" className="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span className="icon-menu h3 m-0 p-0 mt-2"></span></Link>
 					</div>
