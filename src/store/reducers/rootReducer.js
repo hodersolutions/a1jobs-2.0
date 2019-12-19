@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import moduleReducer from './moduleReducer';
-import questionReducer from './questionReducer';
-import examReducer from './examReducer';
+import jobReducer from './jobReducer';
 
 const rootReducer = combineReducers({
     user: userReducer,    
-    module: moduleReducer,
-    question: questionReducer,
-    exam: examReducer
+    job: jobReducer
 })
 
 export default rootReducer;

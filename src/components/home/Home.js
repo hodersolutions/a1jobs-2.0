@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Random from '../common/Helper';
-import JobList from '../job/JobList';
-import HomeCards from '../common/home_cards/HomeCards';
 
 class Home extends Component {
   render() {
@@ -53,8 +51,7 @@ class Home extends Component {
 					</div>
 					</div>
 				</div>
-		  	</div>
-			<JobList/>			
+		  	</div>			
 	  	</div>
     )
   }

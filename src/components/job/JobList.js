@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
 import jobs from '../../mock/JobData';
 import JobCard from './JobCard';
-import './JobList.css';
 
-export class JobList extends Component {
+class JobList extends Component {
     constructor(props) {
 		super(props);		
 	}
     render() {
         return (
-            <div className='bdy'>
+            <div className='job-list'>
                 {jobs.map((jobObj, index) => {
-                    return (<JobCard key={ index } job={ jobObj } />);
+                    return (
+                        <div>
+                            <JobCard key={ index } job={ jobObj } />
+                            <hr/>
+                        </div>
+                    );
                 })}
             </div>
         );        

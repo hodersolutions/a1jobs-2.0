@@ -1,87 +1,94 @@
-import { CREATE_MODULE_SUCCESS, CREATE_MODULE_ERROR, GET_MODULE_SUCCESS, GET_MODULE_ERROR, GET_MODULES_SUCCESS, GET_MODULES_ERROR, UPDATE_MODULE_SUCCESS, DELETE_MODULE_SUCCESS, MODULE_SHOW_LOADING } from '../types/moduleTypes';
+import { CREATE_JOB_SUCCESS,
+         CREATE_JOB_ERROR,
+         GET_JOB_SUCCESS, 
+         GET_JOB_ERROR, 
+         GET_JOBS_SUCCESS, 
+         GET_JOBS_ERROR, 
+         UPDATE_JOB_SUCCESS, 
+         DELETE_JOB_SUCCESS, 
+         JOB_SHOW_LOADING } from '../types/jobTypes';
 
 const initState = {
     response: null,
     status: '',
-    modules: [],
-    current_module: null,
+    jobs: [],
+    current_job: null,
     error: null,
     loading: false    
 }
 
-const moduleReducer = (state = initState, action) => {
+const jobReducer = (state = initState, action) => {
     switch(action.type) {
-        case CREATE_MODULE_SUCCESS:
+        case CREATE_JOB_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                status: CREATE_MODULE_SUCCESS,
+                status: CREATE_JOB_SUCCESS,
                 response: action.response
             }
-        case CREATE_MODULE_ERROR:    
+        case CREATE_JOB_ERROR:    
             return {
                 ...state,
                 loading: false,
-                status: CREATE_MODULE_ERROR,
+                status: CREATE_JOB_ERROR,
                 error: action.error
             }
-        case GET_MODULES_SUCCESS:
+        case GET_JOBS_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                status: GET_MODULES_SUCCESS,
-                modules: action.response.modules,
+                status: GET_JOBS_SUCCESS,
+                jobs: action.response.jobs,
                 response: action.response
             }
-        case GET_MODULES_ERROR:
+        case GET_JOBS_ERROR:
             return {
                 ...state,
                 loading: false,
-                status: GET_MODULES_ERROR,
-                modules: [],
+                status: GET_JOBS_ERROR,
+                jobs: [],
                 error: action.error
             }
-        case GET_MODULE_SUCCESS:
+        case GET_JOB_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                status: GET_MODULE_SUCCESS,
-                modules: [],
-                current_module: action.module,
+                status: GET_JOB_SUCCESS,
+                jobs: [],
+                current_job: action.job,
                 response: action.response
             }
-        case GET_MODULE_ERROR:
+        case GET_JOB_ERROR:
             const empty = {
-                'module' : '<---->',
-                'parent_module_id' : '<---->',
+                'job' : '<---->',                
                 'description': '<---->',
                 'creator_id': '<---->',
             };
             return {
                 ...state,
                 loading: false,
-                current_module: empty,
-                modules: [],
-                status: GET_MODULE_ERROR,
+                current_job: empty,
+                jobs: [],
+                status: GET_JOB_ERROR,
                 error: action.error
             }
-        case UPDATE_MODULE_SUCCESS:
+        case UPDATE_JOB_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                status: UPDATE_MODULE_SUCCESS,
+                status: UPDATE_JOB_SUCCESS,
                 response: action.response
             }
-        case MODULE_SHOW_LOADING:
+        case JOB_SHOW_LOADING:
             return {
                 ...state,
                 loading: true            
             }
-        case DELETE_MODULE_SUCCESS:
+        case DELETE_JOB_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                status: DELETE_MODULE_SUCCESS,                
+                status: DELETE_JOB_SUCCESS,                
                 response: action.response
             }
         default:
@@ -89,4 +96,4 @@ const moduleReducer = (state = initState, action) => {
     }
 }
 
-export default moduleReducer
+export default jobReducer

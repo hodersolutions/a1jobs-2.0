@@ -1,11 +1,76 @@
 let jobs = [
-    {id: 1, title: 'Title 1', type: 'Freelance', location: 'Hyderabad', subject: 'Science', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 2, title: 'Title 2', type: 'Freelance', location: 'Secunderabad', subject: 'Hindi', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 3, title: 'Title 3', type: 'Fulltime', location: 'Warangal', subject: 'Maths', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 4, title: 'Title 4', type: 'Freelance', location: 'Vijayawada', subject: 'English', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 5, title: 'Title 5', type: 'Fulltime', location: 'Vizag', subject: 'Telugu', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 6, title: 'Title 6', type: 'Parttime', location: 'Nellore', subject: 'Maths', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'},
-    {id: 7, title: 'Title 7', type: 'Fulltime', location: 'Gudur', subject: 'Social', experience: 24, salary: 30000, description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'}
+    {
+        id: 1, 
+        title: 'Urgent requirement: Science teacher', 
+        type: 'Freelance', 
+        location: 'Hyderabad',
+        organization: 'ABC Primary School',  
+        subject: 'Science',         
+        salary: 30000, 
+        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        It has survived not only five centuries, but also the leap into electronic typesetting, 
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.`,
+        responsibilities: `Responsibilities`,
+        experience: 24,
+        benefits: 'Benefits',
+        edu_exp_details: 'Education and Experience details',
+        publish_date: 'April 14, 2019',
+        vacancy: 20,
+        gender: 'Any',
+        deadline: 'April 28, 2019'
+    },
+    {
+        id: 2, 
+        title: 'Urgent requirement: Hindi teacher', 
+        type: 'Fulltime', 
+        location: 'Secunderabad', 
+        organization: 'DFG Primary School',  
+        subject: 'Hindi',         
+        salary: 30000, 
+        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        It has survived not only five centuries, but also the leap into electronic typesetting, 
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.`,
+        responsibilities: `Responsibilities`,
+        experience: 24,
+        benefits: 'Benefits',
+        edu_exp_details: 'Education and Experience details',
+        publish_date: 'April 14, 2019',
+        vacancy: 20,
+        gender: 'Any',
+        deadline: 'April 28, 2019'
+    },
+    {
+        id: 3, 
+        title: 'Urgent requirement: Maths teacher', 
+        type: 'Parttime', 
+        location: 'Warangal', 
+        organization: 'OPO Primary School',  
+        subject: 'Maths',         
+        salary: 25000, 
+        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+        It has survived not only five centuries, but also the leap into electronic typesetting, 
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
+        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.`,
+        responsibilities: `Responsibilities`,
+        experience: 24,
+        benefits: 'Benefits',
+        edu_exp_details: 'Education and Experience details',
+        publish_date: 'April 14, 2019',
+        vacancy: 20,
+        gender: 'Any',
+        deadline: 'April 28, 2019'
+    }
 ]
 
 export default jobs;

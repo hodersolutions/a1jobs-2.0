@@ -184,3 +184,91 @@ a .nav-link .header-link :hover {
   #signUp {
       text-decoration: none !important;
   }
+
+/* A1 Card */
+
+hr {
+  border: 0.5px solid grey;
+}
+
+.a1-card {
+    background: #fff;
+    border-radius: 10px;
+    display: inline-block;    
+    margin: 1rem;
+    padding: 20px 10px 20px 10px;
+    position: relative;    
+    /*box-shadow: 0 2px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
+}
+
+.a1-card .title {
+  color: #000;
+  font-size: 30px;
+}
+
+.a1-card .text {
+  color: #000;
+  font-size: 17px;
+  padding: 5px 0px 0px 5px;
+  font-weight: bolder; 
+}
+
+.a1-card .img-align {
+  vertical-align: top;
+}
+
+.a1-card .row-gap {
+  margin-bottom: 20px;
+}
+
+.a1-card .description {
+  margin-left: -30px;
+}
+
+.a1-card .card-data {
+  margin-left: 30px;
+}
+
+/* Job List */
+
+.job-list {
+  text-align: center;
+}
+
+/* Search Jobs */
+
+.search-jobs {
+  position: relative;
+  margin: 30px 30px 50px 30px;
+}
+
+.search-jobs .overlay:before, .section-hero.overlay-2:before {
+  z-index: 1;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.search-jobs .form-control {
+  display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: grey;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid grey;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}

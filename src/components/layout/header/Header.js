@@ -30,7 +30,7 @@ const Header = (props) => {
 					<nav className="mx-auto site-navigation">
 						<ul className="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
 						<li><Link to="/" className="nav-link header-link">Home</Link></li>
-						<li><Link to="/" className="nav-link header-link">Search Jobs</Link></li>
+						<li><Link to="/searchjobs" className="nav-link header-link">Search Jobs</Link></li>
 						<li><Link to="/" className="nav-link header-link">Search Profiles</Link></li>
 						<li><Link to="/contact" className="nav-link header-link">Contact us</Link></li>
 						<li><Link to="/about" className="nav-link header-link">About us</Link></li>
