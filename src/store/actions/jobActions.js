@@ -8,6 +8,9 @@ import {CREATE_JOB_SUCCESS,
         GET_JOB_SUCCESS, 
         JOB_SHOW_LOADING } from '../types/jobTypes';
 
+/* Remove Mock Data */
+import jobs from '../../mock/JobData';
+
 export const createJob = (job) => {    
     return (dispatch, getState) => {
         dispatch({ type: JOB_SHOW_LOADING });
@@ -55,17 +58,28 @@ export const getJobs = (params) => {
 }
 
 export const getJob = (params) => {
-    return (dispatch, getState) => {
+    return (dispatch, getState) => {        
+        /* SKIP THIS WITH AXIOS CALL BELOW */
+        let selectedJob = jobs.find(x => x.id === parseInt(params.id));        
+        if (selectedJob !== undefined)
+            dispatch({ type: GET_JOB_SUCCESS, job: selectedJob});
+        else
+            dispatch({ type: GET_JOB_ERROR, selectedJob });
+        /* axios.get(settings.QUESTIONBANKAPI.url + 'api/v1/jobs?id=' + params.id, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'    
+            }).then( response => {            
+                dispatch({ type: GET_JOB_SUCCESS, job: response.data.job });            
+            }).catch(error => {			
+                dispatch({ type: GET_JOB_ERROR, error });
+            }); */
+    }
+}
+
+export const showLoading = () => {
+    return (dispatch) => {
         dispatch({ type: JOB_SHOW_LOADING });
-        axios.get(settings.QUESTIONBANKAPI.url + 'api/v1/jobs?id=' + params.id, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors'    
-        }).then( response => {            
-            dispatch({ type: GET_JOB_SUCCESS, job: response.data.job });            
-        }).catch(error => {			
-            dispatch({ type: GET_JOB_ERROR, error });
-        });
     }
 }

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignedOutLinks from './SignedOutLinks';
-import SignedInLinks from './SignedInLinks';
+// import SignedOutLinks from './SignedOutLinks';
+// import SignedInLinks from './SignedInLinks';
 import { connect } from 'react-redux';
 
 const Header = (props) => {
-	let userOptions;	
-	if (props.user.is_authenticated === true) {
-		userOptions = <SignedInLinks />
-	}
-	else {
-		userOptions = <SignedOutLinks />
-	}
+	// let userOptions;	
+	// if (props.user.is_authenticated === true) {
+	// 	userOptions = <SignedInLinks />
+	// }
+	// else {
+	// 	userOptions = <SignedOutLinks />
+	// }
     return (
 		<div>
 			<div className="site-mobile-menu site-navbar-target">

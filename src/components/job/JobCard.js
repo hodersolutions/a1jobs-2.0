@@ -9,9 +9,6 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 export class JobCard extends Component {
-    constructor(props) {
-		super(props);		
-	}
     render() {
         const url = '/showjob/' + this.props.job.id;
         return (              

@@ -1353,6 +1353,7 @@ h1, h2, h3, h4 {
     color: #fff; }
 
 .footer-social a, .social a {
+  margin: 2px;
   display: inline-block;
   width: 40px;
   height: 40px;

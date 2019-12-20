@@ -14,7 +14,7 @@ const initState = {
     jobs: [],
     current_job: null,
     error: null,
-    loading: false    
+    loading: true    
 }
 
 const jobReducer = (state = initState, action) => {
@@ -82,6 +82,7 @@ const jobReducer = (state = initState, action) => {
         case JOB_SHOW_LOADING:
             return {
                 ...state,
+                status: JOB_SHOW_LOADING,
                 loading: true            
             }
         case DELETE_JOB_SUCCESS:
