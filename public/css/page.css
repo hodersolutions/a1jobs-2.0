@@ -193,12 +193,12 @@ hr {
 
 .a1-card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 4px;
     display: inline-block;    
     margin: 1rem;
-    padding: 20px 10px 20px 10px;
+    padding: 10px 10px 10px 10px;
     position: relative;    
-    /*box-shadow: 0 2px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.09);
 }
 
 .a1-card .title {
@@ -218,7 +218,7 @@ hr {
 }
 
 .a1-card .row-gap {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .a1-card .description {
@@ -226,7 +226,7 @@ hr {
 }
 
 .a1-card .card-data {
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 /* Job List */
@@ -239,7 +239,8 @@ hr {
 
 .search-jobs {
   position: relative;
-  margin: 30px 30px 50px 30px;
+  padding: 30px 30px 50px 30px;
+  background-color: #fafafa;
 }
 
 .search-jobs .overlay:before, .section-hero.overlay-2:before {
@@ -271,4 +272,11 @@ hr {
     -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+/* Banner */
+
+.home-section .stay-close {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
 }

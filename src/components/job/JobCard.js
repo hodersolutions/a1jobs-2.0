@@ -17,7 +17,7 @@ export class JobCard extends Component {
                     <div className='row'>
                         <div className='col-1'>
                             {/* Get school logo Dynamic */}
-                            <AccountBalanceIcon color="disabled" style={{ fontSize: 100 }}/>
+                            <AccountBalanceIcon className="border rounded" color="disabled" style={{ fontSize: 130 }}/>
                         </div>
                         <div className='col-11 text-left'>
                             <div className='container-fluid card-data'>

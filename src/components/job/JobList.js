@@ -9,8 +9,7 @@ class JobList extends Component {
                 {jobs.map((jobObj, index) => {                    
                     return (
                         <div key={ index + 1 }>
-                            <JobCard job={ jobObj } />
-                            <hr/>
+                            <JobCard job={ jobObj } />                            
                         </div>
                     );
                 })}

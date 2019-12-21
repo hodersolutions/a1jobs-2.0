@@ -14,7 +14,7 @@ class Banner extends Component {
                 <div className="container">
                     <div className="row align-items-center justify-content-center">
                     <div className="col-md-12">
-                        <div className="mb-5 text-center">
+                        <div className="mb-5 text-center stay-close">
                             <h1 className="text-white font-weight-bold">{ this.props.banner }</h1>                            
                         </div>
                     </div>

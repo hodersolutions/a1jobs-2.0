@@ -8,6 +8,7 @@ import Contact from '../common/contact/Contact';
 import SignIn from '../signin/SignIn';
 import SearchJobs from '../search/SearchJobs';
 import JobView from '../job/JobView';
+import JobCreate from "../job/JobCreate";
 
 const Routes = () => (
 	<div className='style'>
@@ -18,6 +19,7 @@ const Routes = () => (
 			<Route exact path='/signin' component={SignIn} />
 			<Route exact path='/searchjobs' component={SearchJobs} />
 			<Route exact path='/showjob/:id' component={JobView} />
+			<Route exact path='/createjob' component={JobCreate} />
 			{/* <Route exact path='/signup' component={SignUp} />
 			<Route exact path='/forgot' component={ForgotPassword} />
 			<Route exact path='/loading' component={Loading} />
