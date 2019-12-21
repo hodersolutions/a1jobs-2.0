@@ -434,11 +434,27 @@ h1, h2, h3, h4 {
   padding-top: 7rem;
   padding-bottom: 7rem;
   position: relative;
-  z-index: 2; }
-  @media (max-width: 991.98px) {
-    .site-section {
-      padding-top: 3rem;
-      padding-bottom: 3rem; } }
+  z-index: 2; 
+}
+@media (max-width: 991.98px) {
+  .site-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem; 
+  } 
+}
+
+.job-create-section {
+  padding-top: 4rem;
+  padding-bottom: 7rem;
+  position: relative;
+  z-index: 2; 
+}
+@media (max-width: 991.98px) {
+  .job-create-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem; 
+  } 
+}
 
 .text-black {
   color: #000 !important; }
