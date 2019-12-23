@@ -1,57 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import SignedOutLinks from './SignedOutLinks';
-// import SignedInLinks from './SignedInLinks';
+import SignedOutLinks from './SignedOutLinks';
+import SignedInLinks from './SignedInLinks';
 import { connect } from 'react-redux';
 
 const Header = (props) => {
-	// let userOptions;	
-	// if (props.user.is_authenticated === true) {
-	// 	userOptions = <SignedInLinks />
-	// }
-	// else {
-	// 	userOptions = <SignedOutLinks />
-	// }
+	let userOptions;
+	if (props.user.is_authenticated === true) {
+		userOptions = <SignedInLinks />
+	}
+	else {
+		userOptions = <SignedOutLinks />
+	}
     return (
-		<div>
-			<div className="site-mobile-menu site-navbar-target">
-				<div className="site-mobile-menu-header">
-					<div className="site-mobile-menu-close mt-3">
-						<span className="icon-close2 js-menu-toggle"></span>
-					</div>
-				</div>
-				<div className="site-mobile-menu-body"></div>
-			</div>
-			<header className="site-navbar mt-3">
-				<div className="container-fluid">
-					<div className="row align-items-center">
-					<div className="site-logo"><Link to="/"><img alt="logo" className='page-logo' src={ require('../../../static/images/logo/logo.png') } />A1JOBS</Link></div>
-
-					<nav className="mx-auto site-navigation">
-						<ul className="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-						<li><Link to="/" className="nav-link header-link">Home</Link></li>
-						<li><Link to="/searchjobs" className="nav-link header-link">Search Jobs</Link></li>
-						<li><Link to="/" className="nav-link header-link">Search Profiles</Link></li>
-						<li><Link to="/contact" className="nav-link header-link">Contact us</Link></li>
-						<li><Link to="/about" className="nav-link header-link">About us</Link></li>
-						</ul>
-					</nav>
-					
-					<div className="right-cta-menu text-right d-flex aligin-items-center col-6">
-						<div className="ml-auto">
-							<Link to="/createjob" className="btn btn-post border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-near_me"></span>Post a Job</Link>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-							<Link to="/signup" className="btn btn-success border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-person_add"></span>Join Us</Link>
-							<span>&nbsp;</span>
-							<Link to="/signin" className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-sign-in"></span>Sign In</Link>
-						</div>
-						<Link to="/" className="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span className="icon-menu h3 m-0 p-0 mt-2"></span></Link>
-					</div>
-
-					</div>
-				</div>
-			</header>
-		</div>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div className="container">
+            <Link to="/" className="navbar-brand">
+              <img
+                src={require("../../../static/images/logo/logo.png")}
+                alt="A1JOBS"
+                className="logo"
+              /> <span className="app-name">A1JOBS</span>
+            </Link>
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to="/searchjobs" className="nav-item nav-link">                    
+                  <span className="icon-text">Search Jobs</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/searchprofiles" className="nav-item nav-link">                    
+                  <span className="icon-text">Search Profiles</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/contact" className="nav-item nav-link">                    
+                  <span className="icon-text">Contact Us</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/about" className="nav-item nav-link">                    
+                  <span className="icon-text">About Us</span>
+                </Link>
+              </li>
+            </ul>            
+          <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarsOptions"
+              aria-controls="navbarsOptions"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+            { userOptions }
+          </div>
+        </nav>
+      </div>
     );
 }
 

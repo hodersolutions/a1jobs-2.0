@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Banner from '../Banner';
 
 export default class Contact extends Component {
   render() {
     return (
         <div>
-            <Banner banner="Contact Us" />
             <div className="site-section" id="next-section">
                 <div className="container">
                     <div className="row">

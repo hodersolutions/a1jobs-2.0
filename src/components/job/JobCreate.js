@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Banner from '../common/Banner';
 import { connect } from 'react-redux';
 import { createJob } from '../../store/actions/jobActions';
 import DatePicker from "react-datepicker";
@@ -44,7 +43,6 @@ class JobCreate extends Component {
 	render() {		
 		return (
 			<div>
-				<Banner banner="Post a Job" />
 				<div className="job-create-section" id="next-section">
 					<form action="/createjob" onSubmit={this.handleSubmit} method="POST">
 						<div className="container">

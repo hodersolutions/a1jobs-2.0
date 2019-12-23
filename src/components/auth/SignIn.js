@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './SignIn.css';
 import { Redirect } from 'react-router-dom';
-import Banner from '../common/Banner';
 import Notifications, { notify } from 'react-notify-toast';
 import { connect } from 'react-redux';
 import { authenticateUser } from '../../store/actions/userActions';
@@ -44,7 +43,6 @@ class SignIn extends Component {
 			}
 			return (
 				<Fragment>
-					<Banner banner="Please sign in" />
 					<div className="container" id="signInContainer">
 						<Notifications options={{ options }}/>
 						<div className="wrap-login-style">

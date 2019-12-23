@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Notifications, { notify } from 'react-notify-toast';
-import Banner from "../common/Banner";
 import { authenticateUser } from '../../store/actions/userActions';
 import JobList from '../job/JobList';
 
@@ -44,7 +43,6 @@ class SearchJobs extends Component {
 			}
 			return (
 				<Fragment>
-					<Banner banner="Search Jobs" />
                     <Notifications options={{ options }}/>
 					<div className="search-jobs">
                         <div className="container">

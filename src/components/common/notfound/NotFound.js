@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Banner from '../Banner';
 
 class NotFound extends Component {
     render() {
         return (
             <div>
-                <Banner banner="Oops!" />
                 <div className="site-section not-found">
                     <div className="notfound">
                         <div className="notfound-404">                            

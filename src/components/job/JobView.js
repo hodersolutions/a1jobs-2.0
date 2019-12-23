@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import Banner from "../common/Banner";
 import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -24,7 +23,6 @@ class JobView extends Component {
 		else if (this.props.job.status === GET_JOB_SUCCESS){			
 			return (
 				<Fragment>
-					<Banner banner="Job Details" />
 					<section className="site-section">
 						<div className="container">
 							<div className="row align-items-center mb-5">

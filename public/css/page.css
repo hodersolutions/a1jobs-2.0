@@ -312,3 +312,115 @@ hr {
   top: -1px;
   pointer-events: none;
 }
+
+/* Header navbar */
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+.footer {
+  height: 5vh;
+}
+
+#navbarsOptions {
+  padding-top: 35px;
+}
+
+.app-name {
+  vertical-align: bottom;
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 10px;  
+}
+
+.square-primary {
+  border-color: #3498db;
+  border-bottom-style: none;
+  color: #28a745;
+  padding-bottom: 0px;
+}
+
+.square-success {
+  border-color: #28a745;
+  border-bottom-style: none;
+  color: #3498db;
+  padding-bottom: 0px;
+}
+
+#companyName {
+  vertical-align: middle;
+  margin: 0px 10px 0px 5px;
+  font-size: 30px;
+  letter-spacing: 5px;
+  font-weight: 400;
+}
+
+.icon {
+  vertical-align: sub;
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown-text {
+  color: #000;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.dropdown-text:hover {
+  color: #3498db;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.icon-text {
+  color: #fff;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.icon-text:hover {
+  color: #28a745;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 25px;
+  min-height: 10vh;
+  background: #141E30;
+  background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
+  background: linear-gradient(to bottom, #243B55, #141E30);  
+  box-shadow: 0 2px 1px #566573;
+}
+
+.border-button {
+  border: 1px solid #b2babb;
+  border-radius: 2px;
+}
+
+.border-button:hover {
+  border: 1px solid #28a745;
+  border-radius: 2px;
+}
+
+.border-button:hover .icon-text {
+  color: #28a745;
+  font-weight: 400;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/* @media (min-width: 576px) { .body {background-color: red; } }
+
+@media (min-width: 768px) {.body {background-color:green; } }
+
+@media (min-width: 992px) { .body {background-color:blue; } }
+
+@media (min-width: 1200px) { .body {background-color:yellow; } } */

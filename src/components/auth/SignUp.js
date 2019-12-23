@@ -3,7 +3,6 @@ import './SignUp.css';
 import Notifications, { notify } from 'react-notify-toast';
 import {Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';
-import Banner from '../common/Banner';
 import { connect } from 'react-redux';
 import { createUser } from '../../store/actions/userActions';
 import { CREATE_USER_SUCCESS, CREATE_USER_ERROR } from '../../store/types/userTypes';
@@ -55,7 +54,6 @@ class SignUp extends Component {
         } 
         return (
             <Fragment>
-                <Banner banner="Join us" />
                 <Notifications options={{ options }}/>
                 { this.props.user.loading ? <Loading /> :
                     <div className="container" id="signUpContainer">
