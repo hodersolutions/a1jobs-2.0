@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import Random from './Helper';
 
-class Banner extends Component {    
-    render() {        
-        var imgUrl = require('../../static/images/welcome/welcome_'+ Random() +'.jpg');
-
-	    const style = {
-		    'backgroundImage': 'url('+ imgUrl +')'
-	    }
+class Banner extends Component {      
+    render() {          
         return (
             <div>
-                <div className="home-section section-hero inner-page overlay bg-image" style={style} id="home-section">
+                <div className="home-section section-hero inner-page overlay bg-image banner-gradient-royal" id="home-section">
                 <div className="container">
                     <div className="row align-items-center justify-content-center">
                     <div className="col-md-12">

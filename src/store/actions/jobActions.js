@@ -14,7 +14,7 @@ import jobs from '../../mock/JobData';
 export const createJob = (job) => {    
     return (dispatch, getState) => {
         dispatch({ type: JOB_SHOW_LOADING });
-        axios.post(settings.QUESTIONBANKAPI.url + 'api/v1/jobs', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/jobs', {
                 headers: {
                     'Content-Type': 'application/json',
                     'token': localStorage.getItem('token'),
@@ -38,7 +38,7 @@ export const createJob = (job) => {
 export const getJobs = (params) => {
     return (dispatch, getState) => {
         dispatch({ type: JOB_SHOW_LOADING });
-        var full_uri = settings.QUESTIONBANKAPI.url + 'api/v1/jobs'; 
+        var full_uri = settings.A1JOBSAPI.url + 'api/v1/jobs'; 
 		if (params.creator_id === '')
 			full_uri = full_uri + '/latest/' + params.count
 		else
@@ -65,7 +65,7 @@ export const getJob = (params) => {
             dispatch({ type: GET_JOB_SUCCESS, job: selectedJob});
         else
             dispatch({ type: GET_JOB_ERROR, selectedJob });
-        /* axios.get(settings.QUESTIONBANKAPI.url + 'api/v1/jobs?id=' + params.id, {
+        /* axios.get(settings.A1JOBSAPI.url + 'api/v1/jobs?id=' + params.id, {
                 headers: {
                     'Content-Type': 'application/json'
                 },

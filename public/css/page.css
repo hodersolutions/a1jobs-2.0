@@ -280,3 +280,35 @@ hr {
   margin-top: 2rem !important;
   margin-bottom: 1rem !important;
 }
+
+.banner-gradient-royal {
+  background: #141E30;
+  background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
+  background: linear-gradient(to bottom, #243B55, #141E30); 
+}
+
+/* Post Job */
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+.job-post-button {
+  margin: 10px 10px 10px 0px;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+.post-job-span {
+  position: relative;
+}
+
+.post-job-span:before {
+  font-family: FontAwesome;
+  content: "\f124";
+  color: white;
+  font-size: 15px;
+  position: absolute;
+  left: 15px;
+  top: -1px;
+  pointer-events: none;
+}

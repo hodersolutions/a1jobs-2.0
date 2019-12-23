@@ -1,0 +1,54 @@
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+#signUpContainer {
+  text-align: center;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  text-align: center !important;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.wrap-login-style {
+  width: 350px;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+  border-color: #28a745;
+  box-shadow: 1px 1px 1px rgba(40, 167, 69, 0.8) inset,
+    1px 1px 1px rgba(40, 167, 69, 0.8);
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;  
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;  
+}
+#notaMember {
+  margin-top: 10px;
+}
+#signIn {
+  text-decoration: none !important;
+  color: #3498db !important;
+}

@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return (
       <div>
-			<footer className="site-footer">	
+			<footer className="site-footer banner-gradient-royal">	
 				<div className="container">
 					<div className="row mb-5">
 						<div className="col-6 col-md-3 mb-4 mb-md-0">
@@ -49,7 +49,7 @@ class Footer extends Component {
 					<div className="row text-center">
 						<div className="col-12">
 							<p>				
-								Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | by <Link to="http://www.hoder.in" target="_blank">hoder.in</Link>
+								Copyright &copy; <script>document.write(new Date().getFullYear());</script> 2019 All rights reserved | by <a href="http://www.hoder.in" target="_blank" rel="noopener noreferrer">hoder.in</a>
 							</p>
 						</div>
 					</div>
