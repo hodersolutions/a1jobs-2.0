@@ -195,7 +195,7 @@ hr {
     background: #fff;
     border-radius: 4px;
     display: inline-block;    
-    margin: 1rem;
+    margin: 1rem 0rem 1rem 0rem;
     padding: 10px 10px 10px 10px;
     position: relative;    
     box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.09);
@@ -208,9 +208,8 @@ hr {
 
 .a1-card .text {
   color: #000;
-  font-size: 17px;
+  font-size: 15px;
   padding: 5px 0px 0px 5px;
-  font-weight: bolder; 
 }
 
 .a1-card .img-align {
@@ -226,7 +225,7 @@ hr {
 }
 
 .a1-card .card-data {
-  margin-left: 60px;
+  margin-left: 0px;
 }
 
 /* Job List */
@@ -456,7 +455,7 @@ hr {
 }
 
 .underline {
-  border-bottom: 0.5px solid grey;
+  border-bottom: 0.5px solid #D5D8DC;
   margin-bottom: 50px;
 }
 

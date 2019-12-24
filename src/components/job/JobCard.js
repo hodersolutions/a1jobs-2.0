@@ -17,13 +17,13 @@ export class JobCard extends Component {
                     <div className='row'>
                         <div className='col-1'>
                             {/* Get school logo Dynamic */}
-                            <BusinessIcon className="border rounded" color="disabled" style={{ fontSize: 130 }}/>
+                            <BusinessIcon className="border rounded" color="disabled" style={{ fontSize: 70 }}/>
                         </div>
                         <div className='col-11 text-left'>
                             <div className='container-fluid card-data'>
                                 <div className='row row-gap'>
                                     <div className='col-*'>
-                                        <span className='title'>{this.props.job.title}</span>
+                                        <h5>{this.props.job.title}</h5>
                                     </div>
                                 </div>
                                 <div className='row row-gap'>
@@ -32,16 +32,16 @@ export class JobCard extends Component {
                                     </div>
                                 </div>
                                 <div className='row description'>
-                                    <div className='col-3 text-left'>
+                                    <div className='col-lg-3 col-xs-6 text-left'>
                                         <LocationOnIcon className='img-align' color="error" /><span className='text'>{this.props.job.location}</span>
                                     </div>
-                                    <div className='col-3 text-left'>
+                                    <div className='col-lg-3 col-xs-6 text-left'>
                                         <SubjectIcon className='img-align' color="primary" /><span className='text'>{this.props.job.subject}</span>
                                     </div>
-                                    <div className='col-3 text-left'>
+                                    <div className='col-lg-3 col-xs-6 text-left'>
                                         <MoneyIcon className='img-align' style={{ color: green[500] }} /><span className='text'>{this.props.job.salary}</span>
                                     </div>
-                                    <div className='col-3 text-left'>
+                                    <div className='col-lg-3 col-xs-6 text-left'>
                                         <ScheduleIcon className='img-align' style={{ color: blue[500] }} /><span className='text'>{this.props.job.type}</span>
                                     </div>
                                 </div>
