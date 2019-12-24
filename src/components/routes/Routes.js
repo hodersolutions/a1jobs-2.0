@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import requireAuth from '../auth/JWTAuthentication';
 import Home from '../home/Home';
-import About from '../common/about/About';
 import NotFound from '../common/notfound/NotFound';
 import Contact from '../common/contact/Contact';
 import SignIn from '../auth/SignIn';
@@ -18,7 +17,6 @@ const Routes = () => (
 	<div className='style'>
 		<Switch>
 			<Route exact path='/' component={Home} />
-			<Route exact path='/about' component={About} />
 			<Route exact path='/contact' component={Contact} />
 			<Route exact path='/signin' component={SignIn} />
 			<Route exact path='/searchjobs' component={SearchJobs} />

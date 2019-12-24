@@ -37,10 +37,7 @@ const Header = (props) => {
 						</li>
 						<li>
 							<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
-						</li>
-						<li>
-							<Link to="/about" className="nav-item nav-link">About Us</Link>
-						</li>
+						</li>						
 					</ul>
 					<form className="form-inline my-2 my-lg-0">
 						{ userOptions }
