@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './SignUp.css';
 import Notifications, { notify } from 'react-notify-toast';
 import {Redirect} from 'react-router-dom';
@@ -53,7 +53,7 @@ class SignUp extends Component {
             this.props.user.error = null;
         } 
         return (
-            <Fragment>
+            <div>
                 <Notifications options={{ options }}/>
                 { this.props.user.loading ? <Loading /> :
                     <div className="container" id="signUpContainer">
@@ -68,7 +68,7 @@ class SignUp extends Component {
                                         width="60"
                                         height="60"
                                     />
-                                    {/* <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Join Us</h1> */}
+                                    <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Join Us</h1>
                                     <div className="form-group">
                                         <label className="form-control-label" htmlFor="username">Username</label>
                                         <input
@@ -139,7 +139,7 @@ class SignUp extends Component {
                         </div>
                     </div>
                 }
-            </Fragment>
+            </div>
         )
     }
 }

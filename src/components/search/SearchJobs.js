@@ -32,7 +32,10 @@ class SearchJobs extends Component {
     render() {
 		const options = {
 			zIndex: 200, top: '50px'
-		}		
+        }
+        const style = {
+            paddingTop: "3rem"
+        }		
 		if(this.props.user.is_authenticated === true) {
 			return <Redirect to='/home'/>;
 		}
@@ -44,10 +47,15 @@ class SearchJobs extends Component {
 			return (
 				<Fragment>
                     <Notifications options={{ options }}/>
-					<div className="search-jobs">
+					<div className="search-jobs" style = { style }>
                         <div className="container">
+                            <div className="row align-items-center justify-content-center underline">
+                                <div className="col-md-12">
+                                    <h1 className="font-weight-bold">Search a Job</h1>                                    
+                                </div>
+                            </div>
                             <div className="row align-items-center justify-content-center">
-                            <div className="col-md-12">                                
+                            <div className="col-md-12">
                                 <form method="post" className="search-jobs-form">
                                     <div className="row mb-5">
                                         <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">

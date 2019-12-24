@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './SignIn.css';
 import { Redirect } from 'react-router-dom';
 import Notifications, { notify } from 'react-notify-toast';
@@ -42,14 +42,14 @@ class SignIn extends Component {
 				this.props.user.error = null;
 			}
 			return (
-				<Fragment>
+				<div>
 					<div className="container" id="signInContainer">
 						<Notifications options={{ options }}/>
 						<div className="wrap-login-style">
 							<form method="POST" action="" onSubmit={this.handleSubmit} className="form-signin">
 								<fieldset className="form-group">
 									<img className="mb-3" src={require("../../static/images/login.png")} alt="Login" width="60" height="60"/>
-									{/* <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Please sign in</h1> */}
+									<h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Please sign in</h1>
 									<div className="form-group">
 										<label className="form-control-label" htmlFor="email">Email Address</label>
 										<input className="form-control form-control-sm" id="email" name="email" required="" type="text" autoComplete="username-email" value={this.state.email} onChange={this.handleChange}/>
@@ -69,7 +69,7 @@ class SignIn extends Component {
 							</form>
 						</div>
 					</div>
-				</Fragment>
+				</div>
 			)
 		}		
     }

@@ -24,10 +24,10 @@ a .nav-link .header-link :hover {
 }
   
 .content-about {
-    padding-top: 50px;
+    /* padding-top: 50px; */
     padding-bottom:150px;
-    padding-left: 50px;
-    padding-right: 20px;
+    /* padding-left: 50px;
+    padding-right: 20px; */
 }
 
 /* 404 page */
@@ -281,20 +281,51 @@ hr {
   margin-bottom: 1rem !important;
 }
 
-.banner-gradient-royal {
+.banner-gradient-royal-bottom {
   background: #141E30;
   background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
-  background: linear-gradient(to bottom, #243B55, #141E30); 
+  background: linear-gradient(to bottom, #243B55, #141E30);      
+  -webkit-box-shadow: 0 8px 6px -6px #141E30;
+  -moz-box-shadow: 0 8px 6px -6px #141E30;
+  box-shadow: 0 8px 6px -6px #141E30;
 }
+
+.banner-gradient-royal-top {
+  background: #141E30;
+  background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
+  background: linear-gradient(to bottom, #243B55, #141E30);    
+  -webkit-box-shadow: 0 -8px 6px -6px #141E30;
+  -moz-box-shadow: 0 -8px 6px -6px #141E30;
+  box-shadow: 0 -8px 6px -6px #141E30;
+}
+
 
 /* Post Job */
 .react-datepicker-wrapper {
   display: block !important;
 }
 
+.job-post-link {
+  margin: 10px 10px 10px 0px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.join-us-link {
+  margin: 10px 10px 10px 0px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.sign-in-link {
+  margin: 10px 10px 10px 0px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
 .job-post-button {
   margin: 10px 10px 10px 0px;
-  padding-left: 30px;
+  padding-left: 35px;
   padding-right: 10px;
 }
 
@@ -314,9 +345,14 @@ hr {
 }
 
 /* Header navbar */
-.logo {
-  width: 60px;
-  height: 60px;
+.site-wrap {
+  font-family: "Nunito", sans-serif;
+}
+
+.site-logo .logo {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
 }
 
 .footer {
@@ -328,10 +364,13 @@ hr {
 }
 
 .app-name {
-  vertical-align: bottom;
-  font-size: 25px;
+  color: #fff;
+  display:inline-block;
+  vertical-align:middle;
   font-weight: 500;
-  margin-left: 10px;  
+  font-size: 30px;
+  margin: 5px 50px 0px 10px;
+  letter-spacing: 5px;  
 }
 
 .square-primary {
@@ -391,13 +430,8 @@ hr {
 }
 
 .navbar {
-  padding-top: 15px;
-  padding-bottom: 25px;
+  padding: 30px 10px 30px 10px;
   min-height: 10vh;
-  background: #141E30;
-  background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
-  background: linear-gradient(to bottom, #243B55, #141E30);  
-  box-shadow: 0 2px 1px #566573;
 }
 
 .border-button {
@@ -415,6 +449,15 @@ hr {
   font-weight: 400;
   margin-right: 5px;
   margin-left: 5px;
+}
+
+.main-menu {
+  padding-top: 10px;
+}
+
+.underline {
+  border-bottom: 0.5px solid grey;
+  margin-bottom: 50px;
 }
 
 /* @media (min-width: 576px) { .body {background-color: red; } }

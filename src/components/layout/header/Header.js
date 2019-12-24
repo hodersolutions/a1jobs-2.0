@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import SignedOutLinks from './SignedOutLinks';
 import SignedInLinks from './SignedInLinks';
@@ -13,53 +13,42 @@ const Header = (props) => {
 		userOptions = <SignedOutLinks />
 	}
     return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container">
-            <Link to="/" className="navbar-brand">
-              <img
-                src={require("../../../static/images/logo/logo.png")}
-                alt="A1JOBS"
-                className="logo"
-              /> <span className="app-name">A1JOBS</span>
-            </Link>
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to="/searchjobs" className="nav-item nav-link">                    
-                  <span className="icon-text">Search Jobs</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/searchprofiles" className="nav-item nav-link">                    
-                  <span className="icon-text">Search Profiles</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/contact" className="nav-item nav-link">                    
-                  <span className="icon-text">Contact Us</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/about" className="nav-item nav-link">                    
-                  <span className="icon-text">About Us</span>
-                </Link>
-              </li>
-            </ul>            
-          <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarsOptions"
-              aria-controls="navbarsOptions"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            { userOptions }
-          </div>
-        </nav>
-      </div>
+      <Fragment>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark banner-gradient-royal-bottom">
+			<div className="container-fluid">
+				<Link to="/" className="site-logo">
+					<img
+						src={require("../../../static/images/logo/logo.png")}
+						alt="A1JOBS"
+						className="logo"
+					/> <span className="app-name">A1JOBS</span>
+				</Link>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+
+				<div className="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+					<ul className="navbar-nav mr-auto">
+						<li>
+							<Link to="/searchjobs" className="nav-item nav-link">Search Jobs</Link>
+						</li>
+						<li>
+							<Link to="/searchprofiles" className="nav-item nav-link">Search Profiles</Link>
+						</li>
+						<li>
+							<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
+						</li>
+						<li>
+							<Link to="/about" className="nav-item nav-link">About Us</Link>
+						</li>
+					</ul>
+					<form className="form-inline my-2 my-lg-0">
+						{ userOptions }
+					</form>					
+				</div>
+			</div>
+		</nav>        
+      </Fragment>
     );
 }
 

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 class Footer extends Component {
   render() {
     return (
-      <div>
-			<footer className="site-footer banner-gradient-royal">	
+      <Fragment>
+			<footer className="site-footer banner-gradient-royal-top">	
 				<div className="container">
 					<div className="row mb-5">
 						<div className="col-6 col-md-3 mb-4 mb-md-0">
@@ -55,7 +55,7 @@ class Footer extends Component {
 					</div>
 				</div>
 			</footer>
-      </div>
+      </Fragment>
     );
   }
 }

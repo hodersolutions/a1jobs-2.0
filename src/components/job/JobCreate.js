@@ -46,6 +46,11 @@ class JobCreate extends Component {
 				<div className="job-create-section" id="next-section">
 					<form action="/createjob" onSubmit={this.handleSubmit} method="POST">
 						<div className="container">
+							<div className="row align-items-center justify-content-center underline">
+                                <div className="col-md-12">
+                                    <h1 className="font-weight-bold">Post a Job</h1>                                    
+                                </div>
+                            </div>
 							<div className="row">						
 								<div className="col-12 form-group">
 									<label className="text-black" htmlFor="fname">Job title</label>

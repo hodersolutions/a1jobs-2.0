@@ -25,6 +25,11 @@ class JobView extends Component {
 				<Fragment>
 					<section className="site-section">
 						<div className="container">
+							<div className="row align-items-center justify-content-center underline">
+                                <div className="col-md-12">
+                                    <h1 className="font-weight-bold">Job details</h1>                                    
+                                </div>
+                            </div>
 							<div className="row align-items-center mb-5">
 							<div className="col-lg-8 mb-4 mb-lg-0">
 								<div className="d-flex align-items-center">
