@@ -3,7 +3,6 @@ import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getJob, showLoading } from '../../store/actions/jobActions';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import { GET_JOB_SUCCESS, JOB_SHOW_LOADING } from '../../store/types/jobTypes';
 
 class JobView extends Component {	
@@ -35,7 +34,7 @@ class JobView extends Component {
 								<div className="d-flex align-items-center">
 								<div className="border p-2 d-inline-block mr-3 rounded">
 									{/* Get school logo Dynamic */}
-									<AccountBalanceIcon color="disabled" style={{ fontSize: 100 }}/>
+									<img className="mb-3" src={require("../../static/images/school.png")} alt="Login" width="100" height="100"/>
 								</div>
 								<div>
 									<h2>{this.props.job.current_job.title}</h2>
