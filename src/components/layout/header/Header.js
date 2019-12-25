@@ -27,7 +27,7 @@ const Header = (props) => {
 			</button>
 
 			<div className="collapse navbar-collapse main-menu" id="navbarSupportedContent">
-				<ul className="navbar-nav mr-auto">
+				<ul className="navbar-nav mr-auto main-header-ul">
 					<li>
 						<Link to="/searchjobs" className="nav-item nav-link">Search Jobs</Link>
 					</li>
