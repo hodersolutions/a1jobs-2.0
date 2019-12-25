@@ -15,34 +15,32 @@ const Header = (props) => {
     return (
       <Fragment>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark banner-gradient-royal-bottom">
-			<div className="container-fluid">
-				<Link to="/" className="site-logo">
-					<img
-						src={require("../../../static/images/logo/logo.png")}
-						alt="A1JOBS"
-						className="logo"
-					/> <span className="app-name">A1JOBS</span>
-				</Link>
-				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
+			<Link to="/" className="site-logo">
+				<img
+					src={require("../../../static/images/logo/logo.png")}
+					alt="A1JOBS"
+					className="logo"
+				/> <span className="app-name">A1JOBS</span>
+			</Link>
+			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span className="navbar-toggler-icon"></span>
+			</button>
 
-				<div className="collapse navbar-collapse main-menu" id="navbarSupportedContent">
-					<ul className="navbar-nav mr-auto">
-						<li>
-							<Link to="/searchjobs" className="nav-item nav-link">Search Jobs</Link>
-						</li>
-						<li>
-							<Link to="/searchprofiles" className="nav-item nav-link">Search Profiles</Link>
-						</li>
-						<li>
-							<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
-						</li>						
-					</ul>
-					<form className="form-inline my-2 my-lg-0">
-						{ userOptions }
-					</form>					
-				</div>
+			<div className="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+				<ul className="navbar-nav mr-auto">
+					<li>
+						<Link to="/searchjobs" className="nav-item nav-link">Search Jobs</Link>
+					</li>
+					<li>
+						<Link to="/searchprofiles" className="nav-item nav-link">Search Profiles</Link>
+					</li>
+					<li>
+						<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
+					</li>						
+				</ul>
+				<form className="form-inline my-2 my-lg-0">
+					{ userOptions }
+				</form>					
 			</div>
 		</nav>        
       </Fragment>

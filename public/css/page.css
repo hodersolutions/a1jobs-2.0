@@ -368,7 +368,7 @@ hr {
   vertical-align:middle;
   font-weight: 500;
   font-size: 30px;
-  margin: 5px 50px 0px 10px;
+  margin: 5px 30px 0px 10px;
   letter-spacing: 5px;  
 }
 
@@ -429,7 +429,7 @@ hr {
 }
 
 .navbar {
-  padding: 30px 10px 30px 10px;
+  padding: 30px;
   min-height: 10vh;
 }
 
