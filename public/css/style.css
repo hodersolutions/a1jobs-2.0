@@ -106,20 +106,20 @@ h1, h2, h3, h4 {
   color: #000; }
 
 .site-section {
-  padding-top: 3rem; /*7rem*/
+  padding-top: 10rem; /*7rem*/
   padding-bottom: 7rem;
   position: relative;
   z-index: 2; 
 }
 @media (max-width: 991.98px) {
   .site-section {
-    padding-top: 3rem;
+    padding-top: 10rem;
     padding-bottom: 3rem; 
   } 
 }
 
 .job-create-section {
-  padding-top: 4rem;
+  padding-top: 10rem;
   padding-bottom: 7rem;
   position: relative;
   z-index: 2;
@@ -127,7 +127,7 @@ h1, h2, h3, h4 {
 }
 @media (max-width: 991.98px) {
   .job-create-section {
-    padding-top: 3rem;
+    padding-top: 10rem;
     padding-bottom: 3rem; 
   } 
 }
@@ -545,7 +545,7 @@ h1, h2, h3, h4 {
   /* padding-bottom: 0.5em; /* 3em; */}
 
 .section-hero.overlay, .section-hero.overlay-2 {
-  position: relative; }
+  position: inherit; }
   .section-hero.overlay:before, .section-hero.overlay-2:before {
     z-index: 1;
     position: absolute;

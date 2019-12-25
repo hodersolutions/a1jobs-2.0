@@ -3527,8 +3527,8 @@ input[type="button"].btn-block {
   font-size: 1.25rem;
   line-height: 1;
   background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 0.25rem; }
+  border: none;/*1px solid transparent;*/
+  border-radius: none;/*0.25rem;*/ }
   .navbar-toggler:hover, .navbar-toggler:focus {
     text-decoration: none; }
 

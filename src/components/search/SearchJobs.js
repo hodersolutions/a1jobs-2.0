@@ -33,9 +33,6 @@ class SearchJobs extends Component {
 		const options = {
 			zIndex: 200, top: '50px'
         }
-        const style = {
-            paddingTop: "3rem"
-        }		
 		if(this.props.user.is_authenticated === true) {
 			return <Redirect to='/home'/>;
 		}
@@ -47,7 +44,7 @@ class SearchJobs extends Component {
 			return (
 				<Fragment>
                     <Notifications options={{ options }}/>
-					<div className="search-jobs" style = { style }>
+					<div className="search-jobs">
                         <div className="container">
                             <div className="row align-items-center justify-content-center underline">
                                 <div className="col-md-12">

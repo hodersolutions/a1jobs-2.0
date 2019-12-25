@@ -34,13 +34,14 @@ a .nav-link .header-link :hover {
 
 .not-found {
     position: relative;
-    height: 70vh;
+    height: 100vh;
 }
 
 .not-found .notfound {
     position: absolute;
     left: 50%;
     top: 50%;
+    padding-top: 10rem;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -238,7 +239,10 @@ hr {
 
 .search-jobs {
   position: relative;
-  padding: 30px 30px 50px 30px;
+  padding-top: 10rem;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 30px;
   /* background-color: #fafafa; */
 }
 
@@ -283,7 +287,8 @@ hr {
 .banner-gradient-royal-bottom {
   background: #141E30;
   background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
-  background: linear-gradient(to bottom, #243B55, #141E30);      
+  background: linear-gradient(to bottom, #243B55, #141E30);
+  border-radius: 0px 0px 15px 15px;      
   -webkit-box-shadow: 0 8px 6px -6px #141E30;
   -moz-box-shadow: 0 8px 6px -6px #141E30;
   box-shadow: 0 8px 6px -6px #141E30;
@@ -293,7 +298,8 @@ hr {
 .banner-gradient-royal-top {
   background: #141E30;
   background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
-  background: linear-gradient(to bottom, #243B55, #141E30);    
+  background: linear-gradient(to bottom, #243B55, #141E30);
+  border-radius: 15px 15px 0px 0px;
   -webkit-box-shadow: 0 -8px 6px -6px #141E30;
   -moz-box-shadow: 0 -8px 6px -6px #141E30;
   box-shadow: 0 -8px 6px -6px #141E30;
@@ -431,8 +437,12 @@ hr {
 }
 
 .navbar {
-  padding: 30px;
+  padding: 25px 30px 25px 30px;
   min-height: 10vh;
+  z-index: 100;
+  /*May need commenting*/
+  position: fixed;
+  width: -webkit-fill-available;
 }
 
 .border-button {
