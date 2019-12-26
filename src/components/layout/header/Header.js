@@ -17,10 +17,11 @@ const Header = (props) => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top banner-gradient-royal-bottom">
 			<Link to="/" className="site-logo">
 				<img
-					src={require("../../../static/images/logo/logo.png")}
+					src={require("../../../static/images/logo/site-logo.png")}
 					alt="A1JOBS"
 					className="logo"
-				/> <span className="app-name">A1JOBS</span>
+				/> 
+				{/* <span className="app-name">A1JOBS</span> */}
 			</Link>
 			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
