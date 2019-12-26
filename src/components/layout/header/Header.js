@@ -14,7 +14,7 @@ const Header = (props) => {
 	}
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark banner-gradient-royal-bottom">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top banner-gradient-royal-bottom">
 			<Link to="/" className="site-logo">
 				<img
 					src={require("../../../static/images/logo/logo.png")}

@@ -194,6 +194,7 @@ h4 {
 
 .home-section {
 	position: relative;
+	padding-top: 7rem;
 }
 
 .home-section>.container {
@@ -771,7 +772,6 @@ h4 {
 .section-hero,
 .section-hero>.container>.row {
 	height: 100vh;
-	/* min-height: 900px;  */
 }
 
 .section-hero.inner-page,
