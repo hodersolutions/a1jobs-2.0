@@ -6,7 +6,7 @@ const SignedInLinks = (props) => {
     return (
 		<div className="collapse navbar-collapse" id="navbarsOptions">
 			<ul className="navbar-nav ml-auto">
-				<li className="nav-item dropdown">
+				<li className="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link dropdown-toggle" to="" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<img src={require("../../../static/images/welcome.png")} className="icon" alt="welcome"/>
 						<span className="icon-text">Welcome, { props.user.username }</span>
