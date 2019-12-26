@@ -1380,6 +1380,7 @@ h4 {
 	padding: 7rem 0;
 	position: relative;
 	background: #242424;
+	z-index: 10;
 }
 
 @media (max-width: 991.98px) {
