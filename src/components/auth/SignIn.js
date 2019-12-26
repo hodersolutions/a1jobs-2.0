@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SignIn.css';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Notifications, { notify } from 'react-notify-toast';
 import { connect } from 'react-redux';
@@ -62,10 +63,10 @@ class SignIn extends Component {
 								<div className="form-group">
 									<input className="btn btn-md btn-primary btn-block" id="submit" name="submit" type="submit" value="Sign In"/>
 								</div>
-								<a href="/forgot" id="forgot">Forgot your password?</a>
+								<Link to="/forgot" id="forgot">Forgot your password?</Link>
 								<br/>
 								<br/>
-								<label id="notaMember">Not a member?&nbsp;<a href="/signup" id="signUp">Join Us</a></label>        
+								<label id="notaMember">Not a member?&nbsp;<Link to="/signup" id="signUp">Join Us</Link></label>
 							</form>
 						</div>
 					</div>

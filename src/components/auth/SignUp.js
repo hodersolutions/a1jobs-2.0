@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SignUp.css';
 import Notifications, { notify } from 'react-notify-toast';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { createUser } from '../../store/actions/userActions';
@@ -134,7 +134,7 @@ class SignUp extends Component {
                             </form>
                             <label id="alreadyaMember">
                                 Already a member?&nbsp;
-                                <a href="/signin" id="signIn">Sign In</a>
+                                <Link to="/signin" id="signIn">Sign In</Link>
                             </label>
                         </div>
                     </div>
