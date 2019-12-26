@@ -495,6 +495,12 @@ hr {
 	}
 }
 
+/* Loading */
+.padding-align {
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+}
+
 /* @media (min-width: 576px) { .body {background-color: red; } }
 
 @media (min-width: 768px) {.body {background-color:green; } }
