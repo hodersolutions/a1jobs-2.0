@@ -16,7 +16,7 @@ export class JobCard extends Component {
                     <div className='row'>
                         <div className='col-1'>
                             {/* Get school logo Dynamic */}
-                            <img className="mb-3" src={require("../../static/images/school.png")} alt="Login" width="60" height="60"/>
+                            <img className="mb-3 school-logo" src={require("../../static/images/school.png")} alt="Login" width="60" height="60"/>
                         </div>
                         <div className='col-11 text-left'>
                             <div className='container-fluid card-data'>

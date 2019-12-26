@@ -235,6 +235,7 @@ hr {
 
 .a1-card .card-data {
 	margin-left: 20px;
+	width: 100%;
 }
 
 
@@ -416,7 +417,7 @@ hr {
 }
 
 .icon {
-	vertical-align: sub;
+	vertical-align: bottom;
 	width: 20px;
 	height: 20px;
 }
@@ -486,6 +487,13 @@ hr {
 	text-align: center;
 }
 
+/* Job Card */
+
+@media (max-width: 576px) {
+	.school-logo {
+		margin-left: 20px;
+	}
+}
 
 /* @media (min-width: 576px) { .body {background-color: red; } }
 
