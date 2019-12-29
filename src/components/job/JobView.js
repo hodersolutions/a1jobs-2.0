@@ -64,7 +64,7 @@ class JobView extends Component {
 							<div className="col-lg-4">
 								<div className="row">
 								<div className="col-6">
-									<Link to="#" className="btn btn-block btn-light btn-md"><span className="icon-heart-o text-danger"></span>Save
+									<Link to="#" className="btn btn-block btn-light btn-md"><span className="icon-heart-o mr-2 text-danger"></span>Save
 									Job</Link>
 								</div>
 								<div className="col-6">
@@ -87,7 +87,7 @@ class JobView extends Component {
 									className="icon-rocket mr-3"></span>Responsibilities</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.responsibilities}</span></li>
+										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.responsibilities}</span></li>
 								</ul>
 								</div>
 						
@@ -96,7 +96,7 @@ class JobView extends Component {
 									Experience</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.edu_exp_details}</span></li>									
+										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.edu_exp_details}</span></li>									
 								</ul>
 								</div>
 						
@@ -105,7 +105,7 @@ class JobView extends Component {
 									Benifits</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.benefits}</span></li>									
+										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.benefits}</span></li>									
 								</ul>
 								</div>
 							</div>
