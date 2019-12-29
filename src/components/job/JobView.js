@@ -17,7 +17,8 @@ class JobView extends Component {
 
 	render() {
 		const justify = {textAlign: "justify"}
-		const padding = {paddingRight: "10px"}		
+		const padding = {paddingRight: "10px"}
+		const titlePadding = {paddingLeft: "10px"}		
 		if(this.props.job.status === JOB_SHOW_LOADING) {
 			return (<Loading />);
 		} 
@@ -39,7 +40,7 @@ class JobView extends Component {
 									<img className="mb-3" src={require("../../static/images/school.png")} alt="Login" width="100" height="100"/>
 								</div>
 								<div>
-									<h2>{this.props.job.current_job.title}</h2>
+									<h2 style={titlePadding}>{this.props.job.current_job.title}</h2>
 									<div className="container">
 										<div className="row">
 											<div className="col-12">
