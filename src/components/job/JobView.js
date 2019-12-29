@@ -15,7 +15,9 @@ class JobView extends Component {
 		this.props.getJob({id: this.props.match.params.id});
 	}
 
-	render() {		
+	render() {
+		const justify = {textAlign: "justify"}
+		const padding = {paddingRight: "10px"}		
 		if(this.props.job.status === JOB_SHOW_LOADING) {
 			return (<Loading />);
 		} 
@@ -38,10 +40,22 @@ class JobView extends Component {
 								</div>
 								<div>
 									<h2>{this.props.job.current_job.title}</h2>
-									<div>
-									<span className="ml-0 mr-2 mb-2"><span className="icon-briefcase mr-2"></span>{this.props.job.current_job.organization}</span>
-									<span className="m-2"><span className="icon-room mr-2"></span>{this.props.job.current_job.location}</span>
-									<span className="m-2"><span className="icon-clock-o mr-2"></span><span className="text-primary">{this.props.job.current_job.type}</span></span>
+									<div className="container">
+										<div className="row">
+											<div className="col-12">
+												<span className="icon-briefcase" style={padding}></span>{this.props.job.current_job.organization}								
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-12">
+												<span className="icon-room" style={padding}></span>{this.props.job.current_job.location}
+											</div>
+										</div>
+										<div className="row">
+											<div className="col-12">
+												<span className="icon-clock-o" style={padding}></span><span>{this.props.job.current_job.type}</span>
+											</div>
+										</div>
 									</div>
 								</div>
 								</div>
@@ -49,7 +63,7 @@ class JobView extends Component {
 							<div className="col-lg-4">
 								<div className="row">
 								<div className="col-6">
-									<Link to="#" className="btn btn-block btn-light btn-md"><span className="icon-heart-o mr-2 text-danger"></span>Save
+									<Link to="#" className="btn btn-block btn-light btn-md"><span className="icon-heart-o text-danger"></span>Save
 									Job</Link>
 								</div>
 								<div className="col-6">
@@ -63,16 +77,16 @@ class JobView extends Component {
 								<div className="mb-5">							
 								<h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-align-left mr-3"></span>Job
 									Description</h3>
-								<p>
+								<div style = { justify }>
 									{this.props.job.current_job.description}
-								</p>								
+								</div>								
 								</div>
 								<div className="mb-5">
 								<h3 className="h5 d-flex align-items-center mb-4 text-primary"><span
 									className="icon-rocket mr-3"></span>Responsibilities</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.responsibilities}</span></li>
+										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.responsibilities}</span></li>
 								</ul>
 								</div>
 						
@@ -81,7 +95,7 @@ class JobView extends Component {
 									Experience</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.edu_exp_details}</span></li>									
+										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.edu_exp_details}</span></li>									
 								</ul>
 								</div>
 						
@@ -90,7 +104,7 @@ class JobView extends Component {
 									Benifits</h3>
 								<ul className="list-unstyled m-0 p-0">
 									<li className="d-flex align-items-start mb-2"><span
-										className="icon-check_circle mr-2 text-muted"></span><span>{this.props.job.current_job.benefits}</span></li>									
+										className="icon-check_circle text-muted"></span><span>{this.props.job.current_job.benefits}</span></li>									
 								</ul>
 								</div>
 							</div>
@@ -103,7 +117,7 @@ class JobView extends Component {
 									<li className="mb-2"><strong className="text-black">Employment Status:</strong> {this.props.job.current_job.type}</li>
 									<li className="mb-2"><strong className="text-black">Experience:</strong> {this.props.job.current_job.experience}</li>
 									<li className="mb-2"><strong className="text-black">Job Location:</strong> {this.props.job.current_job.location}</li>
-									<li className="mb-2"><strong className="text-black">Salary:</strong> Rs. {this.props.job.current_job.salary}</li>
+									<li className="mb-2"><strong className="text-black">Salary:</strong> &#x20b9; {this.props.job.current_job.salary}</li>
 									<li className="mb-2"><strong className="text-black">Gender:</strong> {this.props.job.current_job.gender}</li>
 									<li className="mb-2"><strong className="text-black">Application Deadline:</strong> {this.props.job.current_job.deadline}</li>
 								</ul>

@@ -1,52 +1,40 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { green, blue } from '@material-ui/core/colors';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import SubjectIcon from '@material-ui/icons/Subject';
 import MoneyIcon from '@material-ui/icons/Money';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
-export class JobCard extends Component {
+export class JobCard extends Component {    
     render() {
         const url = '/showjob/' + this.props.job.id;
-        return (              
+        let show_badge = "";
+        if(this.props.job.type === "Freelance")
+            show_badge = <span className="badge badge-primary px-2 py-1 mb-3">{this.props.job.type}</span>
+        else if(this.props.job.type === "Fulltime")
+            show_badge = <span className="badge badge-success px-2 py-1 mb-3">{this.props.job.type}</span>
+        else
+            show_badge = <span className="badge badge-warning px-2 py-1 mb-3">{this.props.job.type}</span>
+    
+        return (
             <Link to={ url } className='card-container'>
-                <div className="a1-card container">
-                    <div className='row'>
-                        <div className='col-1'>
-                            {/* Get school logo Dynamic */}
-                            <img className="mb-3 school-logo" src={require("../../static/images/school.png")} alt="Login" width="60" height="60"/>
-                        </div>
-                        <div className='col-11 text-left'>
-                            <div className='container-fluid card-data'>
-                                <div className='row row-gap'>
-                                    <div className='col-*'>
-                                        <h5>{this.props.job.title}</h5>
-                                    </div>
-                                </div>
-                                <div className='row row-gap'>
-                                    <div className='col-*'>
-                                        <BusinessCenterIcon className='img-align' style={{ color: green[500] }} /><span className='text'>{this.props.job.organization}</span>
-                                    </div>
-                                </div>
-                                <div className='row description'>
-                                    <div className='col-lg-3 col-xs-6 text-left'>
-                                        <LocationOnIcon className='img-align' color="error" /><span className='text'>{this.props.job.location}</span>
-                                    </div>
-                                    <div className='col-lg-3 col-xs-6 text-left'>
-                                        <SubjectIcon className='img-align' color="primary" /><span className='text'>{this.props.job.subject}</span>
-                                    </div>
-                                    <div className='col-lg-3 col-xs-6 text-left'>
-                                        <MoneyIcon className='img-align' style={{ color: green[500] }} /><span className='text'>{this.props.job.salary}</span>
-                                    </div>
-                                    <div className='col-lg-3 col-xs-6 text-left'>
-                                        <ScheduleIcon className='img-align' style={{ color: blue[500] }} /><span className='text'>{this.props.job.type}</span>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>                         
-                    </div>                    
+                <div className="a1-card row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
+                    <div className="col-md-2">
+                        <img src={require("../../static/images/school.png")} alt="SchoolLogo" width="70" height="70" className="school-logo"/>
+                    </div>
+                    <div className="col-md-4">
+                        {show_badge}                        
+                        <h2>{this.props.job.title}</h2>
+                        <p className="meta"><BusinessCenterIcon className='img-align' color="disabled" /> <strong>{this.props.job.organization}</strong></p>
+                        <p className="meta"><SubjectIcon className='img-align' color="disabled" /> <strong>{this.props.job.subject}</strong></p>
+                    </div>
+                    <div className="col-md-3 text-left">
+                        <p className="meta"><LocationOnIcon className='img-align' color="disabled" /> <strong>{this.props.job.location}</strong></p>
+                        {/* <span className="meta">India</span> */}
+                    </div>
+                    <div className="col-md-3 text-md-right">
+                        <MoneyIcon className='img-align' color="disabled" /> <strong className="text-black">&#x20b9; {this.props.job.salary}</strong>
+                    </div>
                 </div>
             </Link>
         )

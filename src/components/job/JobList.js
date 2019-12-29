@@ -5,7 +5,7 @@ import JobCard from './JobCard';
 class JobList extends Component {    
     render() {
         return (
-            <div className='job-list'>
+            <div className='container'>
                 {jobs.map((jobObj, index) => {                    
                     return (
                         <div key={ index + 1 }>

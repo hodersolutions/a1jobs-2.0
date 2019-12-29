@@ -202,12 +202,16 @@ hr {
 
 .a1-card {
 	background: #fff;
-	border-radius: 4px;
-	display: inline-block;
-	margin: 0.5rem 0rem 0.5rem 0rem;
-	padding: 10px 10px 10px 10px;
+	border-radius: 5px;
 	position: relative;
-	box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.09);
+	box-shadow: 0px 0px 4px 0 rgba(0, 0, 0, 0.09);
+}
+
+.a1-card:hover {
+	background: #fff;
+	border-radius: 5px;
+	position: relative;
+	box-shadow: 0px 0px 4px 0 rgb(39, 174, 96);
 }
 
 .a1-card .title {
@@ -236,13 +240,6 @@ hr {
 .a1-card .card-data {
 	margin-left: 20px;
 	width: 100%;
-}
-
-
-/* Job List */
-
-.job-list {
-	text-align: center;
 }
 
 
@@ -485,14 +482,6 @@ hr {
 	border-bottom: 0.5px solid #D5D8DC;
 	margin-bottom: 50px;
 	text-align: center;
-}
-
-/* Job Card */
-
-@media (max-width: 576px) {
-	.school-logo {
-		margin-left: 20px;
-	}
 }
 
 /* Loading */

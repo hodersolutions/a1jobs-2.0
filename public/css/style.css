@@ -1905,6 +1905,8 @@ h4 {
 
 .job-item .meta {
 	color: #b5b5b5;
+	margin-bottom: auto;
+	margin-top: 2px;
 }
 
 .job-item .meta strong {
