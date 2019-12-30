@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './UserProfile.css';
 import Notifications from 'react-notify-toast';
 import { connect } from 'react-redux';
 import { createUser } from '../../store/actions/userActions';

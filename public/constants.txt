@@ -1,0 +1,9 @@
+Success = Green
+HTML code:	#009900
+RGB code:	R: 0 G: 153 B: 0
+HSV:	120° 100% 60%
+
+Primary = Blue
+HTML code:	#047AF9
+RGB code:	R: 4 G: 122 B: 249
+HSV:	211.1° 98.39% 97.65%

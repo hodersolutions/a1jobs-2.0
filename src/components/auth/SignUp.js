@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './SignUp.css';
 import Notifications, { notify } from 'react-notify-toast';
 import {Link, Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';

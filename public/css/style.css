@@ -87,7 +87,7 @@
 
 .sticky-wrapper.is-sticky .site-navbar .site-menu>li>a:after {
 	height: 2px;
-	background: #1644ba;
+	background: #047AF9;
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -103,7 +103,7 @@
 
 .sticky-wrapper.is-sticky .site-navbar .site-menu>li>a:hover,
 .sticky-wrapper.is-sticky .site-navbar .site-menu>li>a.active {
-	color: #1644ba;
+	color: #047AF9;
 	position: relative;
 }
 
@@ -625,7 +625,7 @@ h4 {
 }
 
 .job-listings .job-listing a:hover {
-	border-left: 7px solid #1644ba;
+	border-left: 7px solid #047AF9;
 }
 
 .job-listings .job-listing .job-listing-logo {
@@ -674,7 +674,7 @@ h4 {
 }
 
 .custom-breadcrumbs a {
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .custom-breadcrumbs a:hover {
@@ -861,7 +861,7 @@ h4 {
 
 .popular-keywords .keywords li a:hover {
 	background: #fff;
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .btn:after,
@@ -899,12 +899,12 @@ h4 {
 }
 
 .btn.btn-outline-primary {
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .btn.btn-outline-primary:hover {
 	color: #fff;
-	background: #1644ba;
+	background: #047AF9;
 }
 
 .custom-pagination a {
@@ -931,9 +931,9 @@ h4 {
 
 .custom-pagination a.active,
 .custom-pagination a:hover {
-	background: #1644ba;
+	background: #047AF9;
 	color: #fff;
-	border-color: #1644ba;
+	border-color: #047AF9;
 }
 
 .border-width-2 {
@@ -1001,8 +1001,8 @@ h4 {
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
-	border: 1px solid #1644ba;
-	background: #1644ba;
+	border: 1px solid #047AF9;
+	background: #047AF9;
 	margin-bottom: 1.5rem;
 	-webkit-transition: .3s all ease;
 	-o-transition: .3s all ease;
@@ -1066,7 +1066,7 @@ h4 {
 
 .block__62849 .block__16443:hover .custom-icon [class^="icon-"],
 .block__62849 .block__16443:hover .custom-icon [class^="flaticon-"] {
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .block__87154 {
@@ -1267,9 +1267,9 @@ h4 {
 	-webkit-transition: .3s all ease;
 	-o-transition: .3s all ease;
 	transition: .3s all ease;
-	background: #1644ba;
+	background: #047AF9;
 	color: #fff;
-	border: 1px solid #1644ba;
+	border: 1px solid #047AF9;
 }
 
 .block__76208 .accordion-item .heading>a[aria-expanded="false"]:before {
@@ -1471,7 +1471,7 @@ h4 {
 	width: 40px;
 	height: 40px;
 	position: relative;
-	background: #1644ba;
+	background: #047AF9;
 	border-radius: 50%;
 	text-decoration: none !important;
 }
@@ -1494,7 +1494,7 @@ h4 {
 
 .footer-social a:hover span,
 .social a:hover span {
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .social a:hover {
@@ -1681,11 +1681,11 @@ h4 {
 }
 
 .ul-check.success li:before {
-	color: #28a745;
+	color: #009900;
 }
 
 .ul-check.primary li:before {
-	color: #1644ba;
+	color: #047AF9;
 }
 
 .block__18514 .block__47528 li {
@@ -1764,7 +1764,7 @@ h4 {
 
 .form-control:active,
 .form-control:focus {
-	border-color: #1644ba !important;
+	border-color: #047AF9 !important;
 }
 
 .comment-form-wrap {
@@ -1882,7 +1882,7 @@ h4 {
 }
 
 .single-carousel .owl-dots .owl-dot.active>span {
-	background: #1644ba;
+	background: #047AF9;
 }
 
 .single-carousel img {
