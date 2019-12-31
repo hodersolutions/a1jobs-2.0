@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Notifications, { notify } from 'react-notify-toast';
 import {Link, Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';
+import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
 import { createUser } from '../../store/actions/userActions';
 import { CREATE_USER_SUCCESS, CREATE_USER_ERROR } from '../../store/types/userTypes';
@@ -10,8 +11,9 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          username: "",
+          uid: "",
           email: "",
+          mobile: "",
           password: "",
           confirm_password: ""
         };
@@ -25,12 +27,21 @@ class SignUp extends Component {
     }
         
     handleSubmit = (e) => {
-        e.preventDefault();        
-        this.props.createUser({
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
-        });
+        e.preventDefault();
+        let errors = "";
+        if (!isEmail(this.state.email))
+            errors += "Invalid Email address";        
+        else if (!isMobilePhone(this.state.mobile, 'en-IN'))
+            errors += "Invalid Mobile number";        
+        if(errors === "")
+            this.props.createUser({
+                uid: this.state.uid,
+                mobile: this.state.mobile,
+                email: this.state.email,
+                password: this.state.password
+            });        
+        else
+            notify.show(errors, 'error', 3000, 'red');
     }
 
     render() {
@@ -67,18 +78,18 @@ class SignUp extends Component {
                                         width="60"
                                         height="60"
                                     />
-                                    <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Join Us</h1>
+                                    <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Join Us</h1>                                    
                                     <div className="form-group">
-                                        <label className="form-control-label" htmlFor="username">Username</label>
+                                        <label className="form-control-label" htmlFor="uid">Username</label>
                                         <input
                                             className="form-control form-control-lg"
-                                            id="username"
-                                            name="username"
+                                            id="uid"
+                                            name="uid"
                                             required=""
                                             type="text"
                                             autoComplete="username"
                                             onChange={this.handleChange}
-                                            value={this.state.username}
+                                            value={this.state.uid}
                                         />
                                     </div>
                                     <div className="form-group">
@@ -89,9 +100,22 @@ class SignUp extends Component {
                                             name="email"
                                             required=""
                                             type="text"
-                                            autoComplete="username-email"
+                                            autoComplete="email"
                                             onChange={this.handleChange}
                                             value={this.state.email}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="form-control-label" htmlFor="mobile">Mobile</label>
+                                        <input
+                                            className="form-control form-control-lg"
+                                            id="mobile"
+                                            name="mobile"
+                                            required=""
+                                            type="text"
+                                            autoComplete="mobile"
+                                            onChange={this.handleChange}
+                                            value={this.state.mobile}
                                         />
                                     </div>
                                     <div className="form-group">

@@ -3,7 +3,7 @@ export const settings = {
         port: process.env.PORT || 3000
     },
     A1JOBSAPI: {
-        url: "http://localhost:5100/",
+        url: "http://localhost:5000/",
         username: "",
         password: "",
         domain: ''

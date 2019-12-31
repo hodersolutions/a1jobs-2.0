@@ -21,13 +21,14 @@ export const updateUser = (user) => {
 export const createUser = (user) => {
     return (dispatch, getState) => {
         dispatch({ type: USER_SHOW_LOADING });           
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/users', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/user', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'text/plain'                    
                 },
                 mode: 'cors',
-                username: user.username,
+                uid: user.uid,
+                mobile: user.mobile,
                 email: user.email,
                 password: user.password
             }
@@ -44,11 +45,11 @@ export const getUser = () => {
     return (dispatch, getState) => {
         dispatch({ type: USER_SHOW_LOADING });   
         const jwt = JWT.get_jwt();
-        axios.get(settings.A1JOBSAPI.url + 'api/v1/users/username?username=' + jwt['username'], {
+        axios.get(settings.A1JOBSAPI.url + 'api/v1/users/mobile?mobile=' + jwt['mobile'], {
             headers: {
                 'Content-Type': 'application/json',
                 token: jwt['token'],
-                username: jwt['username']
+                mobile: jwt['mobile']
             },
             mode: 'cors'
         }).then( response => {
@@ -75,7 +76,7 @@ export const authenticateUser = (user) => {
         ).then( response => {
             if(response.data['status'] === 'success') {
                 // Ask user if he/she is okay to save local cookies then save the token to localStorage by 
-                // JWT.set_jwt(response.data['auth_token'], response.data['username'])
+                // JWT.set_jwt(response.data['auth_token'], response.data['mobile'])
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }
             else {
@@ -104,14 +105,14 @@ export const validateToken = (auth) => {
             headers: {
                 'Content-Type': 'application/json',
                 token: auth['token'],
-                username: auth['username']
+                mobile: auth['mobile']
             },
             mode: 'cors',
-            username: auth['username']
+            mobile: auth['mobile']
         }).then( response => {
             if(response.data['status'] === 'success') {
                 response.data['auth_token'] = auth['token'];
-                response.data['username'] = auth['username']; 
+                response.data['mobile'] = auth['mobile']; 
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }                                            
             else {
