@@ -11,21 +11,28 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          uid: "",
           email: "",
           mobile: "",
           password: "",
-          confirm_password: ""
+          confirm_password: "",
+          is_recruiter: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         });
     }
-        
+    
+    handleRecruiterChecked = (e) => {
+        this.setState({
+          [e.target.name]: e.target.checked
+        });
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         let errors = "";
@@ -35,10 +42,10 @@ class SignUp extends Component {
             errors += "Invalid Mobile number";        
         if(errors === "")
             this.props.createUser({
-                uid: this.state.uid,
                 mobile: this.state.mobile,
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                role_keyword: this.state.is_recruiter
             });        
         else
             notify.show(errors, 'error', 3000, 'red');
@@ -79,19 +86,6 @@ class SignUp extends Component {
                                         height="60"
                                     />
                                     <h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Join Us</h1>                                    
-                                    <div className="form-group">
-                                        <label className="form-control-label" htmlFor="uid">Username</label>
-                                        <input
-                                            className="form-control form-control-lg"
-                                            id="uid"
-                                            name="uid"
-                                            required=""
-                                            type="text"
-                                            autoComplete="username"
-                                            onChange={this.handleChange}
-                                            value={this.state.uid}
-                                        />
-                                    </div>
                                     <div className="form-group">
                                         <label className="form-control-label" htmlFor="email">Email</label>
                                         <input
@@ -142,6 +136,18 @@ class SignUp extends Component {
                                             autoComplete="new-password"
                                             onChange={this.handleChange}
                                             value={this.state.confirm_password}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="form-control-label" htmlFor="confirm_password">Is Recruiter</label>
+                                        <input
+                                            className="form-control form-control-lg"
+                                            id="is_recruiter"
+                                            name="is_recruiter"
+                                            required=""
+                                            type="checkbox"
+                                            onChange={this.handleRecruiterChecked}
+                                            value={this.state.is_recruiter}
                                         />
                                     </div>
                                 </fieldset>

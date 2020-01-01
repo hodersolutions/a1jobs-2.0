@@ -21,13 +21,13 @@ export const updateUser = (user) => {
 export const createUser = (user) => {
     return (dispatch, getState) => {
         dispatch({ type: USER_SHOW_LOADING });           
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/user', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/register', {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'text/plain'                    
+                    'Accept': 'text/plain',
+                    'role_keyword': (user.role_keyword === true ? 'recruiter' : 'seeker')                    
                 },
                 mode: 'cors',
-                uid: user.uid,
                 mobile: user.mobile,
                 email: user.email,
                 password: user.password
