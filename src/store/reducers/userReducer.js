@@ -7,6 +7,7 @@ import { CREATE_USER_SUCCESS,
          USER_SHOW_LOADING,
          AUTHENTICATE_USER_SUCCESS, 
          AUTHENTICATE_USER_ERROR,
+         RESET_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
 
 const initState = {
@@ -24,6 +25,12 @@ const userReducer = (state = initState, action) => {
             return {
                 ...state,
                 loading: true
+            }
+        case RESET_ERROR:
+            return {
+                ...state,
+                response: null,
+                status: RESET_ERROR
             }            
         case SIGNOUT_USER:
             return {

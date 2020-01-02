@@ -10,6 +10,7 @@ import { CREATE_USER_SUCCESS,
          AUTHENTICATE_USER_ERROR,
          AUTHENTICATE_USER_SUCCESS,
          USER_SHOW_LOADING,
+         RESET_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
 
 export const updateUser = (user) => {
@@ -32,15 +33,23 @@ export const createUser = (user) => {
                 email: user.email,
                 password: user.password
             }
-        ).then( response => {                
-                dispatch({ type: CREATE_USER_SUCCESS, response: response.data });
+        ).then( response => {
+                if(response.data['status'] === 'success')
+                    dispatch({ type: CREATE_USER_SUCCESS, response: response.data });
+                else
+                    dispatch({ type: CREATE_USER_ERROR, error: response.response.response.data });                             
             }
         ).catch(error => {			
-            dispatch({ type: CREATE_USER_ERROR, error });
+            dispatch({ type: CREATE_USER_ERROR, error: error.response });
         });            
     }
 }
 
+export const resetError = () => {
+    return (dispatch, getState) => {
+        dispatch({ type: RESET_ERROR });
+    }
+}
 export const getUser = () => {
     return (dispatch, getState) => {
         dispatch({ type: USER_SHOW_LOADING });   
@@ -77,17 +86,17 @@ export const authenticateUser = (user) => {
         ).then( response => {
             if(response.data['status'] === 'success') {                
                 // Ask user if he/she is okay to save local cookies then save the token to localStorage by 
-                JWT.set_jwt(response.data['access_token'], response.data['mobile'])
+                // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }
             else {
                 // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above
-                dispatch({ type: AUTHENTICATE_USER_ERROR, error: response.data });
+                dispatch({ type: AUTHENTICATE_USER_ERROR, error: response.response.data });
             }
         }
         ).catch(error => {
             // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above
-            dispatch({ type: AUTHENTICATE_USER_ERROR, error });
+            dispatch({ type: AUTHENTICATE_USER_ERROR, error: error.response });
         });        
     }
 }

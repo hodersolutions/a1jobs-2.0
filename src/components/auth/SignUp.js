@@ -4,7 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
-import { createUser } from '../../store/actions/userActions';
+import { createUser, resetError } from '../../store/actions/userActions';
 import { CREATE_USER_SUCCESS, CREATE_USER_ERROR } from '../../store/types/userTypes';
 
 class SignUp extends Component {
@@ -61,13 +61,8 @@ class SignUp extends Component {
             )
         }
         else if(this.props.user.status === CREATE_USER_ERROR) {
-            if(this.props.user.response !== null)
-                if( this.props.user.response !== undefined 
-                    && this.props.user.response.status !== null 
-                    && this.props.user.response.status === 401 )
-                    notify.show(this.props.user.response.data['message'], 'error', 3000, 'red');
-            else
-                notify.show("Unable to register user", 'error', 3000, 'red');            
+            notify.show(this.props.user.response.data['message'], 'error', 3000, 'red');
+            this.props.resetError();                        
         } 
         return (
             <div>
@@ -181,7 +176,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser: (user) => dispatch(createUser(user))
+        createUser: (user) => dispatch(createUser(user)),
+        resetError: () => dispatch(resetError())
     }
 }
 
