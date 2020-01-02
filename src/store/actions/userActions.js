@@ -64,19 +64,20 @@ export const getUser = () => {
 export const authenticateUser = (user) => {
     return (dispatch, getState) => {
         dispatch({ type: USER_SHOW_LOADING });        
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/auth/login', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/login', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'text/plain'
                 },
                 mode: 'cors',
-                email: user.email,
+                email: user.email_mobile,
+                mobile: user.email_mobile,
                 password: user.password
             }
         ).then( response => {
-            if(response.data['status'] === 'success') {
+            if(response.data['status'] === 'success') {                
                 // Ask user if he/she is okay to save local cookies then save the token to localStorage by 
-                // JWT.set_jwt(response.data['auth_token'], response.data['mobile'])
+                JWT.set_jwt(response.data['access_token'], response.data['mobile'])
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }
             else {

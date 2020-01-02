@@ -41,12 +41,7 @@ class SignUp extends Component {
         else if (!isMobilePhone(this.state.mobile, 'en-IN'))
             errors += "Invalid Mobile number";        
         if(errors === "")
-            this.props.createUser({
-                mobile: this.state.mobile,
-                email: this.state.email,
-                password: this.state.password,
-                role_keyword: this.state.is_recruiter
-            });        
+            this.props.createUser(this.state);
         else
             notify.show(errors, 'error', 3000, 'red');
     }
@@ -55,6 +50,10 @@ class SignUp extends Component {
         const options = {
 			zIndex: 200, top: '50px'
         }
+        const check = {
+            verticalAlign: 'middle',
+            marginLeft: '10px'
+        }
         if (this.props.user.status === CREATE_USER_SUCCESS) {
             this.props.user.status = null;
             return (
@@ -62,12 +61,13 @@ class SignUp extends Component {
             )
         }
         else if(this.props.user.status === CREATE_USER_ERROR) {
-            if(this.props.user.error !== null)
-                if(this.props.user.error.response !== undefined && this.props.user.error.response.status === 401)
-                    notify.show(this.props.user.error.response.data['message'], 'error', 3000, 'red');
+            if(this.props.user.response !== null)
+                if( this.props.user.response !== undefined 
+                    && this.props.user.response.status !== null 
+                    && this.props.user.response.status === 401 )
+                    notify.show(this.props.user.response.data['message'], 'error', 3000, 'red');
             else
-                notify.show("Unable to create user...", 'error', 3000, 'red');            
-            this.props.user.error = null;
+                notify.show("Unable to register user", 'error', 3000, 'red');            
         } 
         return (
             <div>
@@ -138,10 +138,10 @@ class SignUp extends Component {
                                             value={this.state.confirm_password}
                                         />
                                     </div>
-                                    <div className="form-group">
-                                        <label className="form-control-label" htmlFor="confirm_password">Is Recruiter</label>
+                                    <div>
+                                        <label htmlFor="confirm_password">Are you a Recruiter</label>
                                         <input
-                                            className="form-control form-control-lg"
+                                            style={check}                                        
                                             id="is_recruiter"
                                             name="is_recruiter"
                                             required=""

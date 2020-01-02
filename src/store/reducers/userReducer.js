@@ -13,11 +13,8 @@ const initState = {
     response: null,
     status: '',
     users: [],
-    current_user: null,
-    error: null,
     loading: false,    
     token: null,
-    username: null,
     is_authenticated: false
 }
 
@@ -40,9 +37,8 @@ const userReducer = (state = initState, action) => {
         case AUTHENTICATE_USER_SUCCESS:
             return {
                 ...state,
-                token: action.response['auth_token'],
-                username: action.response['username'],
-                current_user: action.response['user'],
+                token: action.response['access_token'],                
+                response: action.response,
                 loading: false,
                 is_authenticated: true,
                 status: AUTHENTICATE_USER_SUCCESS
@@ -51,7 +47,7 @@ const userReducer = (state = initState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: action.error,
+                response: action.error,
                 status: AUTHENTICATE_USER_ERROR
             }
         case CREATE_USER_SUCCESS:
@@ -66,21 +62,20 @@ const userReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 status: CREATE_USER_ERROR,
-                error: action.error
+                response: action.error
             }        
         case GET_USER_SUCCESS:
             return {                                
                 ...state,
                 response: action.response,
                 loading: false,
-                current_user: action.response.data,
                 status: GET_USER_SUCCESS
             }
         case GET_USER_ERROR:
             return {
                 ...state,                
                 loading: false,
-                entity: action.error,
+                response: action.error,
                 status: GET_USER_ERROR
             }
         case UPDATE_USER_SUCCESS:
@@ -88,13 +83,13 @@ const userReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 status: UPDATE_USER_SUCCESS,
-                entity: action.response                
+                response: action.response                
             }            
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                entity: action.response
+                response: action.response
             }            
         default:
             return state;
