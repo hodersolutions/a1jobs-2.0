@@ -7,7 +7,7 @@ import NotFound from '../common/notfound/NotFound';
 import Contact from '../common/contact/Contact';
 import SignIn from '../auth/SignIn';
 import SignUp from '../auth/SignUp';
-import SearchJobs from '../search/SearchJobs';
+import SearchJobsMain from '../search/SearchJobsMain';
 import JobView from '../job/JobView';
 import JobCreate from '../job/JobCreate';
 import SignOut from '../auth/SignOut';
@@ -19,7 +19,7 @@ const Routes = () => (
 			<Route exact path='/' component={Home} />
 			<Route exact path='/contact' component={Contact} />
 			<Route exact path='/signin' component={SignIn} />
-			<Route exact path='/searchjobs' component={SearchJobs} />
+			<Route exact path='/searchjobs' component={SearchJobsMain} />
 			<Route exact path='/forgot' component={ForgotPassword} />
 			<Route exact path='/signup' component={SignUp} />			
 			{/* <Route exact path='/showjob/:id' component={ requireAuth(JobView) } /> */}

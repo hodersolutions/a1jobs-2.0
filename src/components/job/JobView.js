@@ -3,7 +3,8 @@ import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getJob, showLoading } from '../../store/actions/jobActions';
-import { GET_JOB_SUCCESS, JOB_SHOW_LOADING } from '../../store/types/jobTypes';
+import { GET_JOB_SUCCESS } from '../../store/types/jobTypes';
+import { SHOW_LOADING } from '../../store/types/commonTypes';
 
 class JobView extends Component {	
     constructor(props) {
@@ -19,7 +20,7 @@ class JobView extends Component {
 		const justify = {textAlign: "justify"}
 		const padding = {paddingRight: "10px"}
 		const titlePadding = {paddingLeft: "10px"}		
-		if(this.props.job.status === JOB_SHOW_LOADING) {
+		if(this.props.job.status === SHOW_LOADING) {
 			return (<Loading />);
 		} 
 		else if (this.props.job.status === GET_JOB_SUCCESS){			

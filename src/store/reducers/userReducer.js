@@ -3,12 +3,12 @@ import { CREATE_USER_SUCCESS,
          GET_USER_SUCCESS,
          GET_USER_ERROR,
          UPDATE_USER_SUCCESS, 
-         DELETE_USER_SUCCESS, 
-         USER_SHOW_LOADING,
+         DELETE_USER_SUCCESS,          
          AUTHENTICATE_USER_SUCCESS, 
          AUTHENTICATE_USER_ERROR,
-         RESET_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
+
+import { RESET_ERROR, SHOW_LOADING } from '../types/commonTypes';
 
 const initState = {
     response: null,
@@ -21,7 +21,7 @@ const initState = {
 
 const userReducer = (state = initState, action) => {
     switch(action.type) {
-        case USER_SHOW_LOADING:
+        case SHOW_LOADING:
             return {
                 ...state,
                 loading: true

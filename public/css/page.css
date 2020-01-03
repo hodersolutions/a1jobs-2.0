@@ -36,7 +36,7 @@ a .nav-link .header-link :hover {
 
 .not-found {
 	position: relative;
-	height: 100vh;
+	height: 95vh;
 }
 
 .not-found .notfound {
@@ -144,9 +144,9 @@ a .nav-link .header-link :hover {
   
   #signInContainer {
 	text-align: center;
-	padding-bottom: 25px;
-	min-height: 60vh;
-	padding-top: 7rem;
+	padding-bottom: 8rem;
+	min-height: 70vh;
+	padding-top: 10rem;
   }
   
   .form-signin .checkbox {
@@ -499,8 +499,8 @@ hr {
 
 /* Loading */
 .padding-align {
-	padding-top: 10rem;
-	padding-bottom: 10rem;
+	padding-top: 19rem;
+	padding-bottom: 19rem;
 }
 
 /* @media (min-width: 576px) { .body {background-color: red; } }

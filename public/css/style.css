@@ -161,7 +161,7 @@ h4 {
 .site-section {
 	padding-top: 10rem;
 	/*7rem*/
-	padding-bottom: 7rem;
+	padding-bottom: 5rem; /*7rem*/
 	position: relative;
 	z-index: 2;
 }

@@ -11,7 +11,7 @@ class SignIn extends Component {
     constructor() {
 		super();		
 		this.state = {
-			email_mobile: '',						
+			loginId: '',						
 			password: ''
 		}
 		this.handleChange = this.handleChange.bind(this);
@@ -27,7 +27,7 @@ class SignIn extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		let errors = "";
-		if (!isEmail(this.state.email_mobile) && !isMobilePhone(this.state.email_mobile, 'en-IN'))
+		if (!isEmail(this.state.loginId) && !isMobilePhone(this.state.loginId, 'en-IN'))
 			errors = "Please provide a valid Email or Mobile";
 
         if(errors === "")
@@ -60,7 +60,7 @@ class SignIn extends Component {
 									<h1 className="border-bottom mb-4 h3 mb-3 font-weight-normal">Please sign in</h1>
 									<div className="form-group">
 										<label className="form-control-label" htmlFor="email">Email / Mobile</label>
-										<input className="form-control form-control-sm" id="email_mobile" name="email_mobile" required="" type="text" autoComplete="email-mobile" value={this.state.email} onChange={this.handleChange}/>
+										<input className="form-control form-control-sm" id="loginId" name="loginId" required="" type="text" autoComplete="email-mobile" value={this.state.email} onChange={this.handleChange}/>
 									</div>
 									<div className="form-group">
 										<label className="form-control-label" htmlFor="password">Password</label>

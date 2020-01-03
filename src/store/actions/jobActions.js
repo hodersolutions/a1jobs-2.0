@@ -1,20 +1,21 @@
 import axios from 'axios';
 import settings from '../../settings';
-import {CREATE_JOB_SUCCESS, 
-        CREATE_JOB_ERROR, 
-        GET_JOBS_SUCCESS, 
-        GET_JOBS_ERROR,
-        GET_JOB_ERROR,
-        GET_JOB_SUCCESS, 
-        JOB_SHOW_LOADING } from '../types/jobTypes';
+import { CREATE_JOB_SUCCESS, 
+         CREATE_JOB_ERROR, 
+         GET_JOBS_SUCCESS, 
+         GET_JOBS_ERROR,
+         GET_JOB_ERROR,
+         GET_JOB_SUCCESS } from '../types/jobTypes';
+
+import { SHOW_LOADING } from '../types/commonTypes';
 
 /* Remove Mock Data */
 import jobs from '../../mock/JobData';
 
 export const createJob = (job) => {    
     return (dispatch, getState) => {
-        dispatch({ type: JOB_SHOW_LOADING });
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/jobs', {
+        dispatch({ type: SHOW_LOADING });
+        axios.post(settings.A1JOBSAPI.url + '/api/v1/requisitions', {
                 headers: {
                     'Content-Type': 'application/json',
                     'token': localStorage.getItem('token'),
@@ -37,7 +38,7 @@ export const createJob = (job) => {
 
 export const getJobs = (params) => {
     return (dispatch, getState) => {
-        dispatch({ type: JOB_SHOW_LOADING });
+        dispatch({ type: SHOW_LOADING });
         var full_uri = settings.A1JOBSAPI.url + 'api/v1/jobs'; 
 		if (params.creator_id === '')
 			full_uri = full_uri + '/latest/' + params.count
@@ -80,6 +81,6 @@ export const getJob = (params) => {
 
 export const showLoading = () => {
     return (dispatch) => {
-        dispatch({ type: JOB_SHOW_LOADING });
+        dispatch({ type: SHOW_LOADING });
     }
 }

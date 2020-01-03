@@ -9,9 +9,9 @@ import { CREATE_USER_SUCCESS,
          UPDATE_USER_SUCCESS,
          AUTHENTICATE_USER_ERROR,
          AUTHENTICATE_USER_SUCCESS,
-         USER_SHOW_LOADING,
-         RESET_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
+
+import { RESET_ERROR, SHOW_LOADING } from '../types/commonTypes';
 
 export const updateUser = (user) => {
     return (dispatch, getState) => {        
@@ -21,7 +21,7 @@ export const updateUser = (user) => {
 
 export const createUser = (user) => {
     return (dispatch, getState) => {
-        dispatch({ type: USER_SHOW_LOADING });           
+        dispatch({ type: SHOW_LOADING });           
         axios.post(settings.A1JOBSAPI.url + 'api/v1/register', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const resetError = () => {
 }
 export const getUser = () => {
     return (dispatch, getState) => {
-        dispatch({ type: USER_SHOW_LOADING });   
+        dispatch({ type: SHOW_LOADING });   
         const jwt = JWT.get_jwt();
         axios.get(settings.A1JOBSAPI.url + 'api/v1/users/mobile?mobile=' + jwt['mobile'], {
             headers: {
@@ -72,15 +72,15 @@ export const getUser = () => {
 
 export const authenticateUser = (user) => {
     return (dispatch, getState) => {
-        dispatch({ type: USER_SHOW_LOADING });        
+        dispatch({ type: SHOW_LOADING });        
         axios.post(settings.A1JOBSAPI.url + 'api/v1/login', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'text/plain'
                 },
                 mode: 'cors',
-                email: user.email_mobile,
-                mobile: user.email_mobile,
+                email: user.loginId,
+                mobile: user.loginId,
                 password: user.password
             }
         ).then( response => {
@@ -103,14 +103,14 @@ export const authenticateUser = (user) => {
 
 export const signOutUser = (auth) => {
     return (dispatch, getState) => {
-        dispatch({ type: USER_SHOW_LOADING });
+        dispatch({ type: SHOW_LOADING });
         dispatch({ type: SIGNOUT_USER, auth });                
     }
 }
 
 export const validateToken = (auth) => {
     return (dispatch, getState) => { 
-        dispatch({ type: USER_SHOW_LOADING });       
+        dispatch({ type: SHOW_LOADING });       
         axios.post(settings.A1JOBSAPI.url + 'api/v1/token/validate', {
             headers: {
                 'Content-Type': 'application/json',

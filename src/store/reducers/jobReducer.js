@@ -5,8 +5,9 @@ import { CREATE_JOB_SUCCESS,
          GET_JOBS_SUCCESS, 
          GET_JOBS_ERROR, 
          UPDATE_JOB_SUCCESS, 
-         DELETE_JOB_SUCCESS, 
-         JOB_SHOW_LOADING } from '../types/jobTypes';
+         DELETE_JOB_SUCCESS } from '../types/jobTypes';
+
+import { SHOW_LOADING } from '../types/commonTypes';
 
 const initState = {
     response: null,
@@ -79,10 +80,10 @@ const jobReducer = (state = initState, action) => {
                 status: UPDATE_JOB_SUCCESS,
                 response: action.response
             }
-        case JOB_SHOW_LOADING:
+        case SHOW_LOADING:
             return {
                 ...state,
-                status: JOB_SHOW_LOADING,
+                status: SHOW_LOADING,
                 loading: true            
             }
         case DELETE_JOB_SUCCESS:
