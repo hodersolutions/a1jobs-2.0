@@ -7,15 +7,12 @@ import { CREATE_JOB_SUCCESS,
          UPDATE_JOB_SUCCESS, 
          DELETE_JOB_SUCCESS } from '../types/jobTypes';
 
-import { SHOW_LOADING } from '../types/commonTypes';
-
 const initState = {
     response: null,
     status: '',
     jobs: [],
     current_job: null,
-    error: null,
-    loading: true    
+    error: null    
 }
 
 const jobReducer = (state = initState, action) => {
@@ -23,21 +20,18 @@ const jobReducer = (state = initState, action) => {
         case CREATE_JOB_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 status: CREATE_JOB_SUCCESS,
                 response: action.response
             }
         case CREATE_JOB_ERROR:    
             return {
                 ...state,
-                loading: false,
                 status: CREATE_JOB_ERROR,
                 error: action.error
             }
         case GET_JOBS_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 status: GET_JOBS_SUCCESS,
                 jobs: action.response.jobs,
                 response: action.response
@@ -45,7 +39,6 @@ const jobReducer = (state = initState, action) => {
         case GET_JOBS_ERROR:
             return {
                 ...state,
-                loading: false,
                 status: GET_JOBS_ERROR,
                 jobs: [],
                 error: action.error
@@ -53,7 +46,6 @@ const jobReducer = (state = initState, action) => {
         case GET_JOB_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 status: GET_JOB_SUCCESS,
                 jobs: [],
                 current_job: action.job,
@@ -67,7 +59,6 @@ const jobReducer = (state = initState, action) => {
             };
             return {
                 ...state,
-                loading: false,
                 current_job: empty,
                 jobs: [],
                 status: GET_JOB_ERROR,
@@ -76,23 +67,15 @@ const jobReducer = (state = initState, action) => {
         case UPDATE_JOB_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 status: UPDATE_JOB_SUCCESS,
                 response: action.response
-            }
-        case SHOW_LOADING:
-            return {
-                ...state,
-                status: SHOW_LOADING,
-                loading: true            
             }
         case DELETE_JOB_SUCCESS:
             return {
                 ...state,
-                loading: false,
                 status: DELETE_JOB_SUCCESS,                
                 response: action.response
-            }
+            }  
         default:
             return state;
     }

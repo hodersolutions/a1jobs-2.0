@@ -7,7 +7,7 @@ import { CREATE_JOB_SUCCESS,
          GET_JOB_ERROR,
          GET_JOB_SUCCESS } from '../types/jobTypes';
 
-import { SHOW_LOADING } from '../types/commonTypes';
+import { SHOW_LOADING, HIDE_LOADING } from '../types/commonTypes';
 
 /* Remove Mock Data */
 import jobs from '../../mock/JobData';
@@ -29,8 +29,10 @@ export const createJob = (job) => {
                 creator_id: job.creator_id
             }
         ).then( function(response) {
+            dispatch({ type: HIDE_LOADING });
             dispatch({ type: CREATE_JOB_SUCCESS, response });
-        }).catch(error => {			
+        }).catch(error => {
+            dispatch({ type: HIDE_LOADING });			
             dispatch({ type: CREATE_JOB_ERROR, error });
         });        
     }
@@ -50,37 +52,40 @@ export const getJobs = (params) => {
 					'Content-Type': 'application/json'
 				},
 				mode: 'cors'    
-		}).then( response => {											            
+		}).then( response => {
+            dispatch({ type: HIDE_LOADING });											            
             dispatch({ type: GET_JOBS_SUCCESS, response: response.data });
-		}).catch(error => {			
+		}).catch(error => {
+            dispatch({ type: HIDE_LOADING });
             dispatch({ type: GET_JOBS_ERROR, error });
         });         
     }
 }
 
 export const getJob = (params) => {
-    return (dispatch, getState) => {        
+    return (dispatch, getState) => {
+        dispatch({ type: SHOW_LOADING });        
         /* SKIP THIS WITH AXIOS CALL BELOW */
         let selectedJob = jobs.find(x => x.id === parseInt(params.id));        
-        if (selectedJob !== undefined)
+        if (selectedJob !== undefined) {
+            dispatch({ type: HIDE_LOADING });
             dispatch({ type: GET_JOB_SUCCESS, job: selectedJob});
-        else
+        }
+        else {
+            dispatch({ type: HIDE_LOADING });
             dispatch({ type: GET_JOB_ERROR, selectedJob });
+        }
         /* axios.get(settings.A1JOBSAPI.url + 'api/v1/jobs?id=' + params.id, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 mode: 'cors'    
-            }).then( response => {            
+            }).then( response => {
+                dispatch({ type: HIDE_LOADING }); 
                 dispatch({ type: GET_JOB_SUCCESS, job: response.data.job });            
             }).catch(error => {			
+                dispatch({ type: HIDE_LOADING }); 
                 dispatch({ type: GET_JOB_ERROR, error });
             }); */
-    }
-}
-
-export const showLoading = () => {
-    return (dispatch) => {
-        dispatch({ type: SHOW_LOADING });
     }
 }

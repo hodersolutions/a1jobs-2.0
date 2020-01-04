@@ -5,7 +5,8 @@ import Loading from '../common/loading/Loading';
 import Notifications, { notify } from 'react-notify-toast';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
-import { authenticateUser, resetError } from '../../store/actions/userActions';
+import { authenticateUser } from '../../store/actions/userActions';
+import { resetError } from '../../store/actions/commonActions';
 
 class SignIn extends Component {	
     constructor() {
@@ -56,7 +57,7 @@ class SignIn extends Component {
 			<div>
 				<div className="container" id="signInContainer">
 					<Notifications options={{ options }}/>
-					{ this.props.user.loading ? <Loading /> :
+					{ this.props.common.loading ? <Loading /> :
 						<div className="wrap-login-style">
 							<form method="POST" action="" onSubmit={this.handleSubmit} className="form-signin">
 								<fieldset className="form-group">
@@ -89,7 +90,8 @@ class SignIn extends Component {
 
 const mapStateToProps = (state, props) => {
 	return {
-		user: state.user	
+		user: state.user,
+		common: state.common	
 	}
 };
 

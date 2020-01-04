@@ -4,7 +4,8 @@ import {Link, Redirect} from 'react-router-dom';
 import Loading from '../common/loading/Loading';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
-import { createUser, resetError } from '../../store/actions/userActions';
+import { createUser } from '../../store/actions/userActions';
+import { resetError } from '../../store/actions/commonActions';
 import { CREATE_USER_SUCCESS, CREATE_USER_ERROR } from '../../store/types/userTypes';
 
 class SignUp extends Component {
@@ -71,7 +72,7 @@ class SignUp extends Component {
         return (
             <div>
                 <Notifications options={{ options }}/>
-                { this.props.user.loading ? <Loading /> :
+                { this.props.common.loading ? <Loading /> :
                     <div className="container" id="signUpContainer">
                         <Notifications options={{ options }}/>
                         <div className="wrap-login-style">
@@ -174,7 +175,8 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
 	return {    	
-        user: state.user
+        user: state.user,
+        common: state.common
 	}
 }
 

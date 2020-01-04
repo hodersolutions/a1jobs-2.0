@@ -11,36 +11,37 @@ const initState = {
 }
 
 const searchReducer = (state = initState, action) => {
-switch(action.type) {
-   case SHOW_LOADING:
-       return {
-           ...state,
-           loading: true
-       }
-   case RESET_ERROR:
-       return {
-           ...state,
-           response: null,
-           status: RESET_ERROR
-       }            
-   case SEARCH_JOB_SUCCESS:
-       return {
-           ...state,
-           response: action.response,
-           searchResults: action.response,           
-           status: SEARCH_JOB_SUCCESS,
-           loading: false
-       }       
-   case SEARCH_JOB_ERROR:
-       return {
-           ...state,
-           response: action.response,
-           loading: false,
-           status: SEARCH_JOB_ERROR
-       }   
-   default:
-       return state;
-}
+    switch(action.type) {
+        case SHOW_LOADING:
+            return {
+                ...state,
+                loading: true
+            }
+        case RESET_ERROR:
+            return {
+                ...state,
+                response: null,
+                loading: false,
+                status: RESET_ERROR
+            }            
+        case SEARCH_JOB_SUCCESS:
+            return {
+                ...state,
+                response: action.response,
+                searchResults: action.response,           
+                status: SEARCH_JOB_SUCCESS,
+                loading: false
+            }       
+        case SEARCH_JOB_ERROR:
+            return {
+                ...state,
+                response: action.response,
+                loading: false,
+                status: SEARCH_JOB_ERROR
+            }   
+        default:
+            return state;
+    }
 }
 
 export default searchReducer;

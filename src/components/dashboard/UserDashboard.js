@@ -16,7 +16,7 @@ class UserDashboard extends Component {
 		});
 	}
 	renderModuleList() {
-		if(this.props.module.loading) {
+		if(this.props.common.loading) {
 			return (<Loading />);
 		} 
 		else if (this.props.module.status === GET_MODULES_SUCCESS){
@@ -83,7 +83,8 @@ class UserDashboard extends Component {
 const mapStateToProps = (state) => {
 	return {
     	module: state.module,
-    	user: state.user
+		user: state.user,
+		common: state.common
 	}
 }
 

@@ -11,7 +11,7 @@ export default function requireAuth(ProtectedComponent)  {
             super(props);
             const jwt = JWT.get_jwt()
             if (!this.props.user.is_authenticated) {
-                this.props.user.loading = true;
+                this.props.common.loading = true;
                 if (jwt['token'] !== null && jwt['username'] !== null)
                     this.props.validateToken({
                         token: jwt['token'],
@@ -32,7 +32,7 @@ export default function requireAuth(ProtectedComponent)  {
                     <ProtectedComponent {...this.props} />
                 )
             }
-            else if (this.props.user.loading === true) {
+            else if (this.props.common.loading === true) {
                 return (
                     <Loading />
                 )
@@ -47,7 +47,8 @@ export default function requireAuth(ProtectedComponent)  {
 
     const mapStateToProps = (state) => {
         return {
-            user: state.user
+            user: state.user,
+            common: state.common
         }
     };
     

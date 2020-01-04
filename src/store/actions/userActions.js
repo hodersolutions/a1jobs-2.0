@@ -11,10 +11,11 @@ import { CREATE_USER_SUCCESS,
          AUTHENTICATE_USER_SUCCESS,
          SIGNOUT_USER } from '../types/userTypes';
 
-import { RESET_ERROR, SHOW_LOADING } from '../types/commonTypes';
+import { HIDE_LOADING, SHOW_LOADING } from '../types/commonTypes';
 
 export const updateUser = (user) => {
-    return (dispatch, getState) => {        
+    return (dispatch, getState) => { 
+        dispatch({ type: HIDE_LOADING });        
         dispatch({ type: UPDATE_USER_SUCCESS, user });
     }
 }
@@ -34,22 +35,19 @@ export const createUser = (user) => {
                 password: user.password
             }
         ).then( response => {
+                dispatch({ type: HIDE_LOADING }); 
                 if(response.data['status'] === 'success')
                     dispatch({ type: CREATE_USER_SUCCESS, response: response.data });
                 else
                     dispatch({ type: CREATE_USER_ERROR, error: response.response.response.data });                             
             }
-        ).catch(error => {			
+        ).catch(error => {
+            dispatch({ type: HIDE_LOADING }); 
             dispatch({ type: CREATE_USER_ERROR, error: error.response });
         });            
     }
 }
 
-export const resetError = () => {
-    return (dispatch, getState) => {
-        dispatch({ type: RESET_ERROR });
-    }
-}
 export const getUser = () => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });   
@@ -62,9 +60,11 @@ export const getUser = () => {
             },
             mode: 'cors'
         }).then( response => {
+            dispatch({ type: HIDE_LOADING }); 
             dispatch({ type: GET_USER_SUCCESS, response: response.data });
         }
-        ).catch(error => {			
+        ).catch(error => {
+            dispatch({ type: HIDE_LOADING }); 
             dispatch({ type: GET_USER_ERROR, error });
         });
     }
@@ -84,6 +84,7 @@ export const authenticateUser = (user) => {
                 password: user.password
             }
         ).then( response => {
+            dispatch({ type: HIDE_LOADING }); 
             if(response.data['status'] === 'success') {                
                 // Ask user if he/she is okay to save local cookies then save the token to localStorage by 
                 // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
@@ -95,6 +96,7 @@ export const authenticateUser = (user) => {
             }
         }
         ).catch(error => {
+            dispatch({ type: HIDE_LOADING }); 
             // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above
             dispatch({ type: AUTHENTICATE_USER_ERROR, error: error.response });
         });        
@@ -104,7 +106,8 @@ export const authenticateUser = (user) => {
 export const signOutUser = (auth) => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });
-        dispatch({ type: SIGNOUT_USER, auth });                
+        dispatch({ type: SIGNOUT_USER, auth });
+        dispatch({ type: HIDE_LOADING });                 
     }
 }
 
@@ -120,6 +123,7 @@ export const validateToken = (auth) => {
             mode: 'cors',
             mobile: auth['mobile']
         }).then( response => {
+            dispatch({ type: HIDE_LOADING }); 
             if(response.data['status'] === 'success') {
                 response.data['auth_token'] = auth['token'];
                 response.data['mobile'] = auth['mobile']; 
@@ -130,6 +134,7 @@ export const validateToken = (auth) => {
                 dispatch({ type: AUTHENTICATE_USER_ERROR, error: response.data });
             }
         }).catch(error => {
+            dispatch({ type: HIDE_LOADING }); 
             JWT.remove_jwt();
             dispatch({ type: AUTHENTICATE_USER_ERROR, error });
         });

@@ -2,17 +2,12 @@ import React, { Component, Fragment } from 'react';
 import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getJob, showLoading } from '../../store/actions/jobActions';
+import { getJob } from '../../store/actions/jobActions';
 import { GET_JOB_SUCCESS } from '../../store/types/jobTypes';
 import { SHOW_LOADING } from '../../store/types/commonTypes';
 
 class JobView extends Component {	
-    constructor(props) {
-		super(props);
-		this.props.showLoading();
-	}
-
-	componentDidMount() {
+    componentDidMount() {
 		window.scrollTo(0, 0);		
 		this.props.getJob({id: this.props.match.params.id});
 	}
@@ -150,8 +145,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		getJob: (params) => dispatch(getJob(params)),
-		showLoading: () => dispatch(showLoading())
+		getJob: (params) => dispatch(getJob(params))
     }
 }
 
