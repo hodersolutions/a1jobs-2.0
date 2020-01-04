@@ -36,7 +36,7 @@ a .nav-link .header-link :hover {
 
 .not-found {
 	position: relative;
-	height: 95vh;
+	height: 100vh;
 }
 
 .not-found .notfound {
@@ -335,21 +335,18 @@ hr {
 }
 
 .job-post-link {
-	margin: 10px 10px 10px 0px;
-	padding-left: 10px;
-	padding-right: 15px;
+	margin: 5px 10px 15px 0px;
+	padding: 8px 15px 8px 10px;
 }
 
 .join-us-link {
-	margin: 10px 10px 10px 0px;
-	padding-left: 10px;
-	padding-right: 15px;
+	margin: 5px 10px 15px 0px;
+	padding: 8px 15px 8px 10px;
 }
 
 .sign-in-link {
-	margin: 10px 10px 10px 0px;
-	padding-left: 10px;
-	padding-right: 15px;
+	margin: 5px 10px 15px 0px;
+	padding: 8px 15px 8px 10px;	
 }
 
 .job-post-button {

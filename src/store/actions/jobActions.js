@@ -15,7 +15,7 @@ import jobs from '../../mock/JobData';
 export const createJob = (job) => {    
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });
-        axios.post(settings.A1JOBSAPI.url + '/api/v1/requisitions', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/requisitions', {
                 headers: {
                     'Content-Type': 'application/json',
                     'token': localStorage.getItem('token'),
