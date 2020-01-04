@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-class About extends Component {    
+class About extends Component {
+    componentDidMount() {
+		window.scrollTo(0, 0);
+    }
+        
     render() {
         const style = {
             paddingTop: "3rem"

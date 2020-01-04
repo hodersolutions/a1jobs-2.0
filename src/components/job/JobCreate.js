@@ -22,6 +22,10 @@ class JobCreate extends Component {
 		deadline: new Date()
 	}
 	
+	componentDidMount() {
+		window.scrollTo(0, 0);
+	}
+
 	handleChange = (e) => {
 		e.preventDefault();
 		this.setState({

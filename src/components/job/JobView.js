@@ -13,6 +13,7 @@ class JobView extends Component {
 	}
 
 	componentDidMount() {
+		window.scrollTo(0, 0);		
 		this.props.getJob({id: this.props.match.params.id});
 	}
 

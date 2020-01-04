@@ -5,7 +5,11 @@ import Notifications from 'react-notify-toast';
 import JobList from '../job/JobList';
 import SearchJobs from './SearchJobs';
 
-class SearchJobsMain extends Component {	    
+class SearchJobsMain extends Component {
+    componentDidMount() {
+		window.scrollTo(0, 0);
+    }
+    
 	render() {
 		const options = {
 			zIndex: 200, top: '50px'
