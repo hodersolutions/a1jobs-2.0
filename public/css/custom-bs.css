@@ -3484,6 +3484,10 @@ input[type="button"].btn-block {
 	display: none;
 }
 
+.login-collapse:not(.show) {
+	display: inline-block;
+}
+
 .collapsing {
 	position: relative;
 	height: 0;

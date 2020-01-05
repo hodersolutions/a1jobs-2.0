@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const SignedInLinks = (props) => {
     return (
-		<div className="collapse navbar-collapse">
+		<div className="login-collapse navbar-collapse">
 			<ul className="navbar-nav ml-auto">
 				<li className="nav-item dropdown" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link className="nav-link dropdown-toggle welcome-dd" to="" id="welcomeUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -13,11 +13,11 @@ const SignedInLinks = (props) => {
 					</Link>
 					<div className="dropdown-menu" aria-labelledby="welcomeUser">
 						<Link className="dropdown-item" to='/profile'>
-							<img src={require("../../../static/images/settings.png")} className="welcome-icon" alt="profile"/>
+							<img src={require("../../../static/images/settings.png")} className="welcome-icon" data-toggle="collapse" data-target=".navbar-collapse.show" alt="profile"/>
 							<span className="dropdown-text">Profile Settings</span>
 						</Link>
 						<Link className="dropdown-item" to='/signout'>
-							<img src={require("../../../static/images/logout.png")} className="welcome-icon" alt="logout"/>
+							<img src={require("../../../static/images/logout.png")} className="welcome-icon" data-toggle="collapse" data-target=".navbar-collapse.show" alt="logout"/>
 							<span className="dropdown-text">Sign Out</span>
 						</Link>                                                
 					</div>
