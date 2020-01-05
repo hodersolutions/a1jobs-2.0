@@ -48,7 +48,7 @@ class JobCreate extends Component {
 		return (
 			<div>
 				<div className="job-create-section" id="next-section">
-					<form action="/createjob" onSubmit={this.handleSubmit} method="POST">
+					<form action="/job" onSubmit={this.handleSubmit} method="POST">
 						<div className="container">
 							<div className="row align-items-center justify-content-center underline">
                                 <div className="col-md-12">

@@ -6,7 +6,7 @@ const SignedOutLinks = () => {
       	<Fragment>		
 			<ul className="navbar-nav mr-auto">
 				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-					<Link to="/createjob" className="btn btn-post border-width-2 d-lg-inline-block job-post-link"><span className="mr-2 icon-near_me"></span>Post a Job</Link>
+					<Link to="/job" className="btn btn-post border-width-2 d-lg-inline-block job-post-link"><span className="mr-2 icon-near_me"></span>Post a Job</Link>
 				</li>
 				<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
 					<Link to="/signup" className="btn btn-success border-width-2 d-lg-inline-block join-us-link"><span className="mr-2 icon-person_add"></span>Join Us</Link>

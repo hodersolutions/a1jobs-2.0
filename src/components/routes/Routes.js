@@ -13,20 +13,23 @@ import JobCreate from '../job/JobCreate';
 import SignOut from '../auth/SignOut';
 import ForgotPassword from '../auth/ForgotPassword';
 
+import Loading from '../common/loading/Loading';
+
 const Routes = () => (
 	<div className='style'>
 		<Switch>
 			<Route exact path='/' component={Home} />
 			<Route exact path='/contact' component={Contact} />
 			<Route exact path='/signin' component={SignIn} />
-			<Route exact path='/searchjobs' component={SearchJobsMain} />
+			<Route exact path='/jobs' component={SearchJobsMain} />
 			<Route exact path='/forgot' component={ForgotPassword} />
 			<Route exact path='/signup' component={SignUp} />			
-			{/* <Route exact path='/showjob/:id' component={ requireAuth(JobView) } /> */}
-			{/* <Route exact path='/createjob' component={ requireAuth(JobCreate) } /> */}
-			<Route exact path='/showjob/:id' component={ JobView } />
-			<Route exact path='/createjob' component={ JobCreate } />
-			<Route exact path='/signout' component={requireAuth(SignOut)} />		
+			{/* <Route exact path='/job/:id' component={ requireAuth(JobView) } /> */}
+			{/* <Route exact path='/job' component={ requireAuth(JobCreate) } /> */}
+			<Route exact path='/job/:id' component={ JobView } />
+			<Route exact path='/job' component={ JobCreate } />
+			<Route exact path='/signout' component={requireAuth(SignOut)} />
+			<Route exact path='/loading' component={ Loading } />		
 			<Route path='*' component={ NotFound } />
 		</Switch>
 	</div>

@@ -7,7 +7,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 export class JobCard extends Component {    
     render() {
-        const url = '/showjob/' + this.props.job.id;
+        const url = '/job/' + this.props.job.id;
         let show_badge = "";
         if(this.props.job.type === "Freelance")
             show_badge = <span className="badge badge-primary px-2 py-1 mb-3">{this.props.job.type}</span>

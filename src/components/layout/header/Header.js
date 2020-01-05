@@ -30,10 +30,10 @@ const Header = (props) => {
 			<div className="collapse navbar-collapse main-menu" id="navbarSupportedContent">
 				<ul className="navbar-nav mr-auto main-header-ul">
 					<li data-toggle="collapse" data-target=".navbar-collapse.show">
-						<Link to="/searchjobs" className="nav-item nav-link">Search Jobs</Link>
+						<Link to="/jobs" className="nav-item nav-link">Search Jobs</Link>
 					</li>
 					<li data-toggle="collapse" data-target=".navbar-collapse.show">
-						<Link to="/searchprofiles" className="nav-item nav-link">Search Profiles</Link>
+						<Link to="/profiles" className="nav-item nav-link">Search Profiles</Link>
 					</li>
 					<li data-toggle="collapse" data-target=".navbar-collapse.show">
 						<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
