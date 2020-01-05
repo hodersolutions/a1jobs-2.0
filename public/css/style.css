@@ -221,7 +221,7 @@ h4 {
 
 .home-section .search-jobs-form .form-control,
 .home-section .search-jobs-form .btn-lg {
-	height: calc(2em + 1rem + 2px);
+	/* height: calc(2em + 1rem + 2px); */
 	padding: 0.5rem 1rem;
 	font-size: 1rem;
 	line-height: 1.5;

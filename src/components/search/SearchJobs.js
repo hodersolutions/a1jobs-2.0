@@ -28,10 +28,10 @@ class SearchJobs extends Component {
                 <form method="post" className="search-jobs-form">
                     <div className="row mb-5">
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <input type="text" id="searchToken" name="searchToken" className="form-control form-control-lg" placeholder="Job title, keywords..."/>
+                            <input type="text" id="searchToken" name="searchToken" className="form-control" placeholder="Job title, keywords..."/>
                         </div>
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select className="form-control form-control-lg">
+                            <select className="form-control">
                                 <option>Anywhere</option>
                                 <option>San Francisco</option>
                                 <option>Palo Alto</option>
@@ -44,7 +44,7 @@ class SearchJobs extends Component {
                             </select>
                         </div>
                         <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select className="form-control form-control-lg">
+                            <select className="form-control">
                                 <option>Part Time</option>
                                 <option>Full Time</option>
                                 <option>Freelancer</option>
