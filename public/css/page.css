@@ -339,6 +339,15 @@ hr {
 	padding: 8px 15px 8px 10px;
 }
 
+.welcome-dd {
+	margin: 5px 10px 15px 0px;
+	padding: 8px 15px 8px 10px;
+}
+
+.welcome-text {
+	font-family: "Nunito", sans-serif !important;
+}
+
 .join-us-link {
 	margin: 5px 10px 15px 0px;
 	padding: 8px 15px 8px 10px;
@@ -427,6 +436,13 @@ hr {
 	vertical-align: bottom;
 	width: 20px;
 	height: 20px;
+}
+
+.welcome-icon {
+	vertical-align: text-top;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
 }
 
 .dropdown-text {
