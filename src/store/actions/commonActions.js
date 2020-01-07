@@ -9,8 +9,7 @@ import { GET_STATES_SUCCESS,
          RESET_ERROR
        } from '../types/commonTypes';
 
-/* Remove Mock Data */
-import jobs from '../../mock/JobData';
+// import { resetState, resetDistrict, resetTown, resetSubject } from '../../components/common/Constants';
 
 export const showLoading = () => {
     return (dispatch) => {
@@ -40,7 +39,7 @@ export const getStates = (params) => {
 					'Content-Type': 'application/json'
 				},
 				mode: 'cors'    
-		}).then( response => {											            
+		}).then( response => {            
             dispatch({ type: GET_STATES_SUCCESS, response: response.data });
 		}).catch(error => {			
             dispatch({ type: GET_STATES_ERROR, error });
@@ -58,7 +57,7 @@ export const getSubjects = (params) => {
 					'Content-Type': 'application/json'
 				},
 				mode: 'cors'    
-		}).then( response => {											            
+		}).then( response => {
             dispatch({ type: GET_SUBJECTS_SUCCESS, response: response.data });
 		}).catch(error => {			
             dispatch({ type: GET_SUBJECTS_ERROR, error });

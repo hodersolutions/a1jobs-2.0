@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createJob } from '../../store/actions/jobActions';
+import { getStates,getSubjects } from '../../store/actions/commonActions';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { notify } from 'react-notify-toast';
 
 class JobCreate extends Component {
     state = {
 		title: '', 
 		type: '', 
-		location: '',
+		stateLocation: 0,
+		district: 0,
+		town: 0,
 		organization: '',  
-		subject: '',         
+		subject: '',
 		salary: '', 
 		description: '',
 		responsibilities: '',
@@ -24,6 +28,10 @@ class JobCreate extends Component {
 	
 	componentDidMount() {
 		window.scrollTo(0, 0);
+		if (this.props.locations.length === 0)
+			this.props.getStates();		
+		if (this.props.subjects.length === 0)
+			this.props.getSubjects();		
 	}
 
 	handleChange = (e) => {
@@ -35,7 +43,11 @@ class JobCreate extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.createJob(this.state);
+		let errors = "";
+		if (errors === "")
+			this.props.createJob(this.state);
+		else
+			notify.show(errors,'error',3000,'red');
 	};
 	
 	handleDate = (date) => {		
@@ -44,7 +56,7 @@ class JobCreate extends Component {
 		});
 	};
 
-	render() {		
+	render() {
 		return (
 			<div>
 				<div className="job-create-section" id="next-section">
@@ -63,14 +75,40 @@ class JobCreate extends Component {
 								<div className="col-lg-3 col-xs-12 form-group">
 									<label className="text-black" htmlFor="lname">Job type</label>
 									<select className="form-control" id="type" name="type" value={this.state.type} onChange={this.handleChange}>
+										<option disabled hidden value=""></option>
 										<option value='1'>Part Time</option>
 										<option value='2'>Full Time</option>
 										<option value='3'>Freelancer</option>
 									</select>
 								</div>
-								<div className="col-lg-4 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">Location</label>
-									<select className="form-control" id="location" name="location" value={this.state.location} onChange={this.handleChange}>										
+								<div className="col-lg-3 col-xs-12 form-group">
+									<label className="text-black" htmlFor="lname">State</label>
+									<select  className="form-control" id="stateLocation" name="stateLocation" value={ this.state.stateLocation } onChange={ this.handleChange }>										
+										{
+											this.props.locations.map((stateName, key) => { 
+												return <option key={ key }  value={ stateName.id }>{ stateName.state }</option>; 
+											})
+										}
+									</select>
+								</div>
+								<div className="col-lg-3 col-xs-12 form-group">
+									<label className="text-black" htmlFor="lname">District</label>
+									<select className="form-control" id="district" name="district" value={ this.state.district } onChange={ this.handleChange }>										
+										{											
+											this.state.stateLocation > 0 && this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 
+												return <option key={ key } value={ district.id }>{ district.name }</option>; 
+											})
+										}							
+									</select>
+								</div>
+								<div className="col-lg-3 col-xs-12 form-group">
+									<label className="text-black" htmlFor="lname">Town</label>
+									<select className="form-control" id="town" name="town" value={ this.state.town } onChange={ this.handleChange }>										
+										{
+											this.state.district.length > 0 && this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id))[0].towns.map((town, key) => { 
+												return <option key={ key } value={ town.id }>{ town.town }</option>; 
+											})
+										}
 									</select>
 								</div>			                    
 								<div className="col-lg-9 col-xs-12 form-group">
@@ -80,7 +118,13 @@ class JobCreate extends Component {
 								</div>
 								<div className="col-lg-4 col-xs-12 form-group">
 									<label className="text-black" htmlFor="fname">Subject</label>
-									<input type="text" id="subject" name="subject" className="form-control" value={this.state.subject} onChange={this.handleChange}/>
+									<select  className="form-control" id="subject" name="subject" value={this.state.subject} onChange={this.handleChange}>																	
+										{
+											this.props.subjects.map((subjectName, key) => { 
+												return <option key={ key } value={ subjectName.id }>{ subjectName.subject }</option>; 
+											})
+										}
+									</select>
 								</div>
 								<div className="col-lg-2 col-xs-12 form-group">
 									<label className="text-black" htmlFor="fname">Salary</label>
@@ -146,13 +190,17 @@ class JobCreate extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-        job: state.job
+		job: state.job,
+		locations: state.common.states,
+		subjects: state.common.subjects
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createJob: (jobObj) => dispatch(createJob(jobObj))
+		createJob: (jobObj) => dispatch(createJob(jobObj)),
+		getStates: () => dispatch(getStates()),
+		getSubjects: () => dispatch(getSubjects())
     }
 }
 

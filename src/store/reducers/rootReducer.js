@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
     user: userReducer,    
     job: jobReducer,
     search: searchReducer,
-    commondata: commonReducer
+    common: commonReducer
 })
 
 export default rootReducer;

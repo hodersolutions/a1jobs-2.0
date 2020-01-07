@@ -14,20 +14,20 @@ import jobs from '../../mock/JobData';
 
 export const createJob = (job) => {    
     return (dispatch, getState) => {
+        console.log(job)
         dispatch({ type: SHOW_LOADING });
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/requisitions', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/requisitions', job, {
                 headers: {
                     'Content-Type': 'application/json',
                     'token': localStorage.getItem('token'),
                     'username': localStorage.getItem('username')
                 },
-                mode: 'cors',
-                job: job.job,
+                mode: 'cors',                
                 parent_job_id: (job.parent_job_id === '')? null : job.parent_job_id,
                 is_active: true,
                 description: job.description,
                 creator_id: job.creator_id
-            }
+        }
         ).then( function(response) {
             dispatch({ type: HIDE_LOADING });
             dispatch({ type: CREATE_JOB_SUCCESS, response });
@@ -75,17 +75,17 @@ export const getJob = (params) => {
             dispatch({ type: HIDE_LOADING });
             dispatch({ type: GET_JOB_ERROR, selectedJob });
         }
-        /* axios.get(settings.A1JOBSAPI.url + 'api/v1/jobs?id=' + params.id, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                mode: 'cors'    
-            }).then( response => {
-                dispatch({ type: HIDE_LOADING }); 
-                dispatch({ type: GET_JOB_SUCCESS, job: response.data.job });            
-            }).catch(error => {			
-                dispatch({ type: HIDE_LOADING }); 
-                dispatch({ type: GET_JOB_ERROR, error });
-            }); */
+        // axios.get(settings.A1JOBSAPI.url + 'api/v1/jobs?id=' + params.id, {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     mode: 'cors'    
+        // }).then( response => {
+        //     dispatch({ type: HIDE_LOADING }); 
+        //     dispatch({ type: GET_JOB_SUCCESS, job: response.data.job });            
+        // }).catch(error => {			
+        //     dispatch({ type: HIDE_LOADING }); 
+        //     dispatch({ type: GET_JOB_ERROR, error });
+        // });
     }
 }
