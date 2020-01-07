@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createJob } from '../../store/actions/jobActions';
-import { getStates,getSubjects } from '../../store/actions/commonActions';
+import { getStates, getSubjects } from '../../store/actions/commonActions';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { notify } from 'react-notify-toast';
