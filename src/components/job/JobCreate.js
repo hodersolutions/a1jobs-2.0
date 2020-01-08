@@ -5,22 +5,26 @@ import { getStates, getSubjects } from '../../store/actions/commonActions';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { notify } from 'react-notify-toast';
+import { gender, jobTypes, resetDistrict, resetState, resetTown, resetSubject } from '../common/Constants';
 
 class JobCreate extends Component {
     state = {
 		title: '', 
-		type: '', 
+		jobtype: '', 
 		stateLocation: 0,
 		district: 0,
 		town: 0,
 		organization: '',  
 		subject: '',
 		salary: '', 
-		description: '',
+		requisitiondetails: '',
+		telephone: '',
+		minexperience: '',
+		maxexperience: '',
 		responsibilities: '',
 		experience: '',
 		benefits: '',
-		edu_exp_details: '',
+		eduexpdetails: '',
 		vacancy: '',
 		gender: '',
 		deadline: new Date()
@@ -41,8 +45,17 @@ class JobCreate extends Component {
 		});
 	}
 
-	handleSubmit = (e) => {
+	handleStateChange = (e) => {
 		e.preventDefault();
+		this.setState({
+			[e.target.name]: e.target.value,
+			district: 0,
+			town: 0
+		});
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();		
 		let errors = "";
 		if (errors === "")
 			this.props.createJob(this.state);
@@ -69,41 +82,48 @@ class JobCreate extends Component {
                             </div>
 							<div className="row">						
 								<div className="col-12 form-group">
-									<label className="text-black" htmlFor="fname">Job title</label>
+									<label className="text-black" htmlFor="title">Job title</label>
 									<input type="text" id="title" name="title" className="form-control" value={this.state.title} onChange={this.handleChange}/>
 								</div>								
 								<div className="col-lg-3 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">Job type</label>
-									<select className="form-control" id="type" name="type" value={this.state.type} onChange={this.handleChange}>
-										<option disabled hidden value=""></option>
-										<option value='1'>Part Time</option>
-										<option value='2'>Full Time</option>
-										<option value='3'>Freelancer</option>
-									</select>
-								</div>
-								<div className="col-lg-3 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">State</label>
-									<select  className="form-control" id="stateLocation" name="stateLocation" value={ this.state.stateLocation } onChange={ this.handleChange }>										
+									<label className="text-black" htmlFor="jobtype">Job type</label>
+									<select className="form-control" id="jobtype" name="jobtype" value={this.state.jobtype} onChange={this.handleChange}>
 										{
-											this.props.locations.map((stateName, key) => { 
-												return <option key={ key }  value={ stateName.id }>{ stateName.state }</option>; 
+											jobTypes.map((jobtype, key) => { 
+												return <option key={ key }  value={ jobtype.id }>{ jobtype.name }</option>; 
 											})
 										}
 									</select>
 								</div>
 								<div className="col-lg-3 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">District</label>
+									<label className="text-black" htmlFor="stateLocation">State</label>
+									<select  className="form-control" id="stateLocation" name="stateLocation" value={ this.state.stateLocation } onChange={ this.handleStateChange }>										
+										{
+											this.props.locations.map((stateName, key) => {
+												let options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>];
+												if(key === 0)
+													options.unshift(<option key={ key } value={ resetState.id }>{ resetState.state }</option>);
+												return options;
+											})
+										}
+									</select>
+								</div>
+								<div className="col-lg-3 col-xs-12 form-group">
+									<label className="text-black" htmlFor="district">District</label>
 									<select className="form-control" id="district" name="district" value={ this.state.district } onChange={ this.handleChange }>										
 										{											
 											this.state.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))).length > 0
-											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 
-												return <option key={ key } value={ district.id }>{ district.name }</option>; 
+											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												
+												let options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>];
+												if(key === 0)
+													options.unshift(<option key={ key } value={ resetDistrict.id }>{ resetDistrict.name }</option>);
+												return options;
 											})
 										}							
 									</select>
 								</div>
 								<div className="col-lg-3 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">Town</label>
+									<label className="text-black" htmlFor="town">Town</label>
 									<select className="form-control" id="town" name="town" value={ this.state.town } onChange={ this.handleChange }>										
 										{
 											this.state.stateLocation > 0 
@@ -113,45 +133,53 @@ class JobCreate extends Component {
 											.districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id)).length > 0 
 											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0]
 											.districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id))[0]
-											.towns.map((town, key) => { 
-												return <option key={ key } value={ town.id }>{ town.town }</option>; 
+											.towns.map((town, key) => {
+												let options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>];
+												if(key === 0)
+													options.unshift(<option key={ key } value={ resetTown.id }>{ resetTown.town }</option>);
+												return options;												
 											})
 										}
 									</select>
 								</div>			                    
 								<div className="col-lg-9 col-xs-12 form-group">
-									<label className="text-black" htmlFor="lname">Organization</label>
+									<label className="text-black" htmlFor="organization">Organization</label>
 									<select className="form-control" id="organization" name="organization" value={this.state.organization} onChange={this.handleChange}>										
 									</select>
 								</div>
 								<div className="col-lg-4 col-xs-12 form-group">
-									<label className="text-black" htmlFor="fname">Subject</label>
+									<label className="text-black" htmlFor="subject">Subject</label>
 									<select  className="form-control" id="subject" name="subject" value={this.state.subject} onChange={this.handleChange}>																	
 										{
-											this.props.subjects.map((subjectName, key) => { 
-												return <option key={ key } value={ subjectName.id }>{ subjectName.subject }</option>; 
+											this.props.subjects.map((subjectName, key) => {
+												let options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
+												if(key === 0)
+													options.unshift(<option key={ key } value={ resetSubject.id }>{ resetSubject.subject }</option>);													
+												return options;
 											})
 										}
 									</select>
 								</div>
 								<div className="col-lg-2 col-xs-12 form-group">
-									<label className="text-black" htmlFor="fname">Salary</label>
+									<label className="text-black" htmlFor="salary">Salary</label>
 									<input type="text" id="salary" name="salary" className="form-control" value={this.state.salary} onChange={this.handleChange}/>
 								</div>
 								<div className="col-lg-2 col-xs-12 form-group">
-									<label className="text-black" htmlFor="fname">Vacancy</label>
+									<label className="text-black" htmlFor="vacancy">Vacancy</label>
 									<input type="text" id="vacancy" name="vacancy" className="form-control" value={this.state.vacancy} onChange={this.handleChange}/>
 								</div>
 								<div className="col-lg-2 col-xs-12 form-group">
-									<label className="text-black" htmlFor="fname">Gender</label>
+									<label className="text-black" htmlFor="gender">Gender</label>
 									<select className="form-control" id="gender" name="gender" value={this.state.gender} onChange={this.handleChange}>
-										<option value='1'>Female</option>
-										<option value='2'>Male</option>
-										<option value='3'>Not relevant</option>
+										{
+											gender.map((genderType, key) => { 
+												return <option key={ key }  value={ genderType.id }>{ genderType.name }</option>; 
+											})
+										}
 									</select>
 								</div>
 								<div className="col-lg-2 col-xs-12 form-group">
-									<label className="text-black" htmlFor="fname">Deadline</label>
+									<label className="text-black" htmlFor="deadline">Deadline</label>
 									<DatePicker
 										selected={ this.state.deadline }
 										onChange={date => this.handleDate(date)}
@@ -162,26 +190,42 @@ class JobCreate extends Component {
 										dropdownMode="select"
 										className="form-control"
 									/>									
-								</div>											
+								</div>
+
+								<div className="col-lg-4 col-xs-12 form-group">
+									<label className="text-black" htmlFor="telephone">Contact number</label>
+									<input type="text" id="telephone" name="telephone" className="form-control" value={this.state.telephone} onChange={this.handleChange}/>
+								</div>
+
+								<div className="col-lg-4 col-xs-12 form-group">
+									<label className="text-black" htmlFor="minexperience">Minimum Experience(in months)</label>
+									<input type="text" id="minexperience" name="minexperience" className="form-control" value={this.state.minexperience} onChange={this.handleChange}/>
+								</div>
+
+								<div className="col-lg-4 col-xs-12 form-group">
+									<label className="text-black" htmlFor="maxexperience">Maximum Experience(in months)</label>
+									<input type="text" id="maxexperience" name="maxexperience" className="form-control" value={this.state.maxexperience} onChange={this.handleChange}/>
+								</div>
+
 								<div className="col-lg-6 col-xs-12 form-group">
-									<label className="text-black" htmlFor="message">Description</label>
-									<textarea name="description" id="description" cols="30" rows="4" className="form-control"
-										placeholder="Job description..." value={this.state.description} onChange={this.handleChange}></textarea>
+									<label className="text-black" htmlFor="requisitiondetails">Description</label>
+									<textarea name="requisitiondetails" id="requisitiondetails" cols="30" rows="4" className="form-control"
+										placeholder="Job description..." value={this.state.requisitiondetails} onChange={this.handleChange}></textarea>
 								</div>
 								<div className="col-lg-6 col-xs-12 form-group">
-									<label className="text-black" htmlFor="message">Responsibilities</label>
+									<label className="text-black" htmlFor="responsibilities">Responsibilities</label>
 									<textarea name="responsibilities" id="responsibilities" cols="30" rows="4" className="form-control"
 										placeholder="Job responsibilities..." value={this.state.responsibilities} onChange={this.handleChange}></textarea>
 								</div>
 								<div className="col-lg-6 col-xs-12 form-group">
-									<label className="text-black" htmlFor="message">Employee benefits(if any)</label>
+									<label className="text-black" htmlFor="benefits">Employee benefits(if any)</label>
 									<textarea name="benefits" id="benefits" cols="30" rows="4" className="form-control"
 										placeholder="Employee benefits(if any...)" value={this.state.benefits} onChange={this.handleChange}></textarea>
 								</div>
 								<div className="col-lg-6 col-xs-12 form-group">
-									<label className="text-black" htmlFor="message">Education and Experience details</label>
-									<textarea name="edu_exp_details" id="edu_exp_details" cols="30" rows="4" className="form-control"
-										placeholder="Education and Experience details" value={this.state.edu_exp_details} onChange={this.handleChange}></textarea>
+									<label className="text-black" htmlFor="eduexpdetails">Education and Experience details</label>
+									<textarea name="eduexpdetails" id="eduexpdetails" cols="30" rows="4" className="form-control"
+										placeholder="Education and Experience details" value={this.state.eduexpdetails} onChange={this.handleChange}></textarea>
 								</div>
 								<div className="col-lg-6 col-xs-12 form-group post-job-button">
 									<span className="post-job-span"><input type="submit" value="Post Job" className="btn btn-post btn-md text-white job-post-button" /></span>            						
