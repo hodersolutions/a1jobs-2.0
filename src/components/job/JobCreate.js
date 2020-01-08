@@ -47,7 +47,7 @@ class JobCreate extends Component {
 		if (errors === "")
 			this.props.createJob(this.state);
 		else
-			notify.show(errors,'error',3000,'red');
+			notify.show(errors, 'error', 3000, 'red');
 	};
 	
 	handleDate = (date) => {		
@@ -95,7 +95,8 @@ class JobCreate extends Component {
 									<label className="text-black" htmlFor="lname">District</label>
 									<select className="form-control" id="district" name="district" value={ this.state.district } onChange={ this.handleChange }>										
 										{											
-											this.state.stateLocation > 0 && this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 
+											this.state.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))).length > 0
+											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 
 												return <option key={ key } value={ district.id }>{ district.name }</option>; 
 											})
 										}							
@@ -105,7 +106,14 @@ class JobCreate extends Component {
 									<label className="text-black" htmlFor="lname">Town</label>
 									<select className="form-control" id="town" name="town" value={ this.state.town } onChange={ this.handleChange }>										
 										{
-											this.state.district.length > 0 && this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0].districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id))[0].towns.map((town, key) => { 
+											this.state.stateLocation > 0 
+											&& this.state.district > 0 
+											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id)).length > 0
+											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0]
+											.districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id)).length > 0 
+											&& this.props.locations.filter((stateObj) => parseInt(this.state.stateLocation) === parseInt(stateObj.id))[0]
+											.districts.filter((districtObj) => parseInt(this.state.district) === parseInt(districtObj.id))[0]
+											.towns.map((town, key) => { 
 												return <option key={ key } value={ town.id }>{ town.town }</option>; 
 											})
 										}
