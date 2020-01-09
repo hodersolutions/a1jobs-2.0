@@ -43,7 +43,7 @@ class SignIn extends Component {
 		const options = {
 			zIndex: 200, top: '50px'
 		}		
-		if(this.props.user.is_authenticated === true) {
+		if(this.props.user.logged_user !== null) {
 			return (
 				<Redirect to='/'/>
 			)

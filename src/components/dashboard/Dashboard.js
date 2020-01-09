@@ -8,7 +8,7 @@ class Dashboard extends Component {
     const style = {
       'margin': '0px 0px 25px 15px' 
     }
-    if (this.props.user.is_authenticated)
+    if (this.props.user.logged_user !== null)
       	return <Redirect to='/home' />
     else {
 		return (      

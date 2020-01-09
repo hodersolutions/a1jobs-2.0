@@ -35,7 +35,7 @@ class JobCreate extends Component {
 	
 	componentDidMount() {
 		window.scrollTo(0, 0);
-		if (this.props.user !== null && this.props.is_authenticated) {
+		if (this.props.user !== null) {
 			if (this.props.locations.length === 0)
 				this.props.getStates();		
 			if (this.props.subjects.length === 0)
@@ -82,7 +82,7 @@ class JobCreate extends Component {
 		const options = {
 			zIndex: 200, top: '50px'
 		}
-		if (this.props.user === null && !this.props.is_authenticated) {
+		if (this.props.user === null) {
 			return (
 				<Redirect to='/signin'/>
 			);
@@ -273,8 +273,7 @@ const mapStateToProps = (state) => {
 		user: state.user.logged_user,
 		locations: state.common.states,
 		subjects: state.common.subjects,
-		loading: state.common.loading,
-		is_authenticated: state.user.is_authenticated
+		loading: state.common.loading		
 	}
 }
 

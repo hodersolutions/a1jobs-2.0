@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const Header = (props) => {
 	let userOptions;
-	if (props.user.is_authenticated === true) {
+	if (props.user.logged_user !== null) {
 		userOptions = <SignedInLinks />
 	}
 	else {

@@ -10,7 +10,7 @@ export default function requireAuth(ProtectedComponent)  {
         constructor(props) {
             super(props);
             const jwt = JWT.get_jwt();            
-            if (!this.props.user.is_authenticated) {
+            if (this.props.user.logged_user === null) {
                 this.props.common.loading = true;
                 if (jwt['access_token'] !== null && jwt['mobile'] !== null)
                     this.props.validateToken({
@@ -27,7 +27,7 @@ export default function requireAuth(ProtectedComponent)  {
             }
         }
         render() {
-            if (this.props.user.is_authenticated === true) {
+            if (this.props.user.logged_user !== null) {
                 return (
                     <ProtectedComponent {...this.props} />
                 )

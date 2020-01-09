@@ -13,8 +13,7 @@ const initState = {
     status: '',
     users: [],
     logged_user: null,
-    token: null,
-    is_authenticated: false
+    token: null
 }
 
 const userReducer = (state = initState, action) => {
@@ -25,7 +24,6 @@ const userReducer = (state = initState, action) => {
                 token: null,
                 username: null,
                 logged_user: null,
-                is_authenticated: false,
                 status: SIGNOUT_USER,
             }       
         case AUTHENTICATE_USER_SUCCESS:
@@ -34,7 +32,6 @@ const userReducer = (state = initState, action) => {
                 token: action.response['access_token'],                
                 response: action.response,
                 logged_user: action.response.user,
-                is_authenticated: true,
                 status: AUTHENTICATE_USER_SUCCESS
             }
         case AUTHENTICATE_USER_ERROR:
