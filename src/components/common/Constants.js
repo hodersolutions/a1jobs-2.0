@@ -50,3 +50,25 @@ export const gender = [
         id: 3, name:'Not relevant'
     }
 ]
+
+export const resetJob = {
+    title: '', 
+    jobtype: '', 
+    stateLocation: 0,
+    district: 0,
+    town: 0,
+    institution: '',  
+    subject: '',
+    salary: '', 
+    requisitiondetails: '',
+    telephone: '',
+    minexperience: '',
+    maxexperience: '',
+    responsibilities: '',
+    experience: '',
+    benefits: '',
+    eduexpdetails: '',
+    vacancy: '',
+    gender: '',
+    deadline: new Date()
+}

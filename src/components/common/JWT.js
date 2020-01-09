@@ -1,17 +1,17 @@
 class JWT {    
     static get_jwt = () => {
         return { 
-            'token': localStorage.getItem('token'),
-            'username': localStorage.getItem('username')
+            'access_token': localStorage.getItem('access_token'),
+            'mobile': localStorage.getItem('mobile')
         }
     };
-    static set_jwt = (token, username) => {
-        localStorage.setItem('token', token);
-		localStorage.setItem('username', username);
+    static set_jwt = (access_token, mobile) => {
+        localStorage.setItem('access_token', access_token);
+		localStorage.setItem('mobile', mobile);
     };
     static remove_jwt = () => {
-        localStorage.removeItem('token');
-		localStorage.removeItem('username');
+        localStorage.removeItem('access_token');
+		localStorage.removeItem('mobile');
     };
 }
 

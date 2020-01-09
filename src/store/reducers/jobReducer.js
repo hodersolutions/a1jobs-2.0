@@ -7,12 +7,13 @@ import { CREATE_JOB_SUCCESS,
          UPDATE_JOB_SUCCESS, 
          DELETE_JOB_SUCCESS } from '../types/jobTypes';
 
+import { resetJob } from '../../../src/components/common/Constants';
+
 const initState = {
     response: null,
     status: '',
     jobs: [],
-    current_job: null,
-    error: null    
+    current_job: null
 }
 
 const jobReducer = (state = initState, action) => {
@@ -27,13 +28,13 @@ const jobReducer = (state = initState, action) => {
             return {
                 ...state,
                 status: CREATE_JOB_ERROR,
-                error: action.error
+                response: action.error
             }
         case GET_JOBS_SUCCESS:
             return {
                 ...state,
                 status: GET_JOBS_SUCCESS,
-                jobs: action.response.jobs,
+                jobs: action.response.data.requisitions,
                 response: action.response
             }
         case GET_JOBS_ERROR:
@@ -41,28 +42,23 @@ const jobReducer = (state = initState, action) => {
                 ...state,
                 status: GET_JOBS_ERROR,
                 jobs: [],
-                error: action.error
+                response: action.error
             }
         case GET_JOB_SUCCESS:
             return {
                 ...state,
                 status: GET_JOB_SUCCESS,
                 jobs: [],
-                current_job: action.job,
+                current_job: action.response.data.requisition,
                 response: action.response
             }
-        case GET_JOB_ERROR:
-            const empty = {
-                'job' : '<---->',                
-                'description': '<---->',
-                'creator_id': '<---->',
-            };
+        case GET_JOB_ERROR:            
             return {
                 ...state,
-                current_job: empty,
+                current_job: resetJob,
                 jobs: [],
-                status: GET_JOB_ERROR,
-                error: action.error
+                status: GET_JOB_ERROR,                
+                response: action.error
             }
         case UPDATE_JOB_SUCCESS:
             return {

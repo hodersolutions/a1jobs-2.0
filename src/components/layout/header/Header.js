@@ -39,10 +39,15 @@ const Header = (props) => {
 						<Link to="/contact" className="nav-item nav-link">Contact Us</Link>
 					</li>						
 				</ul>
-				<form className="form-inline my-2 my-lg-0">
-					{ userOptions }
-				</form>					
-			</div>
+				<ul className="navbar-nav">
+					<li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+						<Link to="/job" className="btn btn-post border-width-2 d-lg-inline-block job-post-link"><span className="mr-2 icon-near_me"></span>Post a Job</Link>
+					</li>				
+					<form className="form-inline my-2 my-lg-0">
+						{ userOptions }
+					</form>
+				</ul>									
+			</div>			
 		</nav>        
       </Fragment>
     );

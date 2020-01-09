@@ -22,7 +22,7 @@ export const updateUser = (user) => {
 
 export const createUser = (user) => {
     return (dispatch, getState) => {
-        dispatch({ type: SHOW_LOADING });           
+        dispatch({ type: SHOW_LOADING });        
         axios.post(settings.A1JOBSAPI.url + 'api/v1/register', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,18 +44,18 @@ export const createUser = (user) => {
         ).catch(error => {
             dispatch({ type: HIDE_LOADING }); 
             dispatch({ type: CREATE_USER_ERROR, error: error.response });
-        });            
+        });
     }
 }
 
 export const getUser = () => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });   
-        const jwt = JWT.get_jwt();
+        const jwt = JWT.get_jwt();        
         axios.get(settings.A1JOBSAPI.url + 'api/v1/users/mobile?mobile=' + jwt['mobile'], {
             headers: {
                 'Content-Type': 'application/json',
-                token: jwt['token'],
+                access_token: jwt['access_token'],
                 mobile: jwt['mobile']
             },
             mode: 'cors'
@@ -72,7 +72,7 @@ export const getUser = () => {
 
 export const authenticateUser = (user) => {
     return (dispatch, getState) => {
-        dispatch({ type: SHOW_LOADING });        
+        dispatch({ type: SHOW_LOADING });
         axios.post(settings.A1JOBSAPI.url + 'api/v1/login', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export const authenticateUser = (user) => {
         ).then( response => {
             dispatch({ type: HIDE_LOADING }); 
             if(response.data['status'] === 'success') {                
-                // Ask user if he/she is okay to save local cookies then save the token to localStorage by 
+                // Ask user if he/she is okay to save local cookies then save the access_token to localStorage by 
                 // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }
@@ -114,10 +114,10 @@ export const signOutUser = (auth) => {
 export const validateToken = (auth) => {
     return (dispatch, getState) => { 
         dispatch({ type: SHOW_LOADING });       
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/token/validate', {
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/access_token/validate', {
             headers: {
                 'Content-Type': 'application/json',
-                token: auth['token'],
+                access_token: auth['access_token'],
                 mobile: auth['mobile']
             },
             mode: 'cors',
@@ -125,7 +125,7 @@ export const validateToken = (auth) => {
         }).then( response => {
             dispatch({ type: HIDE_LOADING }); 
             if(response.data['status'] === 'success') {
-                response.data['auth_token'] = auth['token'];
+                response.data['access_token'] = auth['access_token'];
                 response.data['mobile'] = auth['mobile']; 
                 dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
             }                                            

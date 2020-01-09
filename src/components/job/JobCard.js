@@ -25,7 +25,7 @@ export class JobCard extends Component {
                     <div className="col-md-4">
                         {show_badge}                        
                         <h2>{this.props.job.title}</h2>
-                        <p className="meta"><BusinessCenterIcon className='img-align' color="disabled" /> <strong>{this.props.job.organization}</strong></p>
+                        <p className="meta"><BusinessCenterIcon className='img-align' color="disabled" /> <strong>{this.props.job.institution}</strong></p>
                         <p className="meta"><SubjectIcon className='img-align' color="disabled" /> <strong>{this.props.job.subject}</strong></p>
                     </div>
                     <div className="col-md-3 text-left">

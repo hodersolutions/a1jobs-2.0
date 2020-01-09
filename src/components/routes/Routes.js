@@ -23,9 +23,8 @@ const Routes = () => (
 			<Route exact path='/signin' component={SignIn} />
 			<Route exact path='/jobs' component={SearchJobsMain} />
 			<Route exact path='/forgot' component={ForgotPassword} />
-			<Route exact path='/signup' component={SignUp} />			
-			{/* <Route exact path='/job/:id' component={ requireAuth(JobView) } /> */}
-			{/* <Route exact path='/job' component={ requireAuth(JobCreate) } /> */}
+			<Route exact path='/signup' component={SignUp} />						
+			{/* <Route exact path='/createjob' component={ requireAuth(JobCreate) } /> */}
 			<Route exact path='/job/:id' component={ JobView } />
 			<Route exact path='/job' component={ JobCreate } />
 			<Route exact path='/signout' component={requireAuth(SignOut)} />

@@ -12,6 +12,7 @@
     "ol-geocoder": "^3.2.0",
     "react": "^16.6.3",
     "react-bootstrap-typeahead": "^3.3.6",
+    "react-content-loader": "^4.3.4",
     "react-datepicker": "^2.10.1",
     "react-dom": "^16.6.3",
     "react-jsonschema-form": "^1.2.1",

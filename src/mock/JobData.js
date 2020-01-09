@@ -4,7 +4,7 @@ let jobs = [
         title: 'Urgent requirement: Science teacher', 
         type: 'Freelance', 
         location: 'Hyderabad',
-        organization: 'ABC Primary School',  
+        institution: 'ABC Primary School',  
         subject: 'Science',         
         salary: 30000, 
         description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -28,7 +28,7 @@ let jobs = [
         title: 'Urgent requirement: Hindi teacher', 
         type: 'Fulltime', 
         location: 'Secunderabad', 
-        organization: 'DFG Primary School',  
+        institution: 'DFG Primary School',  
         subject: 'Hindi',         
         salary: 30000, 
         description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -52,7 +52,7 @@ let jobs = [
         title: 'Urgent requirement: Maths teacher', 
         type: 'Parttime', 
         location: 'Warangal', 
-        organization: 'OPO Primary School',  
+        institution: 'OPO Primary School',  
         subject: 'Maths',         
         salary: 25000, 
         description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 

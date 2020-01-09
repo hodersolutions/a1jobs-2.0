@@ -16,10 +16,7 @@ class UserDashboard extends Component {
 		});
 	}
 	renderModuleList() {
-		if(this.props.common.loading) {
-			return (<Loading />);
-		} 
-		else if (this.props.module.status === GET_MODULES_SUCCESS){
+		if (this.props.module.status === GET_MODULES_SUCCESS){
 			return (
 				this.props.module.modules.map((moduleObj, index) => {
 					return (<ModuleCard key={ index } id={ moduleObj.id } module={ moduleObj.module } description={ moduleObj.description } author={ this.props.user.username } />);
