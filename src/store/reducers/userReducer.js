@@ -13,7 +13,7 @@ const initState = {
     status: '',
     users: [],
     logged_user: null,
-    token: null
+    access_token: null
 }
 
 const userReducer = (state = initState, action) => {
@@ -21,15 +21,14 @@ const userReducer = (state = initState, action) => {
         case SIGNOUT_USER:
             return {
                 ...state,
-                token: null,
-                username: null,
+                access_token: null,
                 logged_user: null,
                 status: SIGNOUT_USER,
             }       
         case AUTHENTICATE_USER_SUCCESS:
             return {
                 ...state,
-                token: action.response['access_token'],                
+                access_token: action.response['access_token'],                
                 response: action.response,
                 logged_user: action.response.user,
                 status: AUTHENTICATE_USER_SUCCESS

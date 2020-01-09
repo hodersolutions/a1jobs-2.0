@@ -30,6 +30,7 @@ class JobCreate extends Component {
 		eduexpdetails: '',
 		vacancy: '',
 		gender: '',
+		submitter: 0,
 		deadline: new Date()
 	}
 	
@@ -40,6 +41,10 @@ class JobCreate extends Component {
 				this.props.getStates();		
 			if (this.props.subjects.length === 0)
 				this.props.getSubjects();
+
+			this.setState({
+				submitter: this.props.user.id
+			})
 		}
 	}
 
