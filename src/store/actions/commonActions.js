@@ -6,10 +6,7 @@ import { GET_STATES_SUCCESS,
          GET_SUBJECTS_ERROR,
          SHOW_LOADING,
          HIDE_LOADING,
-         RESET_ERROR
        } from '../types/commonTypes';
-
-// import { resetState, resetDistrict, resetTown, resetSubject } from '../../components/common/Constants';
 
 export const showLoading = () => {
     return (dispatch) => {
@@ -20,12 +17,6 @@ export const showLoading = () => {
 export const hideLoading = () => {
     return (dispatch) => {
         dispatch({ type: HIDE_LOADING });
-    }
-}
-
-export const resetError = () => {
-    return (dispatch) => {
-        dispatch({ type: RESET_ERROR });
     }
 }
 

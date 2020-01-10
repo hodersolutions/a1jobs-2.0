@@ -1,24 +1,24 @@
 export const resetDistrict =  {
     id: 0,
-    name: "",
+    name: '',
     towns: [],
     institutions: []
 }
 
 export const resetState = {
     id: 0, 
-    state: "", 
+    state: '', 
     districts: []
 }
 
 export const resetTown = {
     id: 0, 
-    town: ""    
+    town: ''    
 }
 
 export const resetSubject = {
     id: 0, 
-    subject: ""    
+    subject: ''    
 }
 
 export const jobTypes = [

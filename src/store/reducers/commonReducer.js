@@ -1,6 +1,5 @@
 import { SHOW_LOADING,
-        HIDE_LOADING,
-        RESET_ERROR,
+        HIDE_LOADING,        
         GET_STATES_SUCCESS,
         GET_STATES_ERROR,
         GET_SUBJECTS_ERROR,
@@ -66,14 +65,6 @@ const commonReducer = (state = initState, action) => {
                 response: null,
                 status: null,
                 error: null          
-            }
-        case RESET_ERROR:
-            return {
-                ...state,
-                response: null,
-                loading: false,
-                status: RESET_ERROR,
-                error: null
             }
         default:
             return state;

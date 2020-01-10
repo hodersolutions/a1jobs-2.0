@@ -334,15 +334,21 @@ hr {
 	display: block !important;
 }
 
-.job-post-link {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;
+.job-post-link {	
+	padding: 5px 8px 5px 6px;
+	margin-top: 1px;
 }
 
 .welcome-dd {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;
+	margin: 5px 10px 10px 0px;
+	padding: 8px 15px 8px 0px;
 }
+
+.welcome-options { margin-top: -20px; }
+
+@media (min-width: 992px) {	.welcome-options { margin-left: 10px; } }
+
+@media (min-width: 1200px) { .welcome-options { margin-left: 10px; } }
 
 .welcome-text {
 	font-family: "Nunito", sans-serif !important;
@@ -514,6 +520,12 @@ hr {
 .padding-align {
 	padding-top: 8rem;
 	padding-bottom: 8rem;
+}
+
+/* Unable to retrieve Job */
+.no-job {
+	margin-top: 250px !important;
+	margin-bottom: 250px !important;
 }
 
 /* @media (min-width: 576px) { .body {background-color: red; } }

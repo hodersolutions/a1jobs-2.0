@@ -7,11 +7,11 @@ export function getQualifications() {
 		return qualifications;
 	}
 	qualifications.loaded = true;
-	fetch("http://localhost:5000/api/v1/qualifications/all")
+	fetch('http://localhost:5000/api/v1/qualifications/all')
 		.then((response) => {
 			let promise = response.json();
 			promise.then(result => {
-				if (result.status === "success") {
+				if (result.status === 'success') {
 					for (var i = 0; i < result.object.length; i++) {
 						qualifications.qualificationIDs.push(result.object[i].id);
 						qualifications.qualificationNames.push(result.object[i].qualification);

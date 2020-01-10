@@ -9,6 +9,7 @@ import { CREATE_USER_SUCCESS,
          UPDATE_USER_SUCCESS,
          AUTHENTICATE_USER_ERROR,
          AUTHENTICATE_USER_SUCCESS,
+         RESET_USER_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
 
 import { HIDE_LOADING, SHOW_LOADING } from '../types/commonTypes';
@@ -17,6 +18,12 @@ export const updateUser = (user) => {
     return (dispatch, getState) => { 
         dispatch({ type: HIDE_LOADING });        
         dispatch({ type: UPDATE_USER_SUCCESS, user });
+    }
+}
+
+export const resetUserError = () => {
+    return (dispatch) => {
+        dispatch({ type: RESET_USER_ERROR });
     }
 }
 
@@ -35,15 +42,12 @@ export const createUser = (user) => {
                 password: user.password
             }
         ).then( response => {
-                dispatch({ type: HIDE_LOADING }); 
-                if(response.data['status'] === 'success')
-                    dispatch({ type: CREATE_USER_SUCCESS, response: response.data });
-                else
-                    dispatch({ type: CREATE_USER_ERROR, error: response.response.response.data });                             
+                dispatch({ type: HIDE_LOADING });                 
+                dispatch({ type: CREATE_USER_SUCCESS, response: response.data });                
             }
         ).catch(error => {
-            dispatch({ type: HIDE_LOADING }); 
-            dispatch({ type: CREATE_USER_ERROR, error: error.response });
+            dispatch({ type: HIDE_LOADING });            
+            dispatch({ type: CREATE_USER_ERROR, error });
         });
     }
 }
@@ -84,21 +88,15 @@ export const authenticateUser = (user) => {
                 password: user.password
             }
         ).then( response => {
-            dispatch({ type: HIDE_LOADING }); 
-            if(response.data['status'] === 'success') {                
-                // Ask user if he/she is okay to save local cookies then save the access_token to localStorage by 
-                // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
-                dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });
-            }
-            else {
-                // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above
-                dispatch({ type: AUTHENTICATE_USER_ERROR, error: response.response.data });
-            }
+            dispatch({ type: HIDE_LOADING });             
+            // Ask user if he/she is okay to save local cookies then save the access_token to localStorage by 
+            // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
+            dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });            
         }
         ).catch(error => {
             dispatch({ type: HIDE_LOADING }); 
-            // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above
-            dispatch({ type: AUTHENTICATE_USER_ERROR, error: error.response });
+            // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above            
+            dispatch({ type: AUTHENTICATE_USER_ERROR, error });
         });        
     }
 }

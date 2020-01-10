@@ -6,6 +6,7 @@ import { CREATE_USER_SUCCESS,
          DELETE_USER_SUCCESS,          
          AUTHENTICATE_USER_SUCCESS, 
          AUTHENTICATE_USER_ERROR,
+         RESET_USER_ERROR,
          SIGNOUT_USER } from '../types/userTypes';
 
 const initState = {
@@ -17,6 +18,7 @@ const initState = {
 }
 
 const userReducer = (state = initState, action) => {
+    let response = null;
     switch(action.type) {
         case SIGNOUT_USER:
             return {
@@ -33,10 +35,14 @@ const userReducer = (state = initState, action) => {
                 logged_user: action.response.user,
                 status: AUTHENTICATE_USER_SUCCESS
             }
-        case AUTHENTICATE_USER_ERROR:
+        case AUTHENTICATE_USER_ERROR:            
+            if (action.error.response !== undefined)
+                response = action.error.response.data;
+            else
+                response = action.error;
             return {
                 ...state,
-                response: action.error,
+                response: response,
                 logged_user: null,
                 status: AUTHENTICATE_USER_ERROR
             }
@@ -47,12 +53,16 @@ const userReducer = (state = initState, action) => {
                 logged_user: null,
                 response: action.response
             }            
-        case CREATE_USER_ERROR:
+        case CREATE_USER_ERROR:            
+            if (action.error.response !== undefined)
+                response = action.error.response.data;
+            else
+                response = action.error;
             return {
                 ...state,
                 status: CREATE_USER_ERROR,
                 logged_user: null,
-                response: action.error
+                response: response
             }        
         case GET_USER_SUCCESS:
             return {                                
@@ -77,7 +87,15 @@ const userReducer = (state = initState, action) => {
             return {
                 ...state,
                 response: action.response
-            }            
+            } 
+            case RESET_USER_ERROR:
+                return {
+                    ...state,
+                    response: null,
+                    loading: false,
+                    status: RESET_USER_ERROR,
+                    error: null
+                }           
         default:
             return state;
     }
