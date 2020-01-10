@@ -528,6 +528,13 @@ hr {
 	margin-bottom: 250px !important;
 }
 
+/* Job loading */
+.job-loading {
+	margin-top: 70px !important;
+	margin-bottom: 50px !important;
+}
+
+
 /* @media (min-width: 576px) { .body {background-color: red; } }
 
 @media (min-width: 768px) {.body {background-color:green; } }

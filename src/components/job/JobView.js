@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import Loading from '../common/loading/Loading';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getJob } from '../../store/actions/jobActions';
 import { GET_JOB_SUCCESS, GET_JOB_ERROR } from '../../store/types/jobTypes';
 import { gender, jobTypes } from '../common/Constants';
+import FbLoader from '../common/loading/ContentLoaders';
 
 class JobView extends Component {	
     componentDidMount() {
@@ -146,8 +146,21 @@ class JobView extends Component {
 			);
 		}
 		else {			
-			// Beautify this view
-			return <Loading />;			
+			return (
+				<Fragment>					
+					<section className='site-section'>
+						<div className='container'>
+							<div className='row align-items-center justify-content-center'>
+                                <div className='col-md-12'>
+									<div className='job-loading'>
+										<FbLoader />
+									</div>
+                                </div>
+                            </div>
+						</div>
+					</section>
+				</Fragment>
+			)			
 		}		
     }
 }

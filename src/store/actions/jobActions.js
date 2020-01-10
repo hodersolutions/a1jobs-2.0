@@ -15,7 +15,7 @@ export const createJob = (job) => {
         axios.post(settings.A1JOBSAPI.url + 'api/v1/requisitions', job, {
             headers: {
                 'Content-Type': 'application/json',
-                'access_token': localStorage.getItem('access_token'),
+                'token': localStorage.getItem('token'),
                 'username': localStorage.getItem('username')
             },
             mode: 'cors',                
