@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Notifications, { notify } from 'react-notify-toast';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
-import { authenticateUser, resetUserError } from '../../store/actions/userActions';
+import { authenticateUser, resetUserStatus } from '../../store/actions/userActions';
 
 class SignIn extends Component {	
     constructor() {
@@ -49,7 +49,7 @@ class SignIn extends Component {
 		}
 		else if(this.props.user.status === 'AUTHENTICATE_USER_ERROR') {
 			notify.show(this.props.user.response.message, 'error', 5000, 'red');
-			this.props.resetUserError();
+			this.props.resetUserStatus();
 		}
 		return (
 			<div>
@@ -108,7 +108,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 		authenticateUser: (user) => dispatch(authenticateUser(user)),
-		resetUserError: () => dispatch(resetUserError())
+		resetUserStatus: () => dispatch(resetUserStatus())
     }
 }
 

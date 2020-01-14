@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Notifications, { notify } from 'react-notify-toast';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
-import { createUser, resetUserError } from '../../store/actions/userActions';
+import { createUser, resetUserStatus } from '../../store/actions/userActions';
 import { CREATE_USER_SUCCESS, CREATE_USER_ERROR } from '../../store/types/userTypes';
 
 class SignUp extends Component {    
@@ -71,17 +71,18 @@ class SignUp extends Component {
             verticalAlign: 'middle',
             marginLeft: '10px'
         }
-        if (this.props.user.status === CREATE_USER_SUCCESS)
-            return (<Redirect to='/signin' />);
+        if (this.props.user.status === CREATE_USER_SUCCESS) {
+            notify.show(this.props.user.response.message + ', please Sign In.', 'success', 5000, 'green');
+            this.props.resetUserStatus();
+        }
         else if(this.props.user.status === CREATE_USER_ERROR) {
             notify.show(this.props.user.response.message, 'error', 5000, 'red');
-            this.props.resetUserError();
+            this.props.resetUserStatus();
         }        
         return (
             <div>
-                <Notifications options={{ options }}/>                
+                <Notifications options={{ options }}/>
                 <div className='container' id='signUpContainer'>
-                    <Notifications options={{ options }}/>
                     <div className='wrap-login-style'>
                         <form method='POST' onSubmit={this.handleSubmit} className='form-signin'>
                             <fieldset className='form-group'>                            
@@ -209,7 +210,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         createUser: (user) => dispatch(createUser(user)),
-        resetUserError: () => dispatch(resetUserError())
+        resetUserStatus: () => dispatch(resetUserStatus())
     }
 }
 

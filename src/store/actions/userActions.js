@@ -9,7 +9,7 @@ import { CREATE_USER_SUCCESS,
          UPDATE_USER_SUCCESS,
          AUTHENTICATE_USER_ERROR,
          AUTHENTICATE_USER_SUCCESS,
-         RESET_USER_ERROR,
+         RESET_USER_STATUS,
          SIGNOUT_USER } from '../types/userTypes';
 
 import { HIDE_LOADING, SHOW_LOADING } from '../types/commonTypes';
@@ -21,9 +21,9 @@ export const updateUser = (user) => {
     }
 }
 
-export const resetUserError = () => {
+export const resetUserStatus = () => {
     return (dispatch) => {
-        dispatch({ type: RESET_USER_ERROR });
+        dispatch({ type: RESET_USER_STATUS });
     }
 }
 

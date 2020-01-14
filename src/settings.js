@@ -4,7 +4,7 @@ export const settings = {
     },
     A1JOBSAPI: {
         url: 'http://localhost:5000/',
-        username: '',
+        mobile: '',
         password: '',
         domain: ''
     }    
