@@ -7,7 +7,7 @@ class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.user.current_user.username,
+            mobile: this.props.user.current_user.mobile,
             email: this.props.user.current_user.email,
             password: '',
             confirm_password: ''
@@ -29,7 +29,7 @@ class UserProfile extends Component {
     handleSubmit = (e) => {
         e.preventDefault();        
         this.props.createUser({
-            username: this.state.username,
+            mobile: this.state.mobile,
             email: this.state.email,
             password: this.state.password
         });
@@ -54,9 +54,9 @@ class UserProfile extends Component {
                             />
                             <h1 className='border-bottom mb-4 h3 mb-3 font-weight-normal'>Update Profile</h1>
                             <div className='form-group'>
-                                <label className='form-control-label' htmlFor='username'>Username</label>
+                                <label className='form-control-label' htmlFor='mobile'>Username</label>
                                 <br/>                                
-                                <label className='form-control-label'><b>{this.state.username}</b></label>
+                                <label className='form-control-label'><b>{this.state.mobile}</b></label>
                             </div>
                             <div className='form-group'>
                                 <label className='form-control-label' htmlFor='email'>Email</label>

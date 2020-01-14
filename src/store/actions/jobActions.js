@@ -5,7 +5,10 @@ import { CREATE_JOB_SUCCESS,
          GET_JOBS_SUCCESS, 
          GET_JOBS_ERROR,
          GET_JOB_ERROR,
-         GET_JOB_SUCCESS } from '../types/jobTypes';
+         APPLY_JOB_SUCCESS,
+         APPLY_JOB_ERROR,
+         GET_JOB_SUCCESS,
+         RESET_JOB_STATUS } from '../types/jobTypes';
 
 import { SHOW_LOADING, HIDE_LOADING } from '../types/commonTypes';
 
@@ -15,8 +18,8 @@ export const createJob = (job) => {
         axios.post(settings.A1JOBSAPI.url + 'api/v1/requisitions', job, {
             headers: {
                 'Content-Type': 'application/json',
-                'token': localStorage.getItem('token'),
-                'username': localStorage.getItem('username')
+                'access_token': localStorage.getItem('access_token'),
+                'mobile': localStorage.getItem('mobile')
             },
             mode: 'cors',                
             parent_job_id: (job.parent_job_id === '')? null : job.parent_job_id,
@@ -30,6 +33,33 @@ export const createJob = (job) => {
         }).catch(error => {
             dispatch({ type: HIDE_LOADING });			
             dispatch({ type: CREATE_JOB_ERROR, error });
+        });
+    }
+}
+
+export const resetJobStatus = () => {
+    return (dispatch) => {
+        dispatch({ type: RESET_JOB_STATUS });
+    }
+}
+
+export const applyJob = (jobApplication) => {    
+    return (dispatch, getState) => {
+        dispatch({ type: SHOW_LOADING }); 
+        axios.post(settings.A1JOBSAPI.url + 'api/v1/jobapplications', jobApplication, {
+            headers: {
+                'Content-Type': 'application/json',
+                'access_token': localStorage.getItem('access_token'),
+                'mobile': localStorage.getItem('mobile')
+            },
+            mode: 'cors'            
+        }
+        ).then( function(response) {
+            dispatch({ type: HIDE_LOADING });
+            dispatch({ type: APPLY_JOB_SUCCESS, response: response.data });
+        }).catch(error => {
+            dispatch({ type: HIDE_LOADING });			
+            dispatch({ type: APPLY_JOB_ERROR, error });
         });
     }
 }
@@ -60,7 +90,7 @@ export const getJobs = (params) => {
 
 export const getJob = (params) => {
     return (dispatch, getState) => {
-        dispatch({ type: SHOW_LOADING });        
+        dispatch({ type: SHOW_LOADING });
         axios.get(settings.A1JOBSAPI.url + 'api/v1/requisition/' + params.id, {
             headers: {
                 'Content-Type': 'application/json'
