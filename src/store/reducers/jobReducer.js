@@ -63,6 +63,7 @@ const jobReducer = (state = initState, action) => {
                 response: action.error
             }
         case APPLY_JOB_SUCCESS:
+            state.current_job.isapplied = true;
             return {
                 ...state,
                 status: APPLY_JOB_SUCCESS,
