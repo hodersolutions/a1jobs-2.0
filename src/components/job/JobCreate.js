@@ -259,7 +259,7 @@ class JobCreate extends Component {
 											placeholder='Education and Experience details' value={this.state.eduexpdetails} onChange={this.handleChange}></textarea>
 									</div>
 									<div className='col-lg-6 col-xs-12 form-group post-job-button'>
-										<span className='post-job-span'><input type='submit' value='Post Job' className='btn btn-post btn-md text-white job-post-button' /></span>            						
+										<span className='post-job-span'><input type='submit' value='Post Job' className='btn btn-post-page btn-md text-white job-post-button' /></span>            						
 									</div>
 								</div>
 							</div>							                

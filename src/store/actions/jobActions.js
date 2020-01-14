@@ -91,11 +91,11 @@ export const getJobs = (params) => {
 export const getJob = (params) => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });
-        axios.get(settings.A1JOBSAPI.url + 'api/v1/requisition/' + params.id, {
+        axios.get(settings.A1JOBSAPI.url + 'api/v1/requisition?id=' + params.id + (params.userid !== null ? '&userid=' + params.userid : ''), {
             headers: {
                 'Content-Type': 'application/json'
             },
-            mode: 'cors'    
+            mode: 'cors'
         }).then( response => {
             dispatch({ type: HIDE_LOADING }); 
             dispatch({ type: GET_JOB_SUCCESS, response });

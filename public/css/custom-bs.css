@@ -2743,6 +2743,24 @@ fieldset:disabled a.btn {
 	pointer-events: none;
 }
 
+.btn-post-page {
+	color: #fff;
+	background-color: #DC7633;
+	border-color: #DC7633
+}
+
+.btn-post-page:hover {
+	color: #fff;
+	background-color: #D35400;
+	border-color: #D35400;
+}
+
+.btn-post-page:focus,
+.btn-post-page.focus {
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(211, 84, 0, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(211, 84, 0, 0.5);
+}
+
 .btn-post {
 	color: #DC7633;	
 	border-color: #DC7633

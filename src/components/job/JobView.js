@@ -22,7 +22,7 @@ class JobView extends Component {
 
     componentDidMount() {
 		window.scrollTo(0, 0);		
-		this.props.getJob({id: this.props.match.params.id});
+		this.props.getJob({id: this.props.match.params.id, userid: (this.props.user.logged_user !== null ? this.props.user.logged_user.id : null)});
 	}
 	
 	componentWillUnmount() {
@@ -104,7 +104,14 @@ class JobView extends Component {
 									Job</Link>
 								</div>
 								<div className='col-6'>
-									<input type='button' value='Apply Now' className='btn btn-block btn-primary btn-md' onClick={this.handleApply}/>
+									{
+										this.props.job.current_job.isapplied ?
+										<span className='application-sent'>
+											Application Sent
+										</span>
+										:
+										<input type='button' value='Apply Now' className='btn btn-block btn-primary btn-md' onClick={this.handleApply}/>
+									}									
 								</div>
 								</div>
 							</div>
