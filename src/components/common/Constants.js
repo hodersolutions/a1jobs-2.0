@@ -21,6 +21,11 @@ export const resetSubject = {
     subject: ''    
 }
 
+export const resetQualification = {
+    id: 0, 
+    qualification: ''
+}
+
 export const jobTypes = [
     {
         id: 0, name:''

@@ -39,7 +39,8 @@ export const createUser = (user) => {
                 mode: 'cors',
                 mobile: user.mobile,
                 email: user.email,
-                password: user.password
+                password: user.password,
+                is_recruiter: user.is_recruiter
             }
         ).then( response => {
                 dispatch({ type: HIDE_LOADING });                 

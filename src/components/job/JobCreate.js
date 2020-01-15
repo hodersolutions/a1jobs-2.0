@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createJob } from '../../store/actions/jobActions';
-import { getStates, getSubjects } from '../../store/actions/commonActions';
+import { getStates, getSubjects, getQualifications } from '../../store/actions/commonActions';
 import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import Notifications, { notify } from 'react-notify-toast';
 import Loading from '../common/loading/Loading';
 import {CREATE_JOB_SUCCESS, CREATE_JOB_ERROR} from '../../store/types/jobTypes';
-import { gender, jobTypes, resetDistrict, resetState, resetTown, resetSubject, resetJob } from '../common/Constants';
+import { gender, jobTypes, resetDistrict, resetState, resetTown, resetSubject, resetJob, resetQualification } from '../common/Constants';
 
 class JobCreate extends Component {
     state = {
@@ -31,7 +31,8 @@ class JobCreate extends Component {
 		vacancy: '',
 		gender: '',
 		submitter: 0,
-		deadline: new Date()
+		deadline: new Date(),
+		qualification: 0
 	}
 	
 	componentDidMount() {
@@ -41,6 +42,8 @@ class JobCreate extends Component {
 				this.props.getStates();		
 			if (this.props.subjects.length === 0)
 				this.props.getSubjects();
+			if (this.props.qualifications.length === 0)
+				this.props.getQualifications();	
 
 			this.setState({
 				submitter: this.props.user.id
@@ -174,9 +177,22 @@ class JobCreate extends Component {
 											}
 										</select>
 									</div>			                    
-									<div className='col-lg-9 col-xs-12 form-group'>
+									<div className='col-lg-8 col-xs-12 form-group'>
 										<label className='text-black' htmlFor='institution'>Institution / School</label>
 										<input type='text' id='institution' name='institution' className='form-control' value={this.state.institution} onChange={this.handleChange}/>
+									</div>
+									<div className="col-lg-3 col-xs-12 form-group">
+										<label className="text-black" htmlFor="lname">Qualification</label>
+											<select  className="form-control" id="qualification" name="qualification" value={ this.state.qualification } onChange={ this.handleChange }>
+												{
+													this.props.qualifications.map((qualificationName, key) => {
+														let options = [<option key={ key + 1 } value={ qualificationName.id }>{ qualificationName.qualification }</option>];
+														if(key === 0)
+															options.unshift(<option key={ key } value={ resetQualification.id }>{ resetQualification.qualification }</option>);													
+														return options;
+													})
+												}												
+											</select>
 									</div>
 									<div className='col-lg-4 col-xs-12 form-group'>
 										<label className='text-black' htmlFor='subject'>Subject</label>
@@ -278,6 +294,7 @@ const mapStateToProps = (state) => {
 		user: state.user.logged_user,
 		locations: state.common.states,
 		subjects: state.common.subjects,
+		qualifications: state.common.qualifications,
 		loading: state.common.loading		
 	}
 }
@@ -286,7 +303,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
 		createJob: (jobObj) => dispatch(createJob(jobObj)),
 		getStates: () => dispatch(getStates()),
-		getSubjects: () => dispatch(getSubjects())
+		getSubjects: () => dispatch(getSubjects()),
+		getQualifications: () => dispatch(getQualifications())
     }
 }
 

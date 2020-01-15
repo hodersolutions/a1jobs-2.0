@@ -6,8 +6,13 @@ import { connect } from 'react-redux';
 
 const Header = (props) => {
 	let userOptions;
+	let postJob = <li data-toggle='collapse' data-target='.navbar-collapse.show'>
+					<Link to='/job' className='nav-item btn btn-post border-width-2 d-lg-inline-block job-post-link'><span className='mr-2 icon-near_me'></span>Post a Job</Link>
+				</li>;
 	if (props.user.logged_user !== null) {
 		userOptions = <SignedInLinks />
+		if(!props.user.logged_user.is_recruiter)
+			postJob = ''; 		
 	}
 	else {
 		userOptions = <SignedOutLinks />
@@ -40,9 +45,7 @@ const Header = (props) => {
 					</li>					
 				</ul>
 				<ul className='navbar-nav'>
-					<li data-toggle='collapse' data-target='.navbar-collapse.show'>
-						<Link to='/job' className='nav-item btn btn-post border-width-2 d-lg-inline-block job-post-link'><span className='mr-2 icon-near_me'></span>Post a Job</Link>
-					</li>
+					{ postJob }					
 					{ userOptions }
 				</ul>									
 			</div>			

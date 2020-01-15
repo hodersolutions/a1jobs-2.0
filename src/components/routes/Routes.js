@@ -12,6 +12,7 @@ import JobView from '../job/JobView';
 import JobCreate from '../job/JobCreate';
 import SignOut from '../auth/SignOut';
 import ForgotPassword from '../auth/ForgotPassword';
+import UserProfile from '../auth/UserProfile';
 
 import Loading from '../common/loading/Loading';
 
@@ -28,7 +29,8 @@ const Routes = () => (
 			<Route exact path='/job/:id' component={ JobView } />
 			<Route exact path='/job' component={ JobCreate } />
 			<Route exact path='/signout' component={requireAuth(SignOut)} />
-			<Route exact path='/loading' component={ Loading } />		
+			<Route exact path='/loading' component={ Loading } />	
+			<Route exact path='/profile' component={ UserProfile } />	
 			<Route path='*' component={ NotFound } />
 		</Switch>
 	</div>

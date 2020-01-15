@@ -167,7 +167,7 @@ class SignUp extends Component {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor='confirm_password'>Are you a Recruiter</label>
+                                    <label htmlFor='is_recruiter'>Are you a Recruiter</label>
                                     <input
                                         style={check}                                        
                                         id='is_recruiter'

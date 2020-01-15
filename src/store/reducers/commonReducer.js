@@ -3,7 +3,9 @@ import { SHOW_LOADING,
         GET_STATES_SUCCESS,
         GET_STATES_ERROR,
         GET_SUBJECTS_ERROR,
-        GET_SUBJECTS_SUCCESS
+        GET_SUBJECTS_SUCCESS,
+        GET_QUALIFICATIONS_ERROR,
+        GET_QUALIFICATIONS_SUCCESS
     } from '../types/commonTypes';
 
 const initState = {
@@ -11,6 +13,7 @@ const initState = {
     status: null,
     states: [],
     subjects:[],
+    qualifications: [],
     error: null,
     loading: false    
 }
@@ -48,6 +51,23 @@ const commonReducer = (state = initState, action) => {
                 response: null,
                 status: GET_SUBJECTS_ERROR,
                 subjects: [],
+                error: action.error
+            }
+        case GET_QUALIFICATIONS_SUCCESS:    
+            return {
+                ...state,
+                loading: false,
+                response: action.response,
+                status: GET_QUALIFICATIONS_SUCCESS,
+                qualifications: action.response.object
+            }          
+        case GET_QUALIFICATIONS_ERROR:    
+            return {
+                ...state,
+                loading: false,
+                response: null,
+                status: GET_QUALIFICATIONS_ERROR,
+                qualifications: [],
                 error: action.error
             }
         case SHOW_LOADING:

@@ -1,121 +1,137 @@
 import React, { Component } from 'react';
 import Notifications from 'react-notify-toast';
 import { connect } from 'react-redux';
-import { createUser } from '../../store/actions/userActions';
+import { getQualifications } from '../../store/actions/commonActions';
 
 class UserProfile extends Component {    
-    constructor(props) {
-        super(props);
-        this.state = {
-            mobile: this.props.user.current_user.mobile,
-            email: this.props.user.current_user.email,
-            password: '',
-            confirm_password: ''
-        };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    state = {
+        title:'',
+        qualification: '', 
+        experience:'',
+        location:'',
+        ctc:'',
+        resume:'',
+        experiences:[
+			{
+				Institution:'',
+				exp:''
+			}
+		],
+        firstname:'',
+        lastname:''
+	}
 
     componentDidMount() {
 		window.scrollTo(0, 0);
     }
-    
+        
     handleChange = (e) => {
-        this.setState({
-          [e.target.name]: e.target.value
-        });
+        if (['Institution', 'exp'].includes(e.target.className) ) {
+			let experiences = [...this.state.experiences]
+			experiences[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase()
+			this.setState({ experiences }, () => console.log(this.state.experiences))
+        } else {
+			this.setState({ [e.target.name]: e.target.value.toUpperCase() })
+        }
     }
     
     handleSubmit = (e) => {
         e.preventDefault();        
-        this.props.createUser({
-            mobile: this.state.mobile,
-            email: this.state.email,
-            password: this.state.password
-        });
     }
+
+    addExperience = (e) => {
+        this.setState((prevState) => ({
+          experiences: [...prevState.experiences, {Institution:'', exp:''}],
+        }));
+      }
 
     render() {
         const options = {
 			zIndex: 200, top: '50px'
 		}
         return (
-            <div className='container' id='signUpContainer'>
-                <Notifications options={{ options }}/>
-                <div className='wrap-login-style'>
-                    <form method='POST' onSubmit={this.handleSubmit} className='form-signin'>
-                        <fieldset className='form-group'>
-                            <img
-                                className='mb-3'
-                                src={require('../../static/images/update.png')}
-                                alt='Sign Up'
-                                width='60'
-                                height='60'
-                            />
-                            <h1 className='border-bottom mb-4 h3 mb-3 font-weight-normal'>Update Profile</h1>
-                            <div className='form-group'>
-                                <label className='form-control-label' htmlFor='mobile'>Username</label>
-                                <br/>                                
-                                <label className='form-control-label'><b>{this.state.mobile}</b></label>
-                            </div>
-                            <div className='form-group'>
-                                <label className='form-control-label' htmlFor='email'>Email</label>
-                                <br/>                                
-                                <label className='form-control-label'><b>{this.state.email}</b></label>                                
-                            </div>
-                            <div className='form-group'>
-                                <label className='form-control-label' htmlFor='password'>Password</label>
-                                <input
-                                    className='form-control form-control-lg'
-                                    id='password'
-                                    name='password'
-                                    required=''
-                                    type='password'
-                                    autoComplete='new-password'
-                                    onChange={this.handleChange}
-                                    value={this.state.password}
-                                    />
-                            </div>
-                            <div className='form-group'>
-                                <label className='form-control-label' htmlFor='confirm_password'>Confirm Password</label>
-                                <input
-                                    className='form-control form-control-lg'
-                                    id='confirm_password'
-                                    name='confirm_password'
-                                    required=''
-                                    type='password'
-                                    autoComplete='new-password'
-                                    onChange={this.handleChange}
-                                    value={this.state.confirm_password}
-                                />
-                            </div>
-                        </fieldset>
-                        <div className='form-group'>
-                            <input
-                                className='btn btn-md btn-primary btn-block'
-                                id='submit'
-                                name='submit'
-                                type='submit'
-                                value='Update Profile'
-                            />
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <div>
+				<div className='user-profile-section' id='next-section'>
+					<Notifications options={{ options }}/>
+					<form action='/userprofile' onSubmit={this.handleSubmit} method='POST'>
+						<div className='container'>
+							<div className='row align-items-center justify-content-center underline'>
+								<div className='col-md-12'>
+									<h1 className='font-weight-bold'>Update User Profile</h1>                                    
+								</div>
+							</div>
+							<div className='row'>						
+								<div className='col-12 form-group'>
+									<label className='text-black' htmlFor='title'>Job title</label>
+									<input type='text' id='title' name='title' className='form-control' value={this.state.title} onChange={this.handleChange}/>
+								</div>
+								<div className='col-lg-3 col-xs-12 form-group'>
+									<label className='text-black' htmlFor='lname'>Qualification</label>
+										<select  className='form-control' id='qualification' name='qualification' value={ this.state.qualification } onChange={ this.handleChange }>										
+											{
+												this.props.qualifications.map((qualificationName, key) => { 
+													return <option key={ key }  value={ qualificationName.id }>{ qualificationName.qualification }</option>; 
+												})
+											}
+										</select>
+								</div>
+								<div className='col-lg-2 col-xs-12 form-group'>
+									<label className='text-black' htmlFor='salary'>CTC</label>
+									<input type='text' id='salary' name='salary' className='form-control' value={this.state.salary} onChange={this.handleChange}/>
+								</div>
+								<div className='col-lg-8 col-xs-12 form-group'>
+									<button onClick={this.addExperience}>Add Experience</button>
+									{
+										this.state.experiences.map((val,idx) => {
+											// let InstitutionId = 'Institution-${idx}', expid = 'exp-${idx}'
+											return (
+													<div className='col-lg-4 col-xs-12 form-group' key={idx}>
+														{/* <label className='text-black' htmlFor={InstitutionId}> Institution </label>
+														<input
+															type='text'
+															name={InstitutionId}
+															data-idx={idx}
+															id={InstitutionId}
+															className='form-control'
+															value={this.state.experiences[idx].Institution}
+														/>
+														<label className='text-black' htmlFor={expid}> Exp </label>
+														<input
+															type='text'
+															name={expid}
+															data-idx={idx}
+															id={expid}
+															className='form-control'
+															value={this.state.experiences[idx].exp}
+														/> */}
+													</div>
+											)
+										})
+									}
+								</div>
+								<div className='col-lg-6 col-xs-12 form-group post-job-button'>
+									<span className='post-job-span'><input type='submit' value='Submit' className='btn btn-post btn-md text-white job-post-button' /></span>            						
+								</div>
+							</div>
+						</div>							                
+					</form>						
+				</div>				
+			</div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-	return {    	
-        user: state.user
+	return {
+		qualifications: state.common.qualifications
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser: (user) => dispatch(createUser(user))
+		getQualifications: () => dispatch(getQualifications())
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
