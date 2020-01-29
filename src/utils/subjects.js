@@ -10,13 +10,13 @@ module.exports = {
   		return subjects;
   	}
     subjects.loaded = true;
-  	fetch("http://localhost:5100/api/v1/subjects/all")
+  	fetch('http://localhost:5100/api/v1/subjects/all')
   	.then((response) => 
         {
         let promise = response.json();
         promise.then(
         	result => {
-          	if(result.status === "success"){
+          	if(result.status === 'success'){
             		for(var i=0; i<result.object.length; i++){
             			subjects.subjectIDs.push(result.object[i].id);
             			subjects.subjectNames.push(result.object[i].subject);

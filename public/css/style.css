@@ -158,27 +158,36 @@ h4 {
 	color: #000;
 }
 
-.site-section {
-	padding-top: 10rem;
-	/*7rem*/
-	padding-bottom: 5rem; /*7rem*/
+.nav-content {
+	padding-top: 7rem;
 	position: relative;
 	z-index: 2;
 }
 
 @media (max-width: 991.98px) {
-	.site-section {
-		padding-top: 10rem;
+	.nav-content {
+		padding-top: 6rem;
+	}
+}
+
+.site-content {
+	padding-top: 4rem;
+	padding-bottom: 3rem;
+	position: relative;
+	z-index: 2;
+}
+
+@media (max-width: 991.98px) {
+	.site-content {
+		padding-top: 3rem;
 		padding-bottom: 3rem;
 	}
 }
 
 .job-create-section {
-	padding-top: 10rem;
-	padding-bottom: 7rem;
+	padding-bottom: 3rem;
 	position: relative;
-	z-index: 2;
-	/* background-color: #fafafa;  */
+	z-index: 2;	
 }
 
 @media (max-width: 991.98px) {
@@ -194,7 +203,6 @@ h4 {
 
 .home-section {
 	position: relative;
-	padding-top: 7rem;
 }
 
 .home-section>.container {
@@ -778,9 +786,7 @@ h4 {
 .section-hero.inner-page>.container>.row {
 	height: auto;
 	min-height: auto;
-	padding-top: 2em;
-	/* 6em; */
-	/* padding-bottom: 0.5em; /* 3em; */
+	padding-top: 2em;	
 }
 
 .section-hero.overlay,

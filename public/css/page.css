@@ -135,76 +135,71 @@ a .nav-link .header-link :hover {
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
-  }
-  
-  #signUpContainer {
-	text-align: center;
-	padding-top: 7rem;
-  }
-  
-  #signInContainer {
-	text-align: center;
-	padding-bottom: 8rem;
-	min-height: 70vh;
-	padding-top: 10rem;
-  }
-  
-  .form-signin .checkbox {
+}
+
+.auth-container {
+	text-align: center !important;	
+}
+
+.form-signin .checkbox {
 	font-weight: 400;
-  }
-  .form-signin .form-control {
+}
+
+.form-signin .form-control {
 	position: relative;
 	box-sizing: border-box;
 	text-align: center !important;
 	height: auto;
 	padding: 10px;
 	font-size: 16px;
-  }
-  .wrap-login-style {
+}
+
+.wrap-login-style {
 	width: 350px;
 	display: inline-block;
 	border-radius: 10px;
 	overflow: hidden;
 	justify-content: center;
-	margin-top: 50px;
-	margin-bottom: 50px;
 	text-align: center;
 	box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
 	-o-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
 	-ms-box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.1);
-  }
-  .form-signin .form-control:focus {
+}
+
+.form-signin .form-control:focus {
 	z-index: 2;
 	border-color: #009900;
-	box-shadow: 1px 1px 1px rgba(40, 167, 69, 0.8) inset,
-	  1px 1px 1px rgba(40, 167, 69, 0.8);
-  }
-  .form-signin input[type="email"] {
-	margin-bottom: -1px;  
-  }
-  .form-signin input[type="password"] {
-	margin-bottom: 10px;  
-  }
-  #notaMember {
+	box-shadow: 1px 1px 1px rgba(40, 167, 69, 0.8) inset, 1px 1px 1px rgba(40, 167, 69, 0.8);
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+}
+
+#notaMember {
 	margin-top: 10px;
-  }
-  
-  #signIn {
+}
+
+#signIn {
 	text-decoration: none !important;
 	color: #3498db !important;
-  }
-  
-  #signUp {
-	  text-decoration: none !important;
-	  color: #3498db !important;
-  }
-  
-  #forgot {
+}
+
+#signUp {
 	text-decoration: none !important;
 	color: #3498db !important;
-  }
+}
+
+#forgot {
+	text-decoration: none !important;
+	color: #3498db !important;
+}
 
 
 /* A1 Card */
@@ -258,15 +253,6 @@ hr {
 
 /* Search Jobs */
 
-.search-jobs {
-	position: relative;
-	padding-top: 10rem;
-	padding-right: 30px;
-	padding-bottom: 50px;
-	padding-left: 30px;
-	/* background-color: #fafafa; */
-}
-
 .search-jobs .overlay:before,
 .section-hero.overlay-2:before {
 	z-index: 1;
@@ -311,7 +297,7 @@ hr {
 	background: #141E30;
 	background: -webkit-linear-gradient(to bottom, #243B55, #141E30);
 	background: linear-gradient(to bottom, #243B55, #141E30);
-	border-radius: 0px 0px 15px 15px;
+	border-radius: 0px 0px 10px 10px;
 	-webkit-box-shadow: 0 8px 6px -6px #141E30;
 	-moz-box-shadow: 0 8px 6px -6px #141E30;
 	box-shadow: 0 8px 6px -6px #141E30;
@@ -335,13 +321,36 @@ hr {
 }
 
 .job-post-link {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;
+	margin: 6px 10px 15px 0px;
+	padding: 8px 15px 6px 10px;
 }
 
 .welcome-dd {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;
+	margin: 5px 10px 10px 0px;
+	padding: 8px 15px 8px 0px;
+	background-color: transparent;
+}
+
+.welcome-dd::before {
+	margin: 5px 10px 10px 0px;
+	padding: 8px 15px 8px 0px;
+	background-color: transparent;
+}
+
+.welcome-options {
+	margin-top: -15px;
+}
+
+@media (min-width: 992px) {
+	.welcome-options {
+		margin-left: 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.welcome-options {
+		margin-left: 10px;
+	}
 }
 
 .welcome-text {
@@ -349,13 +358,13 @@ hr {
 }
 
 .join-us-link {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;
+	margin: 6px 10px 15px 0px;
+	padding: 8px 15px 6px 10px;
 }
 
 .sign-in-link {
-	margin: 5px 10px 15px 0px;
-	padding: 8px 15px 8px 10px;	
+	margin: 6px 10px 15px 0px;
+	padding: 8px 15px 6px 10px;
 }
 
 .job-post-button {
@@ -371,6 +380,21 @@ hr {
 .post-job-span:before {
 	font-family: FontAwesome;
 	content: "\f124";
+	color: white;
+	font-size: 15px;
+	position: absolute;
+	left: 15px;
+	top: -1px;
+	pointer-events: none;
+}
+
+.save-span {
+	position: relative;
+}
+
+.save-span:before {
+	font-family: FontAwesome;
+	content: "\f02e";
 	color: white;
 	font-size: 15px;
 	position: absolute;
@@ -402,12 +426,17 @@ hr {
 
 .app-name {
 	color: #fff;
-	display: inline-block;
+	/* display: inline-block; */
+	display: none;
 	vertical-align: middle;
 	font-weight: 500;
 	font-size: 30px;
 	margin: 5px 30px 0px 10px;
 	letter-spacing: 5px;
+}
+
+.save-job {
+	display: none;
 }
 
 .square-primary {
@@ -450,13 +479,15 @@ hr {
 	font-weight: 400;
 	margin-right: 5px;
 	margin-left: 5px;
+	font-weight: 600;
 }
 
 .dropdown-text:hover {
-	color: #3498db;
+	color: #009900;
 	font-weight: 400;
 	margin-right: 5px;
 	margin-left: 5px;
+	font-weight: 600;
 }
 
 .icon-text {
@@ -474,10 +505,42 @@ hr {
 }
 
 .navbar {
-	padding: 25px 30px 25px 30px;
+	padding: 30px 30px 30px 30px;
 	min-height: 10vh;
-	z-index: 100;	
+	z-index: 100;
 }
+
+
+/* This part is for smaller devices not showing full collapse */
+
+@media (min-width: 576px) {
+	.navbar {
+		overflow: auto;
+		max-height: 100vh;
+	}
+}
+
+@media (min-width: 768px) {
+	.navbar {
+		overflow: auto;
+		max-height: 100vh;
+	}
+}
+
+@media (min-width: 992px) {
+	.navbar {
+		overflow: visible;
+	}
+}
+
+@media (min-width: 1200px) {
+	.navbar {
+		overflow: visible;
+	}
+}
+
+
+/* This part is for smaller devices not showing full collapse */
 
 .border-button {
 	border: 1px solid #b2babb;
@@ -502,6 +565,7 @@ hr {
 
 .main-header-ul {
 	margin-left: auto;
+	margin-bottom: 7px;
 }
 
 .underline {
@@ -510,11 +574,65 @@ hr {
 	text-align: center;
 }
 
+.un-underline {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+
 /* Loading */
+
 .padding-align {
 	padding-top: 8rem;
 	padding-bottom: 8rem;
 }
+
+
+/* Unable to retrieve Job */
+
+.no-data {
+	margin-top: 250px !important;
+	margin-bottom: 250px !important;
+	text-align: center;
+}
+
+.no-data-home {
+	width: 60px;
+	height: 60px;
+}
+
+
+/* Job loading */
+
+.job-loading {
+	margin-top: 20px !important;
+	margin-bottom: 10px !important;
+}
+
+
+/* Application sent */
+
+.application-sent {
+	color: white;
+	font-weight: bold;
+	padding: 10px 20px 10px 20px;
+	border: 1px solid;
+	border-radius: 30px;
+	border-color: rgb(0, 153, 0);
+	background-color: rgb(0, 153, 0);
+	font-size: 15px;
+}
+
+
+/*Display*/
+
+.display-inline {
+	display: inline-block;
+	margin-left: 10px;
+	vertical-align: top;
+	padding-top: 2px;
+}
+
 
 /* @media (min-width: 576px) { .body {background-color: red; } }
 

@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { notify } from 'react-notify-toast';
 import JobList from '../job/JobList';
-import SearchJobs from './SearchJobs';
 import JobAPI from '../../api/JobAPI';
 import ListLoader from '../common/loading/ListLoader';
 
-class SearchJobsMain extends Component {
+class JobPostings extends Component {
     constructor() {
         super();
         this.api = new JobAPI();
@@ -18,7 +17,7 @@ class SearchJobsMain extends Component {
     async componentDidMount() {
         window.scrollTo(0, 0);
         let params = {userid: -1};
-        if(this.props.user.logged_user !== null && this.props.user.is_recruiter)
+        if(this.props.user.logged_user !== null)
             params.userid = this.props.user.logged_user.id;
         
         await this.api.getJobs(params, {mode: 'cors'})
@@ -39,21 +38,16 @@ class SearchJobsMain extends Component {
         });
     }
     
-	render() {		
+	render() {
 		return (
             <Fragment>
                 <div className='search-jobs site-content'>
                     <div className='container'>
                         <div className='row align-items-center justify-content-center underline'>
                             <div className='col-md-12'>
-                                <h1 className='font-weight-bold'>Search a Job</h1>                                    
+                                <h1 className='font-weight-bold'>My Posts</h1>                                    
                             </div>
-                        </div>
-                        <div className='row align-items-center justify-content-center'>
-                            <div className='col-md-12'>
-                                <SearchJobs />
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                     {
 					    (this.state.loading) ?
@@ -61,9 +55,9 @@ class SearchJobsMain extends Component {
                             <ListLoader />
                         )
 					    :
-					    (                                                        
+					    (                            
                             (this.state.jobs.length) ?                                  
-                            <JobList list={this.state.jobs} />
+                                <JobList list={this.state.jobs} />
                             :
                             <section key='3'>
                                 <div className='container'>
@@ -75,7 +69,7 @@ class SearchJobsMain extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </section>                        
+                            </section>
                         )
                     }
                 </div>
@@ -86,8 +80,8 @@ class SearchJobsMain extends Component {
 
 const mapStateToProps = (state, props) => {
 	return {
-        user: state.user
+        user: state.user        
 	}
 };
 
-export default connect(mapStateToProps, null)(SearchJobsMain);
+export default connect(mapStateToProps, null)(JobPostings);

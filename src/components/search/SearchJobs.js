@@ -25,13 +25,13 @@ class SearchJobs extends Component {
     render() {	
         return (
             <Fragment>
-                <form method="post" className="search-jobs-form">
-                    <div className="row mb-5">
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <input type="text" id="searchToken" name="searchToken" className="form-control" placeholder="Job title, keywords..."/>
+                <form method='post' className='search-jobs-form'>
+                    <div className='row mb-5'>
+                        <div className='col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0'>
+                            <input type='text' id='searchToken' name='searchToken' className='form-control' placeholder='Job title, keywords...'/>
                         </div>
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select className="form-control">
+                        <div className='col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0'>
+                            <select className='form-control'>
                                 <option>Anywhere</option>
                                 <option>San Francisco</option>
                                 <option>Palo Alto</option>
@@ -43,15 +43,15 @@ class SearchJobs extends Component {
                                 <option>Mountain View</option>
                             </select>
                         </div>
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select className="form-control">
+                        <div className='col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0'>
+                            <select className='form-control'>
                                 <option>Part Time</option>
                                 <option>Full Time</option>
                                 <option>Freelancer</option>
                             </select>
                         </div>
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <button type="submit" className="btn btn-primary btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Search Job</button>
+                        <div className='col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0'>
+                            <button type='submit' className='btn btn-primary btn-block text-white btn-search'><span className='icon-search icon mr-2'></span>Search Job</button>
                         </div>
                     </div>
                 </form>

@@ -9,25 +9,25 @@ export default function requireAuth(ProtectedComponent)  {
     class JWTAuthenticate extends Component {
         constructor(props) {
             super(props);
-            const jwt = JWT.get_jwt()
-            if (!this.props.user.is_authenticated) {
+            const jwt = JWT.get_jwt();
+            if (this.props.user.logged_user === null) {
                 this.props.common.loading = true;
-                if (jwt['token'] !== null && jwt['username'] !== null)
+                if (jwt['access_token'] !== null && jwt['mobile'] !== null)
                     this.props.validateToken({
-                        token: jwt['token'],
-                        username: jwt['username']                        
+                        access_token: jwt['access_token'],
+                        mobile: jwt['mobile']                        
                     });
-                else if (this.props.user.token !== null && this.props.user.username !== null)
+                else if (this.props.user.access_token !== null && this.props.user.mobile !== null)
                     this.props.validateToken({
-                        token: this.props.user.token,
-                        username: this.props.user.username                     
+                        access_token: this.props.user.access_token,
+                        mobile: this.props.user.mobile                     
                     });
                 else
-                    this.props.history.push('signin');
-            }            
+                    this.props.history.push('/signin');
+            }
         }
         render() {
-            if (this.props.user.is_authenticated === true) {
+            if (this.props.user.logged_user !== null) {
                 return (
                     <ProtectedComponent {...this.props} />
                 )

@@ -1,15 +1,15 @@
-import axios from 'axios';
-import settings from '../../settings';
 import { GET_STATES_SUCCESS, 
          GET_STATES_ERROR,
          GET_SUBJECTS_SUCCESS,
          GET_SUBJECTS_ERROR,
          SHOW_LOADING,
          HIDE_LOADING,
-         RESET_ERROR
+         GET_QUALIFICATIONS_ERROR,
+         GET_QUALIFICATIONS_SUCCESS
        } from '../types/commonTypes';
+import CommonAPI from '../../api/CommonAPI';
 
-// import { resetState, resetDistrict, resetTown, resetSubject } from '../../components/common/Constants';
+const commonApi = new CommonAPI();
 
 export const showLoading = () => {
     return (dispatch) => {
@@ -23,23 +23,11 @@ export const hideLoading = () => {
     }
 }
 
-export const resetError = () => {
-    return (dispatch) => {
-        dispatch({ type: RESET_ERROR });
-    }
-}
-
-export const getStates = (params) => {
+export const getStates = () => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });
-        var full_uri = settings.A1JOBSAPI.url + 'api/v1/states/all'; 
-
-		axios.get(full_uri, {
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				mode: 'cors'    
-		}).then( response => {            
+        commonApi.getStates({mode: 'cors'})
+        .then( response => {            
             dispatch({ type: GET_STATES_SUCCESS, response: response.data });
 		}).catch(error => {			
             dispatch({ type: GET_STATES_ERROR, error });
@@ -47,20 +35,26 @@ export const getStates = (params) => {
     }
 }
 
-export const getSubjects = (params) => {
+export const getSubjects = () => {
     return (dispatch, getState) => {
         dispatch({ type: SHOW_LOADING });
-        var full_uri = settings.A1JOBSAPI.url + 'api/v1/subjects/all'; 
-
-		axios.get(full_uri, {
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				mode: 'cors'    
-		}).then( response => {
+        commonApi.getSubjects({mode: 'cors'})
+        .then( response => {
             dispatch({ type: GET_SUBJECTS_SUCCESS, response: response.data });
 		}).catch(error => {			
             dispatch({ type: GET_SUBJECTS_ERROR, error });
         });         
+    }
+}
+
+export const getQualifications = () => {    
+    return (dispatch, getState) => {
+        dispatch({ type: SHOW_LOADING });
+        commonApi.getQualifications({mode: 'cors'})
+        .then( response => {            
+            dispatch({ type: GET_QUALIFICATIONS_SUCCESS, response: response.data });
+		}).catch(error => {			
+            dispatch({ type: GET_QUALIFICATIONS_ERROR, error });
+        });
     }
 }
