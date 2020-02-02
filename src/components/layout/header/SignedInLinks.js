@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const SignedInLinks = (props) => {
+	const profile_url = '/profile/user/'+ props.user.logged_user.id
     return (
 		<div className='login-collapse navbar-collapse'>			
 			<li className='nav-item dropdown' data-toggle='collapse' data-target='.navbar-collapse.show'>
@@ -23,7 +24,7 @@ const SignedInLinks = (props) => {
 						<span className='dropdown-text'>My Applied Jobs</span>
 					</Link>
 				  }
-					<Link className='dropdown-item' to='/viewuser'>
+					<Link className='dropdown-item' to= { profile_url }>
 						<img src={require('../../../static/images/settings.png')} className='welcome-icon' data-toggle='collapse' data-target='.navbar-collapse.show' alt='profile'/>
 						<span className='dropdown-text'>Profile Settings</span>
 					</Link>

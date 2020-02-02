@@ -15,6 +15,19 @@ class UserAPI extends BaseAPI {
         });
     }
 
+    getUserProfileinViewProfile = async ({ userid }, config={}) => {            
+        return await axios.get(`${this.url}api/v1/profile/user?userid=${userid}`, config)
+        .then((response) => {
+            return response.data;				
+        })
+        .catch(error => {
+            if (error.response !== undefined)
+                return error.response.data
+            else                
+                return error
+        });
+    }
+
     getUserProfileById = async ({ id }, config={}) => {      
         return await axios.get(`${this.url}api/v1/profile/id?id=${id}`, config)
         .then((response) => {
@@ -32,7 +45,7 @@ class UserAPI extends BaseAPI {
         if (params === undefined) {
             var full_uri = `${this.url}api/v1/profile/filter`;
         } else {
-            full_uri = `${this.url}api/v1/profile/filter${(params.userid !== null ? '?submitter=' + params.userid : '')}`
+            full_uri = `${this.url}api/v1/profile/filter${(params.userid !== null ? '?userid=' + params.userid : '')}`
         }    
 
         return await axios.get(full_uri, config)

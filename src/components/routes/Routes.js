@@ -33,7 +33,7 @@ const Routes = () => (
 			<Route exact path='/job/:id' component={ JobView } />
 			<Route exact path='/job' component={ JobCreate } />
 			<Route exact path='/signout' component={requireAuth(SignOut)} />
-			<Route exact path='/viewuser' component={ ViewProfile } />				
+			<Route exact path='/profile/user/:id' component={ ViewProfile } />				 */}
 			<Route exact path='/edituser' component={ EditProfile } />
 			<Route exact path='/jobs/myposts' component={ JobPostings } />
 			<Route exact path='/jobs/appliedjobs' component={ JobsApplied } />

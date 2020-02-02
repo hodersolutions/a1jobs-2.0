@@ -10,7 +10,7 @@ import { grey } from '@material-ui/core/colors';
 
 export class ProfileCard extends Component {    
     render() {
-        const url = '/profile/' + this.props.profile.id;        
+        const url = '/profile/' + this.props.profile.id; 
         return (
             <Link to={ url } className='card-container'>
                 <div className='a1-card row align-items-start job-item border-bottom pb-3 mb-3 pt-3'>
@@ -19,11 +19,11 @@ export class ProfileCard extends Component {
                     </div>
                     <div className='col-md-4'>                        
                         <h2>{this.props.profile.fullname}</h2>
-                        <p className='meta'><CallIcon className='img-align' color='disabled' /> <strong>{this.props.user.logged_user.mobile}</strong></p>
+                        <p className='meta'><CallIcon className='img-align' color='disabled' /> <strong>{this.props.profile.mobile}</strong></p>
                         <p className='meta'><SubjectIcon className='img-align' color='disabled' /> <strong>{this.props.profile.teachingsubject}</strong></p>
                     </div>
                     <div className='col-md-3 text-left'>
-                        <p className='meta'><LocationOnIcon className='img-align' color='disabled' /> <strong>{this.props.profile.stateLocation},</strong></p>
+                        <p className='meta'><LocationOnIcon className='img-align' color='disabled' /> <strong>{this.props.profile.state},</strong></p>
                         <p className='meta'>&emsp;&ensp;&nbsp;<strong>{this.props.profile.district},</strong></p>
                         <p className='meta'>&emsp;&ensp;&nbsp;<strong>{this.props.profile.town}</strong></p>                        
                     </div>
