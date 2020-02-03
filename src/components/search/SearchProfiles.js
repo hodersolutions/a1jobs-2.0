@@ -4,6 +4,7 @@ import { notify } from 'react-notify-toast';
 import ProfileList from '../user/ProfileList';
 import UserAPI from '../../api/UserAPI';
 import ListLoader from '../common/loading/ListLoader';
+import NoData from '../common/NoData';
 
 class SearchProfiles extends Component {
     constructor() {
@@ -67,19 +68,9 @@ class SearchProfiles extends Component {
                             (this.state.users.length) ?                                  
                                 <ProfileList list={this.state.users}/>
                             :
-                            <section key='3'>
-                                <div className='container'>
-                                    <div className='row align-items-center justify-content-center un-underline'>
-                                        <div className='col-md-12'>
-                                            <div className='no-data'>
-                                                <h1 className='font-weight-bold'>
-                                                    No profiles to see here.
-                                                </h1>
-                                            </div>                        
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>                            
+                            <NoData tag={
+                                <p>No profiles to see here.</p>
+                            } />
                         )
                     }                    
                 </div>

@@ -20,25 +20,28 @@ import ViewProfile from '../user/ViewProfile';
 import SearchProfiles from '../search/SearchProfiles';
 import ViewAnyProfile from '../user/ViewAnyProfile';
 
+import Help from '../common/Help';
+
 const Routes = () => (
 	<div className='nav-content'>
 		<Switch>
-			<Route exact path='/' component={Home} />
-			<Route exact path='/contact' component={Contact} />
-			<Route exact path='/signin' component={SignIn} />
-			<Route exact path='/jobs' component={SearchJobsMain} />
-			<Route exact path='/profiles' component={SearchProfiles} />
-			<Route exact path='/forgot' component={ForgotPassword} />
-			<Route exact path='/signup' component={SignUp} />						
+			<Route exact path='/' component={ Home } />
+			<Route exact path='/contact' component={ Contact } />
+			<Route exact path='/signin' component={ SignIn } />
+			<Route exact path='/jobs' component={ SearchJobsMain } />
+			<Route exact path='/profiles' component={ SearchProfiles } />
+			<Route exact path='/forgot' component={ ForgotPassword } />
+			<Route exact path='/signup' component={ SignUp } />						
 			<Route exact path='/job/:id' component={ JobView } />
 			<Route exact path='/job' component={ JobCreate } />
 			<Route exact path='/signout' component={requireAuth(SignOut)} />
-			<Route exact path='/profile/user/:id' component={ ViewProfile } />				 */}
+			<Route exact path='/profile/user/:id' component={ ViewProfile } />
 			<Route exact path='/edituser' component={ EditProfile } />
 			<Route exact path='/jobs/myposts' component={ JobPostings } />
 			<Route exact path='/jobs/appliedjobs' component={ JobsApplied } />
 			<Route exact path='/jobs/appliedusers/:id' component={ ViewApplicants } />
 			<Route exact path='/profile/:id' component={ ViewAnyProfile } />
+			<Route exact path='/help' component={ Help } />
 			<Route path='*' component={ NotFound } />
 		</Switch>
 	</div>

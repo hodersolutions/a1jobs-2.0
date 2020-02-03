@@ -171,16 +171,24 @@ h4 {
 }
 
 .site-content {
+	display: block;
+  	margin: 0 auto;
 	padding-top: 4rem;
 	padding-bottom: 3rem;
 	position: relative;
 	z-index: 2;
+	flex: 1;
+	min-height: 85vh;
 }
 
 @media (max-width: 991.98px) {
 	.site-content {
+		display: block;
+  		margin: 0 auto;
 		padding-top: 3rem;
 		padding-bottom: 3rem;
+		flex: 1;
+		min-height: 85vh;
 	}
 }
 
@@ -1383,16 +1391,10 @@ h4 {
 }
 
 .site-footer {
-	padding: 7rem 0;
+	padding: 0.5rem 0;
 	position: relative;
 	background: #242424;
 	z-index: 10;
-}
-
-@media (max-width: 991.98px) {
-	.site-footer {
-		padding: 2rem 0;
-	}
 }
 
 .site-footer.slanted-footer:before {
@@ -1468,6 +1470,12 @@ h4 {
 
 .copyright a {
 	color: #fff;
+}
+
+.footer-social {
+	text-align: center;
+	margin-bottom: 1rem !important;
+	margin-top: 2.0rem !important;
 }
 
 .footer-social a,

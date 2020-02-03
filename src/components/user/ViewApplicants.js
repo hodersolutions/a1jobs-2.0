@@ -56,25 +56,36 @@ class ViewApplicants extends Component {
 							[
 								(this.props.user.logged_user !== null) ?
 								(
-									<section key='3'>
-										<div className='container'>
-											<div className='row align-items-center justify-content-center un-underline'>
-												<div className='col-md-12'>
-													<div className='no-data'>
-													{
-														this.state.applicants.map((applicant, index) => {                    
-															return (
-																<div key={ index + 1 }>
-																	{ applicant.email }                            
-																</div>
-															);
-														})
-													}
+									[
+										this.state.applicants.length > 0 ?
+										(
+											<section key='3'>
+												<div className='container'>
+													<div className='row align-items-center justify-content-center un-underline'>
+														<div className='col-md-12'>
+															<div className='no-data'>
+															{
+																this.state.applicants.map((applicant, index) => {                    
+																	return (
+																		<div key={ index + 1 }>
+																			{ applicant.email }                            
+																		</div>
+																	);
+																})
+															}
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</section>								
+											</section>
+										)
+										:
+										(
+											<NoData tag={
+												<p>No applications.</p>
+											} />
+										)
+									]									
 								)
 								:
 								(

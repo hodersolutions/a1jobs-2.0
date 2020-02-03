@@ -47,7 +47,12 @@ class JobView extends Component {
 	handleApply = (e) => {
 		e.preventDefault();
 		if(this.props.user.logged_user === null)
-			this.props.history.push('/signin');
+			this.props.history.push({
+				pathname: '/signin',				
+				state: { 
+					needsBack: true					
+				}
+			  })
 		else
 			this.api.applyJob({ userid: this.props.user.logged_user.id, requisitionid: this.props.match.params.id })
 			.then(response => {				
@@ -130,9 +135,9 @@ class JobView extends Component {
 															:
 															[
 																this.state.job.isapplied ? 
-																( <span className='application-sent'>Application Sent</span> )
+																( <span className='application-sent' key='1'>Application Sent</span> )
 																:
-																( <input type='button' value='Apply Now' className='btn btn-block btn-primary btn-md' onClick={this.handleApply}/> )
+																( <input type='button' key='1' value='Apply Now' className='btn btn-block btn-primary btn-md' onClick={this.handleApply}/> )
 															]
 														)
 														:

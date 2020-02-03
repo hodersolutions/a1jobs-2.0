@@ -31,4 +31,4 @@ class Help extends Component {
     }
 }
 
-export default About;
+export default Help;

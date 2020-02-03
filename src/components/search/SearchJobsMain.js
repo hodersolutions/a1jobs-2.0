@@ -5,6 +5,7 @@ import JobList from '../job/JobList';
 import SearchJobs from './SearchJobs';
 import JobAPI from '../../api/JobAPI';
 import ListLoader from '../common/loading/ListLoader';
+import NoData from '../common/NoData';
 
 class SearchJobsMain extends Component {
     constructor() {
@@ -65,17 +66,9 @@ class SearchJobsMain extends Component {
                             (this.state.jobs.length) ?                                  
                             <JobList list={this.state.jobs} />
                             :
-                            <section key='3'>
-                                <div className='container'>
-                                    <div className='row align-items-center justify-content-center un-underline'>
-                                        <div className='col-md-12'>                                            
-                                            <h1 className='font-weight-bold'>
-                                                No jobs to see here.
-                                            </h1>                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>                        
+                            <NoData tag={
+                                <p>No jobs to see here.</p>
+                            } />
                         )
                     }
                 </div>

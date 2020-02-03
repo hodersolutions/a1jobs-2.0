@@ -110,7 +110,7 @@ class EditProfile extends Component {
 	}
 
 	handleDate = (date) => {		
-		this.setState({ profile: {...this.state.profile, dob: date} });		
+		this.setState({ profile: {...this.state.profile, dob: date} });
 	};
 
     render() {        
@@ -193,14 +193,14 @@ class EditProfile extends Component {
 									<label className='text-black' htmlFor='deadline'>Date Of Birth</label>
 									<DatePicker										
 										selected = { moment(this.state.profile.dob).toDate() }
-										onChange={date => this.handleDate(date)}
+										onChange={date => this.handleDate(date.toLocaleDateString())}
 										peekNextMonth										
 										showMonthDropdown
 										showYearDropdown
 										dateFormat='dd/MM/yyyy'
 										dropdownMode='select'
 										className='form-control'
-									/>									
+									/>
 								</div>
 								<div className='col-lg-3 col-xs-12 form-group'>
 										<label className='text-black' htmlFor='gender'>Gender</label>

@@ -90,6 +90,7 @@ class ViewAnyProfile extends Component {
 				
 		return (
 			<Fragment>
+				<div className='site-content'>	
 				{
 					(this.state.loading) ?
 					( <DetailsLoader /> )
@@ -98,7 +99,7 @@ class ViewAnyProfile extends Component {
 						[
 							(this.props.user.logged_user !== null) ?
 							(
-								<section className='site-content' key='2'>
+								<section key='2'>
 									<div className='container'>
 										<div className='row align-items-center justify-content-center underline'>
 											<div className='col-md-12'>
@@ -125,7 +126,7 @@ class ViewAnyProfile extends Component {
 																	<span className='icon-room' style={padding}></span>{this.state.profile.stateLocation},&nbsp;{this.state.profile.district},&nbsp;{this.state.profile.town}
 																</div>
 															</div>
-																			{/* <div className='row'>
+															{/* <div className='row'>
 																<div className='col-12'>
 																	Expected CTC: {this.state.profile.ectc}
 																</div>
@@ -238,6 +239,7 @@ class ViewAnyProfile extends Component {
 						]						
 					)
 				}				
+				</div>
 			</Fragment>
 		);		
     }

@@ -11,8 +11,8 @@ class SignIn extends Component {
 		super();		
 		this.state = {
 			loginId: '',						
-			password: ''
-		}
+			password: ''			
+		}		
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -51,10 +51,11 @@ class SignIn extends Component {
 	}
     render() {				
 		if(this.props.user.logged_user !== null) {
-			return (
-				<Redirect to='/'/>
-			)
-		}		
+			if (this.props.location.state !== undefined && this.props.location.state.needsBack)
+				this.props.history.goBack(this.props.history.length - 1);
+			else
+				return <Redirect to='/' />;
+		}
 		return (
 			<Fragment>
 				<div className='container auth-container site-content'>					
