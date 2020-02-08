@@ -138,7 +138,7 @@ a .nav-link .header-link :hover {
 }
 
 .auth-container {
-	text-align: center !important;	
+	text-align: center !important;
 }
 
 .form-signin .checkbox {
@@ -410,8 +410,8 @@ hr {
 .site-wrap {
 	font-family: "Nunito", sans-serif;
 	display: flex;
-  	flex-direction: column;
-  	min-height: 100vh;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 .site-logo .logo {
@@ -637,16 +637,109 @@ hr {
 	padding-top: 2px;
 }
 
+
 /*Navbar*/
+
 .navbar-dark .collapsed .navbar-toggler-icon {
 	background-image: url(../favicon/navbar/plus.png) !important;
-	transition: 0.3s;	
+	transition: 0.3s;
 }
 
 .navbar-dark .navbar-toggler-icon {
 	background-image: url(../favicon/navbar/up.png) !important;
 	transition: 0.3s;
 }
+
+
+/* Home Welcome */
+
+.welcome-message {
+	font-weight: 600 !important;
+	font-size: 2.5rem !important;
+	margin-bottom: 2rem;
+}
+
+
+/*Start exploring*/
+
+.start-exploring {
+	background-color: #009900;
+	color: white !important;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.start-exploring:hover {
+	text-decoration: underline;
+}
+
+
+/* Blinking cursor */
+
+.blinking-cursor {
+	font-weight: 400;
+	font-size: 40px;
+	color: white;
+	-webkit-animation: 1s blink step-end infinite;
+	-moz-animation: 1s blink step-end infinite;
+	-ms-animation: 1s blink step-end infinite;
+	-o-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+	from,
+	to {
+		color: transparent;
+	}
+	50% {
+		color: white;
+	}
+}
+
+@-moz-keyframes blink {
+	from,
+	to {
+		color: transparent;
+	}
+	50% {
+		color: white;
+	}
+}
+
+@-webkit-keyframes blink {
+	from,
+	to {
+		color: transparent;
+	}
+	50% {
+		color: white;
+	}
+}
+
+@-ms-keyframes blink {
+	from,
+	to {
+		color: transparent;
+	}
+	50% {
+		color: white;
+	}
+}
+
+@-o-keyframes blink {
+	from,
+	to {
+		color: transparent;
+	}
+	50% {
+		color: white;
+	}
+}
+
+
+/* Blinking cursor end */
+
 
 /* @media (min-width: 576px) { .body {background-color: red; } }
 
