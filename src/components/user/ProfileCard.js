@@ -28,7 +28,7 @@ export class ProfileCard extends Component {
                         <p className='meta'>&emsp;&ensp;&nbsp;<strong>{this.props.profile.town}</strong></p>                        
                     </div>
                     <div className='col-md-3 text-md-right'>
-                        <WorkIcon className='img-align' color='disabled' /> <strong className='text-black'>{this.props.profile.totalexperience}&nbsp;months exp</strong>
+                        <WorkIcon className='img-align' color='disabled' /> <strong className='text-black'>{this.props.profile.totalexperience}&nbsp;years exp</strong>
                     </div>
                 </div>
             </Link>
