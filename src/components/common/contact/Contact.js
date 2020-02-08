@@ -61,10 +61,10 @@ export default class Contact extends Component {
                         <div className='col-lg-5 ml-auto'>
                             <div className='p-4 mb-3 border rounded bg-light'>
                             <p className='mb-0 font-weight-bold'>Address</p>
-                            <p className='mb-4'>203 Fake St. Mountain View, San Francisco, California, USA</p>
+                            <p className='mb-4'>121 James St. Lake View, Secunderabad, Telangana, India.</p>
                     
                             <p className='mb-0 font-weight-bold'>Phone</p>
-                            <p className='mb-4'>+91-9999999999</p>
+                            <p className='mb-4'>+91-9876543210</p>
                     
                             <p className='mb-0 font-weight-bold'>Email Address</p>
                             <p className='mb-0'>hoderproducts@gmail.com</p>
