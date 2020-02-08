@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Random from '../common/Helper';
-import SearchJobs from '../search/SearchJobs';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 	componentDidMount() {
@@ -21,11 +21,12 @@ class Home extends Component {
 					<div className='row align-items-center justify-content-center'>
 					<div className='col-md-12'>
 						<div className='mb-5 text-center'>						
-							<h1 className='text-white font-weight-bold'>A Powerful Website for Careers @ School</h1>
+							<h1 className='text-white font-weight-bold welcome-message'>Your friendly neighbourhood career assistant @ school.</h1>
 							<p>Find your dream jobs on our portal.</p>
-							<div style={hidden}>{React.version}</div>
+							<h2 className='text-white font-weight-bold'>Start exploring <Link to='/jobs' className='start-exploring'>here.<span className="blinking-cursor">|</span></Link></h2>
+							<div style={hidden}>{React.version}</div>							
 						</div>
-						<SearchJobs />
+						{/* SearchJobs component was here */}
 					</div>
 					</div>
 				</div>
