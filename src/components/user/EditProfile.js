@@ -88,6 +88,11 @@ class EditProfile extends Component {
 		this.setState({ profile: {...this.state.profile, [e.target.name]: e.target.value, district: 0, town: 0} });
 	}
 
+	handleDistrictChange = (e) => {
+		e.preventDefault();
+		this.setState({ profile: {...this.state.profile, [e.target.name]: e.target.value, town: 0} });
+	}
+
     handleSubmit = async (e) => {
 		e.preventDefault();
 		if(this.props.user !== null && this.props.user.logged_user !== null) {
@@ -231,7 +236,7 @@ class EditProfile extends Component {
 									</div>
 									<div className='col-lg-3 col-xs-12 form-group'>
 										<label className='text-black' htmlFor='district'>District</label>
-										<select className='form-control' id='district' name='district' value={ this.state.profile.district } onChange={ this.handleChange }>										
+										<select className='form-control' id='district' name='district' value={ this.state.profile.district } onChange={ this.handleDistrictChange }>										
 											{											
 												this.state.profile.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.profile.stateLocation) === parseInt(stateObj.id))).length > 0
 												&& this.props.locations.filter((stateObj) => parseInt(this.state.profile.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												

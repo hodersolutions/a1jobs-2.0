@@ -1,10 +1,10 @@
 import { SEARCH_JOB_SUCCESS, 
          SEARCH_JOB_ERROR } from '../types/searchTypes';
 
-const initState = {
-    response: null,
+const initState = {    
     status: '',
-    searchResults: []  
+    message: '',
+    searchJobs: []  
 }
 
 const searchReducer = (state = initState, action) => {
@@ -12,16 +12,15 @@ const searchReducer = (state = initState, action) => {
         case SEARCH_JOB_SUCCESS:
             return {
                 ...state,
-                response: action.response,
-                searchResults: action.response,           
-                status: SEARCH_JOB_SUCCESS,
-                loading: false
+                message: action.response.message,
+                searchJobs: action.response.jobs,
+                status: SEARCH_JOB_SUCCESS                
             }       
         case SEARCH_JOB_ERROR:
             return {
                 ...state,
-                response: action.response,
-                loading: false,
+                message: action.response.message,
+                searchJobs: [],
                 status: SEARCH_JOB_ERROR
             }   
         default:

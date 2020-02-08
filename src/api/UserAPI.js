@@ -2,7 +2,20 @@ import axios from 'axios';
 import BaseAPI from './BaseAPI';
 
 class UserAPI extends BaseAPI {
-    getUserProfile = async ({ userid }, config={}) => {            
+    authenticateUser = async (params, config={}) => {
+        return await axios.post(`${this.url}api/v1/login`, params, config)
+        .then((response) => {
+            return response.data;				
+        })
+        .catch(error => {
+            if (error.response !== undefined)
+                return error.response.data
+            else                
+                return error
+        });
+    }
+
+    getUserProfile = async ({ userid }, config={}) => {
         return await axios.get(`${this.url}api/v1/profile?userid=${userid}`, config)
         .then((response) => {
             return response.data;				

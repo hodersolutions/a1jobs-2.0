@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { green } from '@material-ui/core/colors';
 import NoData from '../common/NoData';
+import ProfileList from '../user/ProfileList';
 
 class ViewApplicants extends Component {
 	constructor(props) {
@@ -37,9 +38,10 @@ class ViewApplicants extends Component {
                     notify.show(response.message, 'error', 5000, 'red');
                     this.setState({						
                         loading: false,
-                        job: null
+                        applicants: []
                     });
-                }
+				}
+				console.log(this.state.applicants)
             });
         }
 	}
@@ -58,26 +60,27 @@ class ViewApplicants extends Component {
 								(
 									[
 										this.state.applicants.length > 0 ?
-										(
-											<section key='3'>
-												<div className='container'>
-													<div className='row align-items-center justify-content-center un-underline'>
-														<div className='col-md-12'>
-															<div className='no-data'>
-															{
-																this.state.applicants.map((applicant, index) => {                    
-																	return (
-																		<div key={ index + 1 }>
-																			{ applicant.email }                            
-																		</div>
-																	);
-																})
-															}
-															</div>
-														</div>
-													</div>
-												</div>
-											</section>
+										(                                
+											<ProfileList list={this.state.applicants}/>
+											// <section key='3'>
+											// 	<div className='container'>
+											// 		<div className='row align-items-center justify-content-center un-underline'>
+											// 			<div className='col-md-12'>
+											// 				<div className='no-data'>
+											// 				{
+											// 					this.state.applicants.map((applicant, index) => {                    
+											// 						return (
+											// 							<div key={ index + 1 }>
+											// 								{ applicant.email }                            
+											// 							</div>
+											// 						);
+											// 					})
+											// 				}
+											// 				</div>
+											// 			</div>
+											// 		</div>
+											// 	</div>
+											// </section>
 										)
 										:
 										(

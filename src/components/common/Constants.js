@@ -1,34 +1,34 @@
 export const resetDistrict =  {
     id: 0,
-    name: '',
+    name: 'Select district...',
     towns: [],
     institutions: []
 }
 
 export const resetState = {
     id: 0, 
-    state: '', 
+    state: 'Select state...', 
     districts: []
 }
 
 export const resetTown = {
     id: 0, 
-    town: ''    
+    town: 'Select town...'
 }
 
 export const resetSubject = {
     id: 0, 
-    subject: ''    
+    subject: 'Select subject...'
 }
 
 export const resetQualification = {
     id: 0, 
-    qualification: ''
+    qualification: 'Select qualification...'
 }
 
 export const jobTypes = [
     {
-        id: 0, name:''
+        id: 0, name:'Select job type...'
     },
     {
         id: 1, name:'Freelance'
@@ -138,4 +138,13 @@ export const resetJob = {
     submitter: 0,
     deadline: new Date(),
     qualification: 0
+}
+
+export const resetSearch = {
+    searchToken: '', 
+    jobtype: 0, 
+    stateLocation: 0,
+    district: 0,
+    town: 0,
+    subject: 0    
 }

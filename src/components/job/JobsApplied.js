@@ -49,7 +49,14 @@ class JobsApplied extends Component {
 	render() {
 		return (
             <Fragment>
-                <div className='site-content'>	
+                <div className='site-content'>
+                    <div className='container'>
+                        <div className='row align-items-center justify-content-center underline'>
+                            <div className='col-md-12'>
+                                <h1 className='font-weight-bold'>My Applied Jobs</h1>                                    
+                            </div>
+                        </div>                        
+                    </div>	
                     {
                         (this.state.loading) ?
                         ( <ListLoader /> )
@@ -61,24 +68,8 @@ class JobsApplied extends Component {
                                     (
                                         (this.state.jobs.length > 0) ? 
                                         (
-                                            <section key='3'>
-                                                <div className='container'>
-                                                    <div className='row align-items-center justify-content-center un-underline'>
-                                                        <div className='col-md-12'>                                                        
-                                                            {
-                                                                (this.state.jobs.length) ?
-                                                                    <div className='no-data'>
-                                                                        <JobList list={this.state.jobs} />
-                                                                    </div>
-                                                                :
-                                                                <h1 className='font-weight-bold'>
-                                                                    No jobs to see here.
-                                                                </h1>
-                                                            }                                                        
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </section>
+                                            <JobList list={this.state.jobs} />
+
                                         )
                                         :
                                         (

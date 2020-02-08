@@ -212,14 +212,15 @@ hr {
 	background: #fff;
 	border-radius: 0px;
 	position: relative;
-	box-shadow: 0px 0px 6px 0 #808B96;
+	box-shadow: 0px 0px 0px 0 #808B96;
+	border-bottom: none !important;
 }
 
 .a1-card:hover {
 	background: #fff;
 	border-radius: 0px;
 	position: relative;
-	box-shadow: 0px 0px 6px 0 rgb(0, 153, 0);
+	box-shadow: 0px 0px 3px 0 rgb(0, 153, 0);
 }
 
 .a1-card .title {

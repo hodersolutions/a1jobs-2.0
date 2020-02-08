@@ -75,10 +75,26 @@ class JobAPI extends BaseAPI {
         });
     }
 
-    getJobs = async (params, config={}) => {
-        let full_uri = ``;
-        if (params.userid === -1)
-            full_uri = `${this.url}api/v1/requisitions/filter`;
+    getJobs = async (searchfilter, params, config={}) => {        
+        let full_uri = ``, filter_string = ``;        
+        if (searchfilter.searchToken !== `` && searchfilter.searchToken !== undefined)
+            filter_string = `${filter_string}searchToken=${searchfilter.searchToken}`;
+        if (searchfilter.subject > 0)
+            filter_string = `${filter_string}&subject=${searchfilter.subject}`;
+        if (searchfilter.jobtype > 0)
+            filter_string = `${filter_string}&jobtype=${searchfilter.jobtype}`;
+        if (searchfilter.stateLocation > 0)
+            filter_string = `${filter_string}&state=${searchfilter.stateLocation}`;
+        if (searchfilter.district > 0)
+            filter_string = `${filter_string}&district=${searchfilter.district}`;
+        if (searchfilter.town > 0)
+            filter_string = `${filter_string}&town=${searchfilter.town}`;
+        if (params.userid === undefined){
+            if (filter_string !== "")
+                full_uri = `${this.url}api/v1/requisitions/filter?`+filter_string;            
+            else
+                full_uri = `${this.url}api/v1/requisitions/filter`;            
+        }
         else
             full_uri = `${this.url}api/v1/requisitions/filter?submitter=` + params.userid;
         

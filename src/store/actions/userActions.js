@@ -1,6 +1,7 @@
 import axios from 'axios';
 import settings from '../../settings';
 import JWT from '../../components/common/JWT';
+import UserAPI from '../../api/UserAPI';
 
 import { AUTHENTICATE_USER_ERROR,
          AUTHENTICATE_USER_SUCCESS,
@@ -16,28 +17,21 @@ export const resetUserStatus = () => {
 }
 
 export const authenticateUser = (user) => {
+    let api = new UserAPI();
     return (dispatch, getState) => {
-        dispatch({ type: SHOW_LOADING });
-        axios.post(settings.A1JOBSAPI.url + 'api/v1/login', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'text/plain'
-                },
-                mode: 'cors',
-                email: user.loginId,
-                mobile: user.loginId,
-                password: user.password
+        dispatch({ type: SHOW_LOADING });        
+        api.authenticateUser({ email: user.loginId, mobile: user.loginId, password: user.password }, {mode: 'cors'})
+        .then( response => {
+            dispatch({ type: HIDE_LOADING });            
+            if (response.status === 'success') {
+                // Ask user if he/she is okay to save local cookies then save the access_token to localStorage by 
+                // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
+                dispatch({ type: AUTHENTICATE_USER_SUCCESS, response });
             }
-        ).then( response => {
-            dispatch({ type: HIDE_LOADING });             
-            // Ask user if he/she is okay to save local cookies then save the access_token to localStorage by 
-            // JWT.set_jwt(response.data['access_token'], response.data['mobile'])
-            dispatch({ type: AUTHENTICATE_USER_SUCCESS, response: response.data });            
-        }
-        ).catch(error => {
-            dispatch({ type: HIDE_LOADING }); 
-            // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above            
-            dispatch({ type: AUTHENTICATE_USER_ERROR, error });
+            else {
+                // Do this, JWT.remove_jwt(); if JWT.set_jwt() is done above       
+                dispatch({ type: AUTHENTICATE_USER_ERROR, error: response });
+            }
         });
     }
 }

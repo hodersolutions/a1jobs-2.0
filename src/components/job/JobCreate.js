@@ -47,6 +47,11 @@ class JobCreate extends Component {
 		this.setState({ job: {...this.state.job, [e.target.name]: e.target.value, district: 0, town: 0} });
 	}
 
+	handleDistrictChange = (e) => {
+		e.preventDefault();
+		this.setState({ job: {...this.state.job, [e.target.name]: e.target.value, town: 0} });
+	}
+	
 	handleSubmit = async (e) => {
 		e.preventDefault();		
 		let errors = '';
@@ -133,7 +138,7 @@ class JobCreate extends Component {
 								</div>
 								<div className='col-lg-3 col-xs-12 form-group'>
 									<label className='text-black' htmlFor='district'>District</label>
-									<select className='form-control' id='district' name='district' value={ this.state.job.district } onChange={ this.handleChange }>										
+									<select className='form-control' id='district' name='district' value={ this.state.job.district } onChange={ this.handleDistrictChange }>										
 										{											
 											this.state.job.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.job.stateLocation) === parseInt(stateObj.id))).length > 0
 											&& this.props.locations.filter((stateObj) => parseInt(this.state.job.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												
