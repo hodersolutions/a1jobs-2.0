@@ -11,10 +11,10 @@ export const searchJobs = (searchParams) => {
         dispatch({ type: SHOW_SEARCH_JOBS_LOADING });
         api.getJobs(searchParams, {mode: 'cors'})
         .then(response => {
-            dispatch({ type: HIDE_SEARCH_JOBS_LOADING }); 
+            dispatch({ type: HIDE_SEARCH_JOBS_LOADING });
             if (response.status === 'success')
                 dispatch({ type: SEARCH_JOB_SUCCESS, response });            
-            else                
+            else
                 dispatch({ type: SEARCH_JOB_ERROR, error: response });            
         });
     }
