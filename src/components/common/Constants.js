@@ -126,7 +126,7 @@ export const resetJob = {
     subject: 0,
     salary: 0, 
     requisitiondetails: '',
-    telephone: 0,
+    telephone: '',
     minexperience: 0,
     maxexperience: 0,
     responsibilities: '',
