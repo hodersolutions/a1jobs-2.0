@@ -57,8 +57,7 @@ export const getStates = () => {
         dispatch({ type: SHOW_STATES_LOADING });
         commonApi.getStates({mode: 'cors'})
         .then( response => {
-            dispatch({ type: HIDE_STATES_LOADING });
-            response = response.data;
+            dispatch({ type: HIDE_STATES_LOADING });            
             if (response.status === 'success')
                 dispatch({ type: GET_STATES_SUCCESS, response });         
             else                
@@ -73,7 +72,6 @@ export const getSubjects = () => {
         commonApi.getSubjects({mode: 'cors'})
         .then( response => {
             dispatch({ type: HIDE_SUBJECTS_LOADING });
-            response = response.data;
             if (response.status === 'success')
                 dispatch({ type: GET_SUBJECTS_SUCCESS, response });         
             else                
@@ -88,7 +86,6 @@ export const getQualifications = () => {
         commonApi.getQualifications({mode: 'cors'})
         .then( response => {
             dispatch({ type: HIDE_QUALIFICATIONS_LOADING });
-            response = response.data;
             if (response.status === 'success')
                 dispatch({ type: GET_QUALIFICATIONS_SUCCESS, response });         
             else                
