@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import JobList from '../job/JobList';
 import SearchJobs from './SearchJobs';
 import { searchJobs } from '../../store/actions/searchActions';
-import { SHOW_LOADING } from '../../store/types/commonTypes';
+import { SHOW_SEARCH_JOBS_LOADING } from '../../store/types/searchTypes';
 import ListLoader from '../common/loading/ListLoader';
 import NoData from '../common/NoData';
 
@@ -34,14 +34,14 @@ class SearchJobsMain extends Component {
                         </div>
                     </div>
                     {
-					    (this.props.search.status === SHOW_LOADING) ?
+					    (this.props.search.jobsStatus === SHOW_SEARCH_JOBS_LOADING) ?
 					    ( 
                             <ListLoader />
                         )
 					    :
 					    (                                                        
-                            (this.props.search.searchJobs.length) ?                                  
-                            <JobList list={this.props.search.searchJobs} />
+                            (this.props.search.searchedJobs.length) ?                                  
+                            <JobList list={this.props.search.searchedJobs} />
                             :
                             <NoData tag={
                                 <p>No jobs to see here.</p>
@@ -57,7 +57,8 @@ class SearchJobsMain extends Component {
 const mapStateToProps = (state, props) => {
 	return {
         user: state.user,
-        search: state.search
+        search: state.search,
+        common: state.common
 	}
 };
 

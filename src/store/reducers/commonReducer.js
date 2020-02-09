@@ -1,5 +1,9 @@
-import { SHOW_LOADING,
-        HIDE_LOADING,        
+import { SHOW_STATES_LOADING,
+        HIDE_STATES_LOADING,
+        SHOW_SUBJECTS_LOADING,
+        HIDE_SUBJECTS_LOADING,
+        SHOW_QUALIFICATIONS_LOADING,
+        HIDE_QUALIFICATIONS_LOADING,
         GET_STATES_SUCCESS,
         GET_STATES_ERROR,
         GET_SUBJECTS_ERROR,
@@ -10,7 +14,9 @@ import { SHOW_LOADING,
 
 const initState = {
     response: null,
-    status: null,
+    statesStatus: null,
+    subjectsStatus: null,
+    qualificationsStatus: null,
     states: [],
     subjects:[],
     qualifications: [],
@@ -24,7 +30,7 @@ const commonReducer = (state = initState, action) => {
             return {
                 ...state,
                 loading: false,
-                status: GET_STATES_SUCCESS,
+                statesStatus: GET_STATES_SUCCESS,
                 states: action.response.object,
                 response: action.response
             }       
@@ -32,7 +38,7 @@ const commonReducer = (state = initState, action) => {
             return {
                 ...state,
                 loading: false,
-                status: GET_STATES_ERROR,
+                statesStatus: GET_STATES_ERROR,
                 states: [],
                 error: action.error
             }
@@ -41,7 +47,7 @@ const commonReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 response: action.response,
-                status: GET_SUBJECTS_SUCCESS,
+                subjectsStatus: GET_SUBJECTS_SUCCESS,
                 subjects: action.response.object
             }          
         case GET_SUBJECTS_ERROR:    
@@ -49,7 +55,7 @@ const commonReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 response: null,
-                status: GET_SUBJECTS_ERROR,
+                subjectsStatus: GET_SUBJECTS_ERROR,
                 subjects: [],
                 error: action.error
             }
@@ -58,7 +64,7 @@ const commonReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 response: action.response,
-                status: GET_QUALIFICATIONS_SUCCESS,
+                qualificationsStatus: GET_QUALIFICATIONS_SUCCESS,
                 qualifications: action.response.object
             }          
         case GET_QUALIFICATIONS_ERROR:    
@@ -66,26 +72,58 @@ const commonReducer = (state = initState, action) => {
                 ...state,
                 loading: false,
                 response: null,
-                status: GET_QUALIFICATIONS_ERROR,
+                qualificationsStatus: GET_QUALIFICATIONS_ERROR,
                 qualifications: [],
                 error: action.error
             }
-        case SHOW_LOADING:
+        case SHOW_STATES_LOADING:
             return {
                 ...state,
                 response: null,
-                status: null,
+                statesStatus: SHOW_STATES_LOADING,                
                 loading: true,
-                error: null       
+                error: null
             }
-        case HIDE_LOADING:
+        case HIDE_STATES_LOADING:
             return {
                 ...state,
                 loading: false,
                 response: null,
-                status: null,
+                statesStatus: HIDE_STATES_LOADING,
                 error: null          
             }
+        case SHOW_SUBJECTS_LOADING:
+            return {
+                ...state,
+                response: null,
+                subjectsStatus: SHOW_SUBJECTS_LOADING,
+                loading: true,
+                error: null       
+            }
+        case HIDE_SUBJECTS_LOADING:
+            return {
+                ...state,
+                loading: false,
+                response: null,
+                subjectsStatus: HIDE_SUBJECTS_LOADING,
+                error: null          
+            }
+        case SHOW_QUALIFICATIONS_LOADING:
+            return {
+                ...state,
+                response: null,
+                qualificationsStatus: SHOW_QUALIFICATIONS_LOADING,
+                loading: true,
+                error: null       
+            }
+        case HIDE_QUALIFICATIONS_LOADING:
+            return {
+                ...state,
+                loading: false,
+                response: null,
+                qualificationsStatus: HIDE_QUALIFICATIONS_LOADING,
+                error: null          
+            }        
         default:
             return state;
     }

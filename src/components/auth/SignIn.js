@@ -63,7 +63,7 @@ class SignIn extends Component {
 						<form method='POST' action='' onSubmit={this.handleSubmit} className='form-signin'>
 							<fieldset className='form-group'>
 								{ 
-									this.props.common.loading ?
+									this.props.user.loading ?
 									(
 										<Fragment>
 											<img className='mb-3' src={require('../../static/images/loading/loading_gear.gif')} alt='Login' width='60' height='60'/>
