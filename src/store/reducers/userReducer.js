@@ -3,14 +3,17 @@ import { AUTHENTICATE_USER_SUCCESS,
          RESET_USER_STATUS,
          SIGNOUT_USER, 
          FETCH_USER_PROFILES_ERROR,
-         FETCH_USER_PROFILES_SUCCESS } from '../types/userTypes';
-
+         FETCH_USER_PROFILES_SUCCESS,
+         HIDE_AUTHENTICATION_LOADING,
+         SHOW_AUTHENTICATION_LOADING } from '../types/userTypes';
+        
 const initState = {
     response: null,
     status: '',    
     logged_user: null,
     access_token: null,
-    profiles: []
+    profiles: [],
+    loading: false
 }
 
 const userReducer = (state = initState, action) => {
@@ -23,6 +26,7 @@ const userReducer = (state = initState, action) => {
                 access_token: null,
                 logged_user: null,
                 status: SIGNOUT_USER,
+                loading: false
             }       
         case AUTHENTICATE_USER_SUCCESS:
             return {
@@ -30,7 +34,8 @@ const userReducer = (state = initState, action) => {
                 access_token: action.response['access_token'],                
                 response: action.response,
                 logged_user: action.response.user,
-                status: AUTHENTICATE_USER_SUCCESS
+                status: AUTHENTICATE_USER_SUCCESS,
+                loading: false
             }
         case AUTHENTICATE_USER_ERROR:            
             if (action.error.response !== undefined)
@@ -41,28 +46,45 @@ const userReducer = (state = initState, action) => {
                 ...state,
                 response: response,
                 logged_user: null,
-                status: AUTHENTICATE_USER_ERROR
+                status: AUTHENTICATE_USER_ERROR,
+                loading: false
             }
         case FETCH_USER_PROFILES_SUCCESS:            
             return {
                 ...state,
                 profiles: action.response.data.object,                
                 status: FETCH_USER_PROFILES_SUCCESS,
-                response: action.response
+                response: action.response,
+                loading: false
             }
         case FETCH_USER_PROFILES_ERROR:
             return {
                 ...state,
                 profiles: [],
                 status: FETCH_USER_PROFILES_ERROR,
-                response: action.error
+                response: action.error,
+                loading: false
             } 
         case RESET_USER_STATUS:
             return {
                 ...state,
                 response: null,
-                loading: false,
-                status: RESET_USER_STATUS
+                status: RESET_USER_STATUS,
+                loading: false
+            }
+        case SHOW_AUTHENTICATION_LOADING:
+            return {
+                ...state,
+                response: null,
+                status: SHOW_AUTHENTICATION_LOADING,                
+                loading: true
+            }
+        case HIDE_AUTHENTICATION_LOADING:
+            return {
+                ...state,
+                response: null,
+                status: HIDE_AUTHENTICATION_LOADING,                
+                loading: false
             }           
         default:
             return state;
