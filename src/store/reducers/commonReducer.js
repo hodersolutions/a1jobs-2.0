@@ -20,11 +20,11 @@ const initState = {
     states: [],
     subjects:[],
     qualifications: [],
-    error: null,
     loading: false    
 }
 
 const commonReducer = (state = initState, action) => {
+    let response = null;
     switch(action.type) {
         case GET_STATES_SUCCESS:
             return {
@@ -34,13 +34,17 @@ const commonReducer = (state = initState, action) => {
                 states: action.response.object,
                 response: action.response
             }       
-        case GET_STATES_ERROR:    
+        case GET_STATES_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
+            else
+                response = action.error;    
             return {
                 ...state,
                 loading: false,
                 statesStatus: GET_STATES_ERROR,
                 states: [],
-                error: action.error
+                response: response.message
             }
         case GET_SUBJECTS_SUCCESS:    
             return {
@@ -50,14 +54,17 @@ const commonReducer = (state = initState, action) => {
                 subjectsStatus: GET_SUBJECTS_SUCCESS,
                 subjects: action.response.object
             }          
-        case GET_SUBJECTS_ERROR:    
+        case GET_SUBJECTS_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
+            else
+                response = action.error;
             return {
                 ...state,
                 loading: false,
-                response: null,
+                response: response.message,
                 subjectsStatus: GET_SUBJECTS_ERROR,
-                subjects: [],
-                error: action.error
+                subjects: []
             }
         case GET_QUALIFICATIONS_SUCCESS:    
             return {
@@ -67,14 +74,17 @@ const commonReducer = (state = initState, action) => {
                 qualificationsStatus: GET_QUALIFICATIONS_SUCCESS,
                 qualifications: action.response.object
             }          
-        case GET_QUALIFICATIONS_ERROR:    
+        case GET_QUALIFICATIONS_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
+            else
+                response = action.error;
             return {
                 ...state,
                 loading: false,
-                response: null,
+                response: response.message,
                 qualificationsStatus: GET_QUALIFICATIONS_ERROR,
-                qualifications: [],
-                error: action.error
+                qualifications: []
             }
         case SHOW_STATES_LOADING:
             return {
