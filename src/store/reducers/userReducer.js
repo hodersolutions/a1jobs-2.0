@@ -37,9 +37,9 @@ const userReducer = (state = initState, action) => {
                 status: AUTHENTICATE_USER_SUCCESS,
                 loading: false
             }
-        case AUTHENTICATE_USER_ERROR:            
-            if (action.error.response !== undefined)
-                response = action.error.response.data;
+        case AUTHENTICATE_USER_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
             else
                 response = action.error;
             return {
@@ -58,11 +58,15 @@ const userReducer = (state = initState, action) => {
                 loading: false
             }
         case FETCH_USER_PROFILES_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
+            else
+                response = action.error;
             return {
                 ...state,
                 profiles: [],
                 status: FETCH_USER_PROFILES_ERROR,
-                response: action.error,
+                response: response,
                 loading: false
             } 
         case RESET_USER_STATUS:
