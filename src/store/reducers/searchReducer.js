@@ -10,6 +10,7 @@ const initState = {
 }
 
 const searchReducer = (state = initState, action) => {
+    let response = null;
     switch(action.type) { 
         case SEARCH_JOB_SUCCESS:
             return {
@@ -19,9 +20,13 @@ const searchReducer = (state = initState, action) => {
                 jobsStatus: SEARCH_JOB_SUCCESS                
             }       
         case SEARCH_JOB_ERROR:
+            if (action.error.response !== undefined && action.error.response.message !== undefined)
+                response = action.error.response;
+            else
+                response = action.error;
             return {
                 ...state,
-                message: action.response.message,
+                message: response.message,
                 searchedJobs: [],
                 jobsStatus: SEARCH_JOB_ERROR
             }
