@@ -20,7 +20,7 @@ class JobPostings extends Component {
         if(this.props.user.logged_user !== null)
             params.userid = this.props.user.logged_user.id;
         
-        await this.api.getJobs(params, {mode: 'cors'})
+        await this.api.getPostedJobs(this.props.user.logged_user.id, {mode: 'cors'})
         .then(response => {            
             if (response.status === 'success') {                
                 this.setState({
