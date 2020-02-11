@@ -74,6 +74,21 @@ class JobAPI extends BaseAPI {
                 return error
         });
     }
+    
+    getPostedJobs = async (userid, config={}) => {
+	    return await axios.get(`${this.url}api/v1/requisitions/filter?submitter=` + userid, config, {
+		    headers: {
+			    'Content-Type' : 'application/json'
+		    }
+	    }).then((response) => {
+		    return response.data;
+	    })
+	    .catch(error => {
+		    if (error.response !== undefined)
+			    return error.response.data
+		    else
+			    return error
+	    });
 
     getJobs = async (searchfilter, params, config={}) => {        
         let full_uri = ``, filter_string = ``;        
