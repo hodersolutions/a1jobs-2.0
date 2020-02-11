@@ -89,6 +89,7 @@ class JobAPI extends BaseAPI {
 		    else
 			    return error
 	    });
+    }
 
     getJobs = async (searchfilter, params, config={}) => {        
         let full_uri = ``, filter_string = ``;        
