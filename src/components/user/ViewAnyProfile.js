@@ -122,7 +122,7 @@ class ViewAnyProfile extends Component {
                                                         <div className='row'>
                                                             <div className='col-12'>
                                                                 <strong className='text-black'>Date Of Birth: </strong>
-																{ DefaultDisplay(moment(this.state.profile.dob, "dd/MM//yyyy").format('Do MMMM, YYYY')) }
+																{ DefaultDisplay(moment(this.state.profile.dob, "DD/MM/YYYY").format('MMMM Do, YYYY')) }
                                                             </div>
                                                         </div>
 														<br/>
@@ -189,8 +189,8 @@ class ViewAnyProfile extends Component {
                                                     <div className='container'>
                                                         <div className='row'>
                                                             <div className='col-12'>
-                                                                <strong className='text-black'>Total years of experience: </strong>
-																{ DefaultDisplay(this.state.profile.totalexperience) } years
+                                                                <strong className='text-black'>Total experience: </strong>
+																{ DefaultDisplay(this.state.profile.totalexperience) } months
                                                             </div>
                                                         </div>
                                                     </div>
