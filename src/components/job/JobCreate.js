@@ -8,7 +8,7 @@ import { notify } from 'react-notify-toast';
 import { gender, jobTypes, resetJob } from '../common/Constants';
 import JobAPI from '../../api/JobAPI';
 import moment from 'moment';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobCreate extends Component {
 	constructor(props) {
