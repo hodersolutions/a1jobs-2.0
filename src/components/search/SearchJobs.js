@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { searchJobs } from '../../store/actions/searchActions';
-import { getStates, getSubjects, getQualifications } from '../../store/actions/commonActions';
-import { jobTypes, resetDistrict, resetState, resetTown, resetSubject } from '../common/Constants';
+import { getStates, getSubjects } from '../../store/actions/commonActions';
+import { jobTypes } from '../common/Constants';
 
 class SearchJobs extends Component {	
     constructor() {
@@ -48,9 +48,7 @@ class SearchJobs extends Component {
 			if (this.props.locations.length === 0)
 				this.props.getStates();		
 			if (this.props.subjects.length === 0)
-				this.props.getSubjects();
-			if (this.props.qualifications.length === 0)
-				this.props.getQualifications();	
+				this.props.getSubjects();			
 		}
 	}
 
@@ -66,9 +64,11 @@ class SearchJobs extends Component {
                             <select  className='form-control' id='subject' name='subject' value={this.state.search.subject} onChange={this.handleChange}>																	
                                 {
                                     this.props.subjects.map((subjectName, key) => {
-                                        let options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
+                                        let options = [];
                                         if(key === 0)
-                                            options.unshift(<option key={ key } value={ resetSubject.id }>{ resetSubject.subject }</option>);													
+                                            options = [<option key={ key } value={ subjectName.id }>Select subject...</option>];
+                                        else
+                                            options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
                                         return options;
                                     })
                                 }
@@ -89,9 +89,11 @@ class SearchJobs extends Component {
                             <select  className='form-control' id='stateLocation' name='stateLocation' value={ this.state.search.stateLocation } onChange={ this.handleStateChange }>										
                                 {
                                     this.props.locations.map((stateName, key) => {
-                                        let options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>];
+                                        let options = [];
                                         if(key === 0)
-                                            options.unshift(<option key={ key } value={ resetState.id }>{ resetState.state }</option>);
+                                            options = [<option key={ key + 1 }  value={ stateName.id }>Select state...</option>];
+                                        else
+                                            options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>]
                                         return options;
                                     })
                                 }
@@ -102,9 +104,11 @@ class SearchJobs extends Component {
                                 {											
                                     this.state.search.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.search.stateLocation) === parseInt(stateObj.id))).length > 0
                                     && this.props.locations.filter((stateObj) => parseInt(this.state.search.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												
-                                        let options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>];
+                                        let options = [];
                                         if(key === 0)
-                                            options.unshift(<option key={ key } value={ resetDistrict.id }>{ resetDistrict.name }</option>);
+                                            options = [<option key={ key + 1 } value={ district.id }>Select district...</option>]
+                                        else
+                                            options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>]
                                         return options;
                                     })
                                 }							
@@ -121,9 +125,11 @@ class SearchJobs extends Component {
                                     && this.props.locations.filter((stateObj) => parseInt(this.state.search.stateLocation) === parseInt(stateObj.id))[0]
                                     .districts.filter((districtObj) => parseInt(this.state.search.district) === parseInt(districtObj.id))[0]
                                     .towns.map((town, key) => {
-                                        let options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>];
+                                        let options = [];
                                         if(key === 0)
-                                            options.unshift(<option key={ key } value={ resetTown.id }>{ resetTown.town }</option>);
+                                            options = [<option key={ key + 1 } value={ town.id }>Select town...</option>]
+                                        else
+                                            options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>]
                                         return options;												
                                     })
                                 }
@@ -147,8 +153,7 @@ const mapStateToProps = (state, props) => {
         job: state.job,
         search: state.search,
         locations: state.common.states,
-		subjects: state.common.subjects,
-		qualifications: state.common.qualifications			
+		subjects: state.common.subjects		
 	}
 };
 
@@ -156,8 +161,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
 		searchJobs: (searchParams) => dispatch(searchJobs(searchParams)),
         getStates: () => dispatch(getStates()),
-		getSubjects: () => dispatch(getSubjects()),
-		getQualifications: () => dispatch(getQualifications())
+		getSubjects: () => dispatch(getSubjects())		
     }
 }
 
