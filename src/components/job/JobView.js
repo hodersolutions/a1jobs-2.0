@@ -197,7 +197,7 @@ class JobView extends Component {
 												<div className='bg-light p-3 border rounded mb-4'>
 												<h3 className='text-primary  mt-3 h5 pl-3 mb-3 '>Job Summary</h3>
 												<ul className='list-unstyled pl-3 mb-0'>
-													<li className='mb-2'><strong className='text-black'>Published on: </strong>{ DefaultDisplay(this.state.job.registeredon) }</li>
+													<li className='mb-2'><strong className='text-black'>Published on: </strong>{ DefaultDisplay(moment(this.state.job.registeredon, "DD/MM/YYYY").format('MMMM Do, YYYY')) }</li>
 													<li className='mb-2'><strong className='text-black'>Vacancy: </strong> { DefaultDisplay(this.state.job.vacancy) }</li>
 													<li className='mb-2'><strong className='text-black'>Employment Status: </strong> { DefaultDisplay(jobTypes.filter(type => parseInt(type.id) === parseInt(this.state.job.jobtype))[0].view) }</li>
 													<li className='mb-2'><strong className='text-black'>Min Experience: </strong> { DefaultDisplay(this.state.job.minexperience) } months</li>
@@ -211,7 +211,7 @@ class JobView extends Component {
 													</li>
 													<li className='mb-2'><strong className='text-black'>Salary: </strong> &#x20b9; { DefaultDisplay(this.state.job.salary) }</li>
 													<li className='mb-2'><strong className='text-black'>Gender: </strong> { DefaultDisplay(gender.filter(gd => parseInt(gd.id) === parseInt(this.state.job.gender))[0].view) }</li>
-													<li className='mb-2'><strong className='text-black'>Application Deadline: </strong> { DefaultDisplay(moment(this.state.job.closedon, "dd/MM//yyyy").format('Do MMMM, YYYY')) }</li>
+													<li className='mb-2'><strong className='text-black'>Application Deadline: </strong> { DefaultDisplay(moment(this.state.job.closedon, "DD/MM/YYYY").format('MMMM Do, YYYY')) }</li>
 												</ul>
 												</div>			
 											</div>
