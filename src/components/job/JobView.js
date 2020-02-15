@@ -10,7 +10,7 @@ import JobAPI from '../../api/JobAPI';
 import NoData from '../common/NoData';
 import moment from 'moment';
 import { DefaultDisplay } from '../common/Helper';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobView extends Component {
 	constructor(props) {
