@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 import UserAPI from '../../api/UserAPI';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class EditProfile extends Component {
 	constructor(props) {
