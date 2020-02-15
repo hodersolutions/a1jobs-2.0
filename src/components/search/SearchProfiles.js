@@ -5,7 +5,7 @@ import ProfileList from '../user/ProfileList';
 import UserAPI from '../../api/UserAPI';
 import ListLoader from '../common/loading/ListLoader';
 import NoData from '../common/NoData';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class SearchProfiles extends Component {
     constructor() {
