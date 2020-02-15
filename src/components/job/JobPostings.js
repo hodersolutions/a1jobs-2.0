@@ -4,7 +4,7 @@ import { notify } from 'react-notify-toast';
 import JobList from '../job/JobList';
 import JobAPI from '../../api/JobAPI';
 import ListLoader from '../common/loading/ListLoader';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobPostings extends Component {
     constructor() {
