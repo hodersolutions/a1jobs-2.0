@@ -4,6 +4,7 @@ import { notify } from 'react-notify-toast';
 import JobList from '../job/JobList';
 import JobAPI from '../../api/JobAPI';
 import ListLoader from '../common/loading/ListLoader';
+import NotificationsTimeOut from '../common/contact/Contact';
 
 class JobPostings extends Component {
     constructor() {
@@ -20,7 +21,7 @@ class JobPostings extends Component {
         if(this.props.user.logged_user !== null)
             params.userid = this.props.user.logged_user.id;
         
-        await this.api.getJobs(params, {mode: 'cors'})
+        await this.api.getPostedJobs(this.props.user.logged_user.id, {mode: 'cors'})
         .then(response => {            
             if (response.status === 'success') {                
                 this.setState({
@@ -29,7 +30,7 @@ class JobPostings extends Component {
                 });
             }
             else {
-                notify.show(response.message, 'error', 5000, 'red');
+                notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                 this.setState({						
                     loading: false,
                     jobs: []
