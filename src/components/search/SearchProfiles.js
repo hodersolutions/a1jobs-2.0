@@ -5,6 +5,7 @@ import ProfileList from '../user/ProfileList';
 import UserAPI from '../../api/UserAPI';
 import ListLoader from '../common/loading/ListLoader';
 import NoData from '../common/NoData';
+import NotificationsTimeOut from '../common/contact/Contact';
 
 class SearchProfiles extends Component {
     constructor() {
@@ -32,7 +33,7 @@ class SearchProfiles extends Component {
                     });
                 }
                 else {
-                    notify.show(response.message, 'error', 5000, 'red');
+                    notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                     this.setState({						
                         loading: false,
                         users: []
