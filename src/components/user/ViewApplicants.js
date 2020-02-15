@@ -8,7 +8,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { green } from '@material-ui/core/colors';
 import NoData from '../common/NoData';
 import ProfileList from '../user/ProfileList';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class ViewApplicants extends Component {
 	constructor(props) {
