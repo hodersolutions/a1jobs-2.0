@@ -12,7 +12,7 @@ import { gender, teachingmedium, segment, department, circulum, resetProfile } f
 import NoData from '../common/NoData';
 import moment from 'moment';
 import { DefaultDisplay } from '../common/Helper';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class ViewAnyProfile extends Component {
 	constructor(props) {
