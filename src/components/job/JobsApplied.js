@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { green } from '@material-ui/core/colors';
 import NoData from '../common/NoData';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobsApplied extends Component {
     constructor(props) {
