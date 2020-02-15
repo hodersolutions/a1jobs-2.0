@@ -1,4 +1,4 @@
-export const NotificationsTimeOut = 2000;
+export const NotificationsTimeOut = parseInt(2000);
 
 export const jobTypes = [
     {
