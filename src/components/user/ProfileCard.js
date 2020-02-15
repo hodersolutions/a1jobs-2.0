@@ -7,6 +7,7 @@ import WorkIcon from '@material-ui/icons/Work';
 import CallIcon from '@material-ui/icons/Call';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { grey } from '@material-ui/core/colors';
+import { DefaultDisplay } from '../common/Helper';
 
 export class ProfileCard extends Component {    
     render() {
@@ -18,17 +19,17 @@ export class ProfileCard extends Component {
                         <AccountBoxIcon style={{ color: grey[500], fontSize: 120 }}/> 
                     </div>
                     <div className='col-md-4'>                        
-                        <h2>{this.props.profile.fullname}</h2>
-                        <p className='meta'><CallIcon className='img-align' color='disabled' /> <strong>{this.props.profile.mobile}</strong></p>
-                        <p className='meta'><SubjectIcon className='img-align' color='disabled' /> <strong>{this.props.profile.teachingsubject}</strong></p>
+                        <h2>{ DefaultDisplay(this.props.profile.fullname, 'Unknown User') }</h2>
+                        <p className='meta'><CallIcon className='img-align' color='disabled' /> <strong>{ DefaultDisplay(this.props.profile.mobile) }</strong></p>
+                        <p className='meta'><SubjectIcon className='img-align' color='disabled' /> <strong>{ DefaultDisplay(this.props.profile.teachingsubject) }</strong></p>
                     </div>
                     <div className='col-md-3 text-left'>
-                        <p className='meta'><LocationOnIcon className='img-align' color='disabled' /> <strong>{this.props.profile.stateLocation},</strong></p>
-                        <p className='meta'>&emsp;&ensp;&nbsp;<strong>{this.props.profile.district},</strong></p>
-                        <p className='meta'>&emsp;&ensp;&nbsp;<strong>{this.props.profile.town}</strong></p>                        
+                        <p className='meta'><LocationOnIcon className='img-align' color='disabled' /> <strong>{ DefaultDisplay(this.props.profile.stateLocation) },</strong></p>
+                        <p className='meta'>&emsp;&ensp;&nbsp;<strong>{ DefaultDisplay(this.props.profile.district) },</strong></p>
+                        <p className='meta'>&emsp;&ensp;&nbsp;<strong>{ DefaultDisplay(this.props.profile.town) }</strong></p>
                     </div>
                     <div className='col-md-3 text-md-right'>
-                        <WorkIcon className='img-align' color='disabled' /> <strong className='text-black'>{this.props.profile.totalexperience}&nbsp;years exp</strong>
+                        <WorkIcon className='img-align' color='disabled' /> <strong className='text-black'>{ DefaultDisplay(this.props.profile.totalexperience) }&nbsp;years exp</strong>
                     </div>
                 </div>
             </Link>
