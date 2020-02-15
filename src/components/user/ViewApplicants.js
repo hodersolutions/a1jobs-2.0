@@ -8,6 +8,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { green } from '@material-ui/core/colors';
 import NoData from '../common/NoData';
 import ProfileList from '../user/ProfileList';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class ViewApplicants extends Component {
 	constructor(props) {
@@ -35,7 +36,7 @@ class ViewApplicants extends Component {
                     });
                 }
                 else {
-                    notify.show(response.message, 'error', 5000, 'red');
+                    notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                     this.setState({						
                         loading: false,
                         applicants: []
@@ -61,30 +62,11 @@ class ViewApplicants extends Component {
 									[
 										this.state.applicants.length > 0 ?
 										(                                
-											<ProfileList list={this.state.applicants}/>
-											// <section key='3'>
-											// 	<div className='container'>
-											// 		<div className='row align-items-center justify-content-center un-underline'>
-											// 			<div className='col-md-12'>
-											// 				<div className='no-data'>
-											// 				{
-											// 					this.state.applicants.map((applicant, index) => {                    
-											// 						return (
-											// 							<div key={ index + 1 }>
-											// 								{ applicant.email }                            
-											// 							</div>
-											// 						);
-											// 					})
-											// 				}
-											// 				</div>
-											// 			</div>
-											// 		</div>
-											// 	</div>
-											// </section>
+											<ProfileList list={this.state.applicants}/>											
 										)
 										:
 										(
-											<NoData tag={
+											<NoData key='1' tag={
 												<p>No applications.</p>
 											} />
 										)
@@ -92,7 +74,7 @@ class ViewApplicants extends Component {
 								)
 								:
 								(
-									<NoData tag={
+									<NoData key='2' tag={
 										<p>Please login <Link to='/signin'>here</Link> <ExitToAppIcon className='no-data-home' style={{ color: green[500], fontSize: 40, verticalAlign: -7 }}/> as a recruiter to view these details.</p>
 									} />
 								)

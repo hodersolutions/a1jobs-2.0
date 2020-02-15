@@ -4,6 +4,7 @@ import { notify } from 'react-notify-toast';
 import JobList from '../job/JobList';
 import JobAPI from '../../api/JobAPI';
 import ListLoader from '../common/loading/ListLoader';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobPostings extends Component {
     constructor() {
@@ -29,7 +30,7 @@ class JobPostings extends Component {
                 });
             }
             else {
-                notify.show(response.message, 'error', 5000, 'red');
+                notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                 this.setState({						
                     loading: false,
                     jobs: []

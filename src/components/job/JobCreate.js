@@ -5,8 +5,10 @@ import DatePicker from 'react-datepicker';
 import { Redirect } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 import { notify } from 'react-notify-toast';
-import { gender, jobTypes, resetDistrict, resetState, resetTown, resetSubject, resetJob, resetQualification } from '../common/Constants';
+import { gender, jobTypes, resetJob } from '../common/Constants';
 import JobAPI from '../../api/JobAPI';
+import moment from 'moment';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobCreate extends Component {
 	constructor(props) {
@@ -30,12 +32,8 @@ class JobCreate extends Component {
 				this.props.getQualifications();	
 
 			this.setState({ job: {...this.state.job, submitter: this.props.user.id} });
-		}
-	}
-
-	handleReset = () => {
-		this.setState({ job: resetJob, loading: false });
-	}
+		}		
+	}	
 
 	handleChange = (e) => {
 		e.preventDefault();
@@ -63,23 +61,21 @@ class JobCreate extends Component {
 			await this.api.postJob(this.state.job, {mode: 'cors'})
 			.then(response => {
 				if(response.status === 'success') {
-					notify.show(response.message, 'success', 5000, 'green');
+					notify.show(response.message, 'success', NotificationsTimeOut, 'green');
 				}				
 				else {
-					notify.show(response.message, 'error', 5000, 'red');
+					notify.show(response.message, 'error', NotificationsTimeOut, 'red');
 				}
-				this.setState({
-					loading: false
-				});
-			});
-			this.handleReset();
+				this.setState({ job: resetJob, loading: false });
+				this.setState({ job: {...this.state.job, submitter: this.props.user.id} });
+			});			
 		}
 		else
-			notify.show(errors, 'error', 3000, 'red');
+			notify.show(errors, 'error', NotificationsTimeOut, 'red');
 	};
 	
-	handleDate = (date) => {
-		this.setState({ job: {...this.state.job, deadline: date} });		
+	handleDate = (date) => {		
+		this.setState({ job: {...this.state.job, deadline: date } });		
 	};
 
 	render() {		
@@ -128,9 +124,11 @@ class JobCreate extends Component {
 									<select  className='form-control' id='stateLocation' name='stateLocation' value={ this.state.job.stateLocation } onChange={ this.handleStateChange }>										
 										{
 											this.props.locations.map((stateName, key) => {
-												let options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>];
+												let options = [];
 												if(key === 0)
-													options.unshift(<option key={ key } value={ resetState.id }>{ resetState.state }</option>);
+													options = [<option key={ key + 1 }  value={ stateName.id }>Select state...</option>];
+												else
+													options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>]
 												return options;
 											})
 										}
@@ -142,9 +140,11 @@ class JobCreate extends Component {
 										{											
 											this.state.job.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.job.stateLocation) === parseInt(stateObj.id))).length > 0
 											&& this.props.locations.filter((stateObj) => parseInt(this.state.job.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												
-												let options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>];
+												let options = [];
 												if(key === 0)
-													options.unshift(<option key={ key } value={ resetDistrict.id }>{ resetDistrict.name }</option>);
+													options = [<option key={ key + 1 } value={ district.id }>Select district...</option>]
+												else
+													options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>]
 												return options;
 											})
 										}							
@@ -162,9 +162,11 @@ class JobCreate extends Component {
 											&& this.props.locations.filter((stateObj) => parseInt(this.state.job.stateLocation) === parseInt(stateObj.id))[0]
 											.districts.filter((districtObj) => parseInt(this.state.job.district) === parseInt(districtObj.id))[0]
 											.towns.map((town, key) => {
-												let options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>];
+												let options = [];
 												if(key === 0)
-													options.unshift(<option key={ key } value={ resetTown.id }>{ resetTown.town }</option>);
+													options = [<option key={ key + 1 } value={ town.id }>Select town...</option>]
+												else
+													options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>]
 												return options;												
 											})
 										}
@@ -179,9 +181,11 @@ class JobCreate extends Component {
 										<select  className="form-control" id="qualification" name="qualification" value={ this.state.job.qualification } onChange={ this.handleChange }>
 											{
 												this.props.qualifications.map((qualificationName, key) => {
-													let options = [<option key={ key + 1 } value={ qualificationName.id }>{ qualificationName.qualification }</option>];
+													let options = [];
 													if(key === 0)
-														options.unshift(<option key={ key } value={ resetQualification.id }>{ resetQualification.qualification }</option>);													
+														options = [<option key={ key } value={ qualificationName.id }>Select qualification...</option>];
+													else
+														options = [<option key={ key + 1 } value={ qualificationName.id }>{ qualificationName.qualification }</option>];
 													return options;
 												})
 											}
@@ -192,9 +196,11 @@ class JobCreate extends Component {
 									<select  className='form-control' id='subject' name='subject' value={this.state.job.subject} onChange={this.handleChange}>																	
 										{
 											this.props.subjects.map((subjectName, key) => {
-												let options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
+												let options = [];
 												if(key === 0)
-													options.unshift(<option key={ key } value={ resetSubject.id }>{ resetSubject.subject }</option>);													
+													options = [<option key={ key } value={ subjectName.id }>Select subject...</option>];
+												else
+													options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
 												return options;
 											})
 										}
@@ -221,8 +227,8 @@ class JobCreate extends Component {
 								<div className='col-lg-2 col-xs-12 form-group'>
 									<label className='text-black' htmlFor='deadline'>Deadline</label>
 									<DatePicker
-										selected={ this.state.job.deadline }
-										onChange={date => this.handleDate(date)}
+										selected={ moment(this.state.job.deadline, 'DD/MM/YYYY').toDate() }
+										onChange={ date => this.handleDate(date.toLocaleDateString('en-IN')) }
 										peekNextMonth										
 										showMonthDropdown
 										showYearDropdown
@@ -300,3 +306,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(JobCreate);
+

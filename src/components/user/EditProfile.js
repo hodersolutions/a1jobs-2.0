@@ -2,44 +2,19 @@ import React, { Component, Fragment } from 'react';
 import { notify } from 'react-notify-toast';
 import { connect } from 'react-redux';
 import { getStates, getSubjects, getQualifications } from '../../store/actions/commonActions';
-import { gender, circulum, teachingmedium, department, segment, resetQualification, resetState, resetTown, resetSubject, resetDistrict } from '../common/Constants';
+import { gender, circulum, teachingmedium, department, segment, resetProfile } from '../common/Constants';
 import { Redirect } from 'react-router-dom';
 import UserAPI from '../../api/UserAPI';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class EditProfile extends Component {
 	constructor(props) {
 		super(props);
 		this.api = null;
 		this.state = {
-			profile: {
-				userid: null,
-				firstname: '',
-				middlename: '',
-				lastname: '',
-				fathername: '',
-				gender: '',    
-				nationality: '',
-				ctc: '',
-				ectc: '',
-				qualification: 0,
-				stateLocation: 0,
-				district: 0,
-				town: 0,
-				totalexperience: 0,
-				circulum: 0,
-				currentorganization: '',
-				department: 0,
-				teachingsubject: 0,
-				teachingmedium: 0,
-				segment: 0,
-				address:'',
-				dob: new Date().toLocaleDateString(),
-				pan: '',
-				designation: ''
-
-			},
+			profile: resetProfile,
 			editing: false
 		};
 	}
@@ -67,10 +42,10 @@ class EditProfile extends Component {
 					this.setState({
 						profile: response.profile,
 						loading: false
-					});
+					});					
 				}
 				else {
-					notify.show(response.message, 'error', 5000, 'red');
+					notify.show(response.message, 'error', NotificationsTimeOut, 'red');
 					this.setState({						
 						loading: false
 					});
@@ -103,9 +78,9 @@ class EditProfile extends Component {
 			await this.api.updateUserProfile(this.state.profile, {mode: 'cors'})
 			.then(response => {
 					if(response.status === 'success')
-						notify.show(response.message, 'success', 5000, 'green');
+						notify.show(response.message, 'success', NotificationsTimeOut, 'green');
 					else
-						notify.show(response.message, 'error', 5000, 'red');
+						notify.show(response.message, 'error', NotificationsTimeOut, 'red');
 					this.setState({
 						editing: false
 					});		
@@ -197,8 +172,8 @@ class EditProfile extends Component {
 								<div className='col-lg-3 col-xs-12 form-group'>
 									<label className='text-black' htmlFor='deadline'>Date Of Birth</label>
 									<DatePicker										
-										selected = { moment(this.state.profile.dob).toDate() }
-										onChange={date => this.handleDate(date.toLocaleDateString())}
+										selected = { moment(this.state.profile.dob, 'DD/MM/YYYY').toDate() }
+										onChange={ date => this.handleDate(date.toLocaleDateString('en-IN')) }										
 										peekNextMonth										
 										showMonthDropdown
 										showYearDropdown
@@ -226,9 +201,11 @@ class EditProfile extends Component {
 										<select  className='form-control' id='stateLocation' name='stateLocation' value={ this.state.profile.stateLocation } onChange={ this.handleStateChange }>										
 											{
 												this.props.locations.map((stateName, key) => {
-													let options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>];
+													let options = [];
 													if(key === 0)
-														options.unshift(<option key={ key } value={ resetState.id }>{ resetState.state }</option>);
+														options = [<option key={ key + 1 }  value={ stateName.id }>Select state...</option>];
+													else
+														options = [<option key={ key + 1 }  value={ stateName.id }>{ stateName.state }</option>]
 													return options;
 												})
 											}
@@ -240,9 +217,11 @@ class EditProfile extends Component {
 											{											
 												this.state.profile.stateLocation > 0 && (this.props.locations.filter((stateObj) => parseInt(this.state.profile.stateLocation) === parseInt(stateObj.id))).length > 0
 												&& this.props.locations.filter((stateObj) => parseInt(this.state.profile.stateLocation) === parseInt(stateObj.id))[0].districts.map((district, key) => { 												
-													let options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>];
+													let options = [];
 													if(key === 0)
-														options.unshift(<option key={ key } value={ resetDistrict.id }>{ resetDistrict.name }</option>);
+														options = [<option key={ key + 1 } value={ district.id }>Select district...</option>]
+													else
+														options = [<option key={ key + 1 } value={ district.id }>{ district.name }</option>]
 													return options;
 												})
 											}							
@@ -260,9 +239,11 @@ class EditProfile extends Component {
 												&& this.props.locations.filter((stateObj) => parseInt(this.state.profile.stateLocation) === parseInt(stateObj.id))[0]
 												.districts.filter((districtObj) => parseInt(this.state.profile.district) === parseInt(districtObj.id))[0]
 												.towns.map((town, key) => {
-													let options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>];
+													let options = [];
 													if(key === 0)
-														options.unshift(<option key={ key } value={ resetTown.id }>{ resetTown.town }</option>);
+														options = [<option key={ key + 1 } value={ town.id }>Select town...</option>]
+													else
+														options = [<option key={ key + 1 } value={ town.id }>{ town.town }</option>]
 													return options;												
 												})
 											}
@@ -297,9 +278,11 @@ class EditProfile extends Component {
 												<select  className="form-control" id="qualification" name="qualification" value={ this.state.profile.qualification } onChange={ this.handleChange }>
 													{
 														this.props.qualifications.map((qualificationName, key) => {
-															let options = [<option key={ key + 1 } value={ qualificationName.id }>{ qualificationName.qualification }</option>];
+															let options = [];
 															if(key === 0)
-																options.unshift(<option key={ key } value={ resetQualification.id }>{ resetQualification.qualification }</option>);													
+																options = [<option key={ key } value={ qualificationName.id }>Select qualification...</option>];
+															else
+																options = [<option key={ key + 1 } value={ qualificationName.id }>{ qualificationName.qualification }</option>];
 															return options;
 														})
 													}
@@ -310,9 +293,11 @@ class EditProfile extends Component {
 											<select  className='form-control' id='teachingsubject' name='teachingsubject' value={this.state.profile.teachingsubject} onChange={this.handleChange}>																	
 												{
 													this.props.subjects.map((subjectName, key) => {
-														let options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
+														let options = [];
 														if(key === 0)
-															options.unshift(<option key={ key } value={ resetSubject.id }>{ resetSubject.subject }</option>);													
+															options = [<option key={ key } value={ subjectName.id }>Select subject...</option>];
+														else
+															options = [<option key={ key + 1 } value={ subjectName.id }>{ subjectName.subject }</option>];
 														return options;
 													})
 												}

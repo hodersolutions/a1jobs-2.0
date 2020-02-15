@@ -75,23 +75,24 @@ class JobAPI extends BaseAPI {
         });
     }
     
-    getPostedJobs = async (userid, config={}) => {
-	    return await axios.get(`${this.url}api/v1/requisitions/filter?submitter=` + userid, config, {
-		    headers: {
-			    'Content-Type' : 'application/json'
-		    }
-	    }).then((response) => {
-		    return response.data;
-	    })
-	    .catch(error => {
-		    if (error.response !== undefined)
-			    return error.response.data
-		    else
-			    return error
-	    });
+    getPostedJobs = async (userid, config={}) =>  {
+        return await axios.get(`${this.url}api/v1/requisitions/filter?submitter=` + userid, config, {
+                headers: {
+                   'Content-Type': 'application/json'
+                }            
+            }
+        ).then((response) => {
+            return response.data;
+        })
+        .catch(error => {
+            if (error.response !== undefined)
+                return error.response.data
+            else                
+                return error
+        });
     }
 
-    getJobs = async (searchfilter, params, config={}) => {        
+    getJobs = async (searchfilter, config={}) => {        
         let full_uri = ``, filter_string = ``;        
         if (searchfilter.searchToken !== `` && searchfilter.searchToken !== undefined)
             filter_string = `${filter_string}searchToken=${searchfilter.searchToken}`;
@@ -105,20 +106,19 @@ class JobAPI extends BaseAPI {
             filter_string = `${filter_string}&district=${searchfilter.district}`;
         if (searchfilter.town > 0)
             filter_string = `${filter_string}&town=${searchfilter.town}`;
-        if (params.userid === undefined){
-            if (filter_string !== "")
+
+        if (filter_string !== "")
                 full_uri = `${this.url}api/v1/requisitions/filter?`+filter_string;            
-            else
-                full_uri = `${this.url}api/v1/requisitions/filter`;            
-        }
         else
-            full_uri = `${this.url}api/v1/requisitions/filter?submitter=` + params.userid;
+                full_uri = `${this.url}api/v1/requisitions/filter`;
+
         
         return await axios.get(full_uri, config, {
-            headers: {
-                'Content-Type': 'application/json'
-            }				
-		}).then((response) => {            
+                headers: {
+                    'Content-Type': 'application/json'
+                }				
+            }
+        ).then((response) => {            
             return response.data;
         })
         .catch(error => {

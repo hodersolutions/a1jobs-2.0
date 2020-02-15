@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { green } from '@material-ui/core/colors';
 import NoData from '../common/NoData';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class JobsApplied extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class JobsApplied extends Component {
                         });
                     }
                     else {
-                        notify.show(response.message, 'error', 5000, 'red');
+                        notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                         this.setState({
                             loading: false,
                             jobs: []

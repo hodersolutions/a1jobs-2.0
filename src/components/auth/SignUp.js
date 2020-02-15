@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
 import UserAPI from '../../api/UserAPI';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class SignUp extends Component {    
     constructor(props) {
@@ -68,10 +69,10 @@ class SignUp extends Component {
             await this.api.createUser(this.state.user, {mode: 'cors'})
             .then(response => {
                     if(response.status === 'success') {
-                        notify.show(response.message + '. Please Sign In.', 'success', 5000, 'green');
+                        notify.show(response.message + '. Please Sign In.', 'success', NotificationsTimeOut, 'green');
                     }
                     else {
-                        notify.show(response.message, 'error', 5000, 'red');
+                        notify.show(response.message, 'error', NotificationsTimeOut, 'red');
                     }
                     this.setState({
                         loading: false
@@ -81,7 +82,7 @@ class SignUp extends Component {
             this.resetState();
         }
         else
-            notify.show(errors, 'error', 3000, 'red');
+            notify.show(errors, 'error', NotificationsTimeOut, 'red');
     }
 
     render() {        

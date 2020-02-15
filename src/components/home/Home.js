@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Random from '../common/Helper';
+import { Random } from '../common/Helper';
 import { Link } from 'react-router-dom';
 
 class Home extends Component {

@@ -5,6 +5,7 @@ import { notify } from 'react-notify-toast';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
 import { authenticateUser, resetUserStatus } from '../../store/actions/userActions';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class SignIn extends Component {	
     constructor() {
@@ -23,7 +24,7 @@ class SignIn extends Component {
 
 	componentDidUpdate() {
 		if(this.props.user.status === 'AUTHENTICATE_USER_ERROR') {
-			notify.show(this.props.user.response.message, 'error', 5000, 'red');
+			notify.show(this.props.user.response.message, 'error', NotificationsTimeOut, 'red');
 			this.props.resetUserStatus();
 			this.setState({				
 				loginId: '',
@@ -47,7 +48,7 @@ class SignIn extends Component {
         if(errors === '')
 			this.props.authenticateUser(this.state);
         else
-            notify.show(errors, 'error', 3000, 'red');
+            notify.show(errors, 'error', NotificationsTimeOut, 'red');
 	}
     render() {				
 		if(this.props.user.logged_user !== null) {
