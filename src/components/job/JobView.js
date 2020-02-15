@@ -8,6 +8,9 @@ import HomeIcon from '@material-ui/icons/Home';
 import { green } from '@material-ui/core/colors';
 import JobAPI from '../../api/JobAPI';
 import NoData from '../common/NoData';
+import moment from 'moment';
+import { DefaultDisplay } from '../common/Helper';
+import NotificationsTimeOut from '../common/contact/Contact';
 
 class JobView extends Component {
 	constructor(props) {
@@ -35,7 +38,7 @@ class JobView extends Component {
 				});
 			}
 			else {
-				notify.show(response.message, 'error', 5000, 'red');
+				notify.show(response.message, 'error', NotificationsTimeOut, 'red');
 				this.setState({						
 					loading: false,
 					job: null
@@ -57,11 +60,11 @@ class JobView extends Component {
 			this.api.applyJob({ userid: this.props.user.logged_user.id, requisitionid: this.props.match.params.id })
 			.then(response => {				
 				if (response.status === 'success') {
-					notify.show(response.message, 'success', 5000, 'green');
+					notify.show(response.message, 'success', NotificationsTimeOut, 'green');
 					this.setState({ job: {...this.state.job, isapplied: true} })
 				}				
 				else
-					notify.show(response.message, 'error', 5000, 'red');
+					notify.show(response.message, 'error', NotificationsTimeOut, 'red');
 			});
 	}
 
@@ -96,21 +99,26 @@ class JobView extends Component {
 													<img className='mb-3' src={require('../../static/images/school.png')} alt='Login' width='100' height='100'/>
 												</div>
 												<div>
-													<h2 style={titlePadding}>{this.state.job.title}</h2>
+													<h2 style={titlePadding}>{ DefaultDisplay(this.state.job.title, 'Undisclosed requirement') }</h2>
 													<div className='container'>
 														<div className='row'>
 															<div className='col-12'>
-																<span className='icon-briefcase' style={padding}></span>{this.state.job.institution}								
+																<span className='icon-briefcase' style={padding}></span>{ DefaultDisplay(this.state.job.institution) }
 															</div>
 														</div>
 														<div className='row'>
 															<div className='col-12'>
-																<span className='icon-room' style={padding}></span>{this.state.job.town}, {this.state.job.district}, {this.state.job.state}
+																<span className='icon-room' style={padding}></span>
+																{
+																	(this.state.job.town !== '' ? this.state.job.town + ', ' : '') +
+																	(this.state.job.district !== '' ? this.state.job.district + ', ' : '') +
+																	(this.state.job.state !== '' ? this.state.job.state : '')
+																}
 															</div>
 														</div>
 														<div className='row'>
 															<div className='col-12'>
-																<span className='icon-clock-o' style={padding}></span><span>{jobTypes.filter(type => parseInt(type.id) === parseInt(this.state.job.jobtype))[0].name}</span>
+																<span className='icon-clock-o' style={padding}></span><span>{ DefaultDisplay(jobTypes.filter(type => parseInt(type.id) === parseInt(this.state.job.jobtype))[0].view) }</span>
 															</div>
 														</div>
 													</div>
@@ -153,7 +161,7 @@ class JobView extends Component {
 												<h3 className='h5 d-flex align-items-center mb-4 text-primary'><span className='icon-align-left mr-3'></span>Job Description</h3>
 												<div style = { justify }>
 													{
-														this.state.job.requisitiondetails
+														DefaultDisplay(this.state.job.requisitiondetails)
 													}
 												</div>
 												</div>
@@ -162,7 +170,7 @@ class JobView extends Component {
 														<span className='icon-rocket mr-3'></span>Responsibilities</h3>
 														<ul className='list-unstyled m-0 p-0'>
 															<li className='d-flex align-items-start mb-2'><span
-																className='icon-check_circle mr-2 text-muted'></span><span>{this.state.job.responsibilities}</span>
+																className='icon-check_circle mr-2 text-muted'></span><span>{ DefaultDisplay(this.state.job.responsibilities) }</span>
 															</li>
 														</ul>
 												</div>
@@ -171,7 +179,7 @@ class JobView extends Component {
 												<h3 className='h5 d-flex align-items-center mb-4 text-primary'><span className='icon-book mr-3'></span>Education + Experience</h3>
 													<ul className='list-unstyled m-0 p-0'>
 														<li className='d-flex align-items-start mb-2'><span
-															className='icon-check_circle mr-2 text-muted'></span><span>{this.state.job.eduexpdetails}</span>
+															className='icon-check_circle mr-2 text-muted'></span><span>{ DefaultDisplay(this.state.job.eduexpdetails) }</span>
 														</li>
 													</ul>
 												</div>
@@ -180,7 +188,7 @@ class JobView extends Component {
 													<h3 className='h5 d-flex align-items-center mb-4 text-primary'><span className='icon-turned_in mr-3'></span>Other Benifits</h3>
 													<ul className='list-unstyled m-0 p-0'>
 														<li className='d-flex align-items-start mb-2'><span
-															className='icon-check_circle mr-2 text-muted'></span><span>{this.state.job.benefits}</span>
+															className='icon-check_circle mr-2 text-muted'></span><span>{ DefaultDisplay(this.state.job.benefits) }</span>
 														</li>							
 													</ul>
 												</div>
@@ -189,15 +197,21 @@ class JobView extends Component {
 												<div className='bg-light p-3 border rounded mb-4'>
 												<h3 className='text-primary  mt-3 h5 pl-3 mb-3 '>Job Summary</h3>
 												<ul className='list-unstyled pl-3 mb-0'>
-													<li className='mb-2'><strong className='text-black'>Published on:</strong> {this.state.job.registeredon}</li>
-													<li className='mb-2'><strong className='text-black'>Vacancy:</strong> {this.state.job.vacancy}</li>
-													<li className='mb-2'><strong className='text-black'>Employment Status:</strong> {jobTypes.filter(type => parseInt(type.id) === parseInt(this.state.job.jobtype))[0].name}</li>
-													<li className='mb-2'><strong className='text-black'>Min Experience:</strong> {this.state.job.minexperience} months</li>
-													<li className='mb-2'><strong className='text-black'>Max Experience:</strong> {this.state.job.maxexperience} months</li>
-													<li className='mb-2'><strong className='text-black'>Job Location:</strong> {this.state.job.town}, {this.state.job.district}, {this.state.job.state}</li>
-													<li className='mb-2'><strong className='text-black'>Salary:</strong> &#x20b9; {this.state.job.salary}</li>
-													<li className='mb-2'><strong className='text-black'>Gender:</strong> {gender.filter(gd => parseInt(gd.id) === parseInt(this.state.job.gender))[0].name}</li>
-													<li className='mb-2'><strong className='text-black'>Application Deadline:</strong> {this.state.job.closedon}</li>
+													<li className='mb-2'><strong className='text-black'>Published on: </strong>{ DefaultDisplay(this.state.job.registeredon) }</li>
+													<li className='mb-2'><strong className='text-black'>Vacancy: </strong> { DefaultDisplay(this.state.job.vacancy) }</li>
+													<li className='mb-2'><strong className='text-black'>Employment Status: </strong> { DefaultDisplay(jobTypes.filter(type => parseInt(type.id) === parseInt(this.state.job.jobtype))[0].view) }</li>
+													<li className='mb-2'><strong className='text-black'>Min Experience: </strong> { DefaultDisplay(this.state.job.minexperience) } months</li>
+													<li className='mb-2'><strong className='text-black'>Max Experience: </strong> { DefaultDisplay(this.state.job.maxexperience) } months</li>
+													<li className='mb-2'><strong className='text-black'>Job Location: </strong> 
+														{
+															(this.state.job.town !== '' ? this.state.job.town + ', ' : '') +
+															(this.state.job.district !== '' ? this.state.job.district + ', ' : '') +
+															(this.state.job.state !== '' ? this.state.job.state : '')
+														}
+													</li>
+													<li className='mb-2'><strong className='text-black'>Salary: </strong> &#x20b9; { DefaultDisplay(this.state.job.salary) }</li>
+													<li className='mb-2'><strong className='text-black'>Gender: </strong> { DefaultDisplay(gender.filter(gd => parseInt(gd.id) === parseInt(this.state.job.gender))[0].view) }</li>
+													<li className='mb-2'><strong className='text-black'>Application Deadline: </strong> { DefaultDisplay(moment(this.state.job.closedon, "dd/MM//yyyy").format('Do MMMM, YYYY')) }</li>
 												</ul>
 												</div>			
 											</div>
