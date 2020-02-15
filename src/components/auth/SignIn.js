@@ -5,7 +5,7 @@ import { notify } from 'react-notify-toast';
 import { isEmail, isMobilePhone } from 'validator';
 import { connect } from 'react-redux';
 import { authenticateUser, resetUserStatus } from '../../store/actions/userActions';
-import NotificationsTimeOut from '../common/contact/Contact';
+import { NotificationsTimeOut } from '../common/Constants';
 
 class SignIn extends Component {	
     constructor() {
